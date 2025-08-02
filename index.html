@@ -4,20 +4,19 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Əlizadə Pərvanə | DevOps Portfolio</title>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <style>
-  /* Reset */
   *, *::before, *::after {
     margin: 0; padding: 0; box-sizing: border-box;
   }
-
   body {
     font-family: 'Poppins', sans-serif;
-    background: #0a0f25;
+    background: linear-gradient(120deg, #0a0f25, #071122);
     color: #00f0ff;
     line-height: 1.6;
     font-size: 16px;
+    scroll-behavior: smooth;
   }
-
   header {
     background: rgba(0, 20, 50, 0.85);
     padding: 20px 40px;
@@ -27,7 +26,6 @@
     z-index: 100;
     backdrop-filter: blur(6px);
   }
-
   nav {
     max-width: 1100px;
     margin: 0 auto;
@@ -35,7 +33,6 @@
     justify-content: space-between;
     align-items: center;
   }
-
   nav .logo {
     font-weight: 700;
     font-size: 1.8rem;
@@ -43,13 +40,11 @@
     text-shadow: 0 0 6px #00f0ffcc;
     font-style: italic;
   }
-
   nav ul {
     list-style: none;
     display: flex;
     gap: 30px;
   }
-
   nav ul li a {
     text-decoration: none;
     font-weight: 600;
@@ -59,18 +54,54 @@
     font-style: italic;
     font-size: 0.9rem;
   }
-
   nav ul li a:hover {
     color: #00eaff;
     text-shadow: 0 0 12px #00eaffcc;
   }
-
+  #hero {
+    text-align: center;
+    padding: 100px 20px;
+    background: radial-gradient(circle, #001f3f 0%, #000814 100%);
+    animation: pulseBg 10s infinite alternate;
+  }
+  @keyframes pulseBg {
+    0% { background-color: #001f3f; }
+    100% { background-color: #000814; }
+  }
+  #hero h1 {
+    font-size: 3rem;
+    color:#00eaff;
+    text-shadow: 0 0 15px #00eaffaa;
+  }
+  #hero p {
+    font-size: 1.3rem;
+    color: #99eeff;
+    font-style: italic;
+    text-shadow: 0 0 10px #00dfffcc;
+  }
+  .button {
+    display: inline-block;
+    background: transparent;
+    color: #00eaff;
+    border: 2px solid #00eaff;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    font-style: italic;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    margin-top: 20px;
+  }
+  .button:hover {
+    background: #00eaff;
+    color: #0a0f25;
+    text-shadow: none;
+  }
   main {
     max-width: 900px;
     margin: 40px auto;
     padding: 0 20px;
   }
-
   section {
     margin-bottom: 60px;
     padding: 15px 20px;
@@ -79,53 +110,28 @@
     box-shadow: 0 0 10px #00f0ff22;
     border-radius: 6px;
   }
-
   h1, h2 {
     color: #00eaff;
     margin-bottom: 15px;
     text-shadow: 0 0 8px #00eaffaa;
     font-style: italic;
   }
-
-  h1 {
-    font-size: 3rem;
-    font-weight: 700;
-  }
-
   h2 {
     font-size: 2rem;
     border-bottom: 3px solid #00aaff;
     padding-bottom: 8px;
   }
-
-  p {
+  p, ul li {
     font-size: 1.1rem;
     color: #99eeff;
     text-shadow: 0 0 4px #00dfffaa;
     font-style: italic;
   }
-
-  ul {
-    list-style: none;
-    padding-left: 15px;
-  }
-
   ul li::before {
-    content: "⚙️";
+    content: "⚙️ ";
     color: #00eaff;
     margin-right: 8px;
-    text-shadow: 0 0 5px #00eaffcc;
   }
-
-  ul li {
-    margin-bottom: 10px;
-    font-weight: 600;
-    color: #66f7ff;
-    text-shadow: 0 0 5px #66f7ffcc;
-    font-style: italic;
-    font-size: 0.95rem;
-  }
-
   footer {
     text-align: center;
     padding: 30px 20px;
@@ -136,29 +142,29 @@
     box-shadow: 0 0 10px #00ccffaa inset;
     font-style: italic;
   }
-
-  a {
-    color: #00f0ff;
+  #backToTop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #00eaff;
+    color: #0a0f25;
+    padding: 10px 15px;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 18px;
+    box-shadow: 0 0 10px #00eaffaa;
     text-decoration: none;
-    transition: text-shadow 0.3s ease;
-    font-style: italic;
+    display: none;
+    z-index: 999;
   }
-
-  a:hover {
-    text-shadow: 0 0 10px #00eaffcc;
-  }
-
-  /* Responsive */
   @media(max-width: 600px) {
     nav {
       flex-direction: column;
       gap: 20px;
     }
-
     h1 {
       font-size: 2.2rem;
     }
-
     h2 {
       font-size: 1.5rem;
     }
@@ -170,21 +176,28 @@
   <nav>
     <div class="logo">Əlizadə Pərvanə</div>
     <ul>
+      <li><a href="#hero">Ana Səhifə</a></li>
       <li><a href="#about">Haqqımda</a></li>
       <li><a href="#certificates">Sertifikatlar</a></li>
       <li><a href="#skills">Bacarıqlar</a></li>
+      <li><a href="#portfolio">Layihələr</a></li>
       <li><a href="#contact">Əlaqə</a></li>
     </ul>
   </nav>
 </header>
 
-<main>
-  <section id="about">
-    <h1>Salam, mən Əlizadə Pərvanə</h1>
-    <p><em>IT sahəsində məqsədyönlü və bacarıqlı mütəxəssis kimi Linux, DevOps, sistem idarəetməsi və şəbəkə sahələrində dərin biliklərə malikəm. Hal-hazırda AzInTelecom şirkətində Data Center IT Technician vəzifəsində çalışır, peşəkar bacarıqlarımı davamlı olaraq təkmilləşdirirəm.</em></p>
-  </section>
+<section id="hero">
+  <h1 data-aos="zoom-in">Mən Pərvanə Əlizadə</h1>
+  <p data-aos="fade-up">Devops mühəndisi</p>
+  <a href="#contact" class="button" data-aos="fade-up" data-aos-delay="300">Mənimlə əlaqə saxla</a>
+</section>
 
-  <section id="certificates">
+<main>
+  <section id="about" data-aos="fade-up">
+    <h2>Haqqımda</h2>
+    <p>IT sahəsində məqsədyönlü və bacarıqlı mütəxəssis kimi Linux, DevOps, sistem idarəetməsi və şəbəkə sahələrində dərin biliklərə malikəm. Hal-hazırda AzInTelecom şirkətində Data Center IT Technician vəzifəsində çalışır, peşəkar bacarıqlarımı davamlı olaraq təkmilləşdirirəm.</p>
+  </section>
+  <section id="certificates" data-aos="fade-up">
     <h2>Peşəkar Sertifikatlarım</h2>
     <ul>
       <li>RHCE (Red Hat Certified Engineer)</li>
@@ -194,8 +207,7 @@
       <li>CKA (Certified Kubernetes Administrator) - Loading...</li>
     </ul>
   </section>
-
-  <section id="skills">
+  <section id="skills" data-aos="fade-up">
     <h2>DevOps Bacarıqlarım</h2>
     <ul>
       <li>Linux sistem idarəetməsi və təhlükəsizlik</li>
@@ -209,15 +221,36 @@
       <li>Bulud platformaları: AWS, DigitalOcean</li>
     </ul>
   </section>
-<section id="contact">
-  <h2>Əlaqə</h2>
-  <p>Email: <a href="mailto:aliza.parvana@gmail.com">aliza.parvana@gmail.com</a></p>
-  <p>Telefon: +994 50 526 9971</p>
-  <p>Sosial: 
-    <a href="https://www.linkedin.com/in/parvana-alizada/" 
-       target="_blank" 
-       rel="noopener noreferrer">
-      LinkedIn
-    </a>
-  </p>
-</section>
+  <section id="portfolio" data-aos="fade-up">
+    <h2>Layihələrim</h2>
+    <ul>
+      <li><a href="https://github.com/ParvanaAli/simple-nginx-app" target="_blank">Nginx Docker App</a></li>
+      <li><a href="https://github.com/ParvanaAli/zabbix-monitoring" target="_blank">Zabbix Monitorinq Layihəsi</a></li>
+      <li><a href="https://github.com/ParvanaAli/ansible-playbooks" target="_blank">Ansible Playbook nümunələri</a></li>
+    </ul>
+  </section>
+  <section id="contact" data-aos="fade-up">
+    <h2>Əlaqə</h2>
+    <p>Email: <a href="mailto:aliza.parvana@gmail.com">aliza.parvana@gmail.com</a></p>
+    <p>Telefon: +994 50 526 9971</p>
+    <p>Sosial: <a href="https://www.linkedin.com/in/parvana-alizada/" target="_blank">LinkedIn</a></p>
+  </section>
+</main>
+
+<a href="#" id="backToTop">↑</a>
+
+<footer>
+  &copy; 2025 Əlizadə Pərvanə | Bütün hüquqlar qorunur.
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+  const btn = document.getElementById('backToTop');
+  window.onscroll = () => {
+    btn.style.display = window.scrollY > 300 ? 'block' : 'none';
+  };
+</script>
+</body>
+</html>
+
