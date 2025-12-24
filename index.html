@@ -1,256 +1,199 @@
 <!DOCTYPE html>
-<html lang="az">
+<html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Mənim İT Dünyam | DevOps Portfolio</title>
+<title>Parvana Alizada | Junior DevOps Engineer</title>
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <style>
-  *, *::before, *::after {
-    margin: 0; padding: 0; box-sizing: border-box;
-  }
-  body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(120deg, #0a0f25, #071122);
-    color: #00f0ff;
-    line-height: 1.6;
-    font-size: 16px;
-    scroll-behavior: smooth;
-  }
-  header {
-    background: rgba(0, 20, 50, 0.85);
-    padding: 20px 40px;
-    box-shadow: 0 0 15px #00f0ffaa;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    backdrop-filter: blur(6px);
-  }
-  nav {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  nav .logo {
-    font-weight: 700;
-    font-size: 1.8rem;
-    color: #00f0ff;
-    text-shadow: 0 0 6px #00f0ffcc;
-    font-style: italic;
-  }
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 30px;
-  }
-  nav ul li a {
-    text-decoration: none;
-    font-weight: 600;
-    color: #66f7ff;
-    transition: color 0.3s ease;
-    text-shadow: 0 0 5px #66f7ffaa;
-    font-style: italic;
-    font-size: 0.9rem;
-  }
-  nav ul li a:hover {
-    color: #00eaff;
-    text-shadow: 0 0 12px #00eaffcc;
-  }
-  #hero {
-    text-align: center;
-    padding: 100px 20px;
-    background: radial-gradient(circle, #001f3f 0%, #000814 100%);
-    animation: pulseBg 10s infinite alternate;
-  }
-  @keyframes pulseBg {
-    0% { background-color: #001f3f; }
-    100% { background-color: #000814; }
-  }
-  #hero h1 {
-    font-size: 3rem;
-    color:#00eaff;
-    text-shadow: 0 0 15px #00eaffaa;
-  }
-  #hero p {
-    font-size: 1.3rem;
-    color: #99eeff;
-    font-style: italic;
-    text-shadow: 0 0 10px #00dfffcc;
-  }
-  .button {
-    display: inline-block;
-    background: transparent;
-    color: #00eaff;
-    border: 2px solid #00eaff;
-    padding: 10px 20px;
-    border-radius: 25px;
-    font-weight: bold;
-    font-style: italic;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    margin-top: 20px;
-  }
-  .button:hover {
-    background: #00eaff;
-    color: #0a0f25;
-    text-shadow: none;
-  }
-  main {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 0 20px;
-  }
-  section {
-    margin-bottom: 60px;
-    padding: 15px 20px;
-    border-left: 4px solid #00eaff;
-    background: rgba(0, 255, 255, 0.05);
-    box-shadow: 0 0 10px #00f0ff22;
-    border-radius: 6px;
-  }
-  h1, h2 {
-    color: #00eaff;
-    margin-bottom: 15px;
-    text-shadow: 0 0 8px #00eaffaa;
-    font-style: italic;
-  }
-  h2 {
-    font-size: 2rem;
-    border-bottom: 3px solid #00aaff;
-    padding-bottom: 8px;
-  }
-  p, ul li {
-    font-size: 1.1rem;
-    color: #99eeff;
-    text-shadow: 0 0 4px #00dfffaa;
-    font-style: italic;
-  }
-  ul li::before {
-    content: "⚙️ ";
-    color: #00eaff;
-    margin-right: 8px;
-  }
-  footer {
-    text-align: center;
-    padding: 30px 20px;
-    background: rgba(0, 20, 50, 0.85);
-    color: #33ccff;
-    font-size: 0.9rem;
-    border-top: 1px solid #006699;
-    box-shadow: 0 0 10px #00ccffaa inset;
-    font-style: italic;
-  }
-  #backToTop {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: #00eaff;
-    color: #0a0f25;
-    padding: 10px 15px;
-    border-radius: 50%;
-    font-weight: bold;
-    font-size: 18px;
-    box-shadow: 0 0 10px #00eaffaa;
-    text-decoration: none;
-    display: none;
-    z-index: 999;
-  }
-  @media(max-width: 600px) {
-    nav {
-      flex-direction: column;
-      gap: 20px;
-    }
-    h1 {
-      font-size: 2.2rem;
-    }
-    h2 {
-      font-size: 1.5rem;
-    }
-  }
+:root{
+  --bg:#f8fafc;
+  --card:#ffffff;
+  --primary:#2563eb;
+  --secondary:#0ea5e9;
+  --text:#111827;
+  --muted:#6b7280;
+  --terminal:#020617;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;
+  background:linear-gradient(120deg,#f8fafc,#eef2ff);
+  color:var(--text);
+  line-height:1.7;
+}
+header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(255,255,255,.95);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid #e5e7eb;
+}
+nav{
+  max-width:1100px;margin:auto;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:16px 24px
+}
+.logo{font-weight:800;font-size:1.3rem;color:var(--primary)}
+nav ul{list-style:none;display:flex;gap:22px}
+nav a{text-decoration:none;color:var(--muted);font-weight:600}
+nav a:hover{color:var(--primary)}
+
+#hero{
+  max-width:1100px;margin:70px auto;padding:40px 24px;
+  display:grid;grid-template-columns:1.2fr 1fr;gap:40px
+}
+.hero-text h1{font-size:3rem;margin-bottom:10px}
+.hero-text span{color:var(--primary)}
+.hero-text p{color:var(--muted);font-size:1.1rem}
+
+.terminal{
+  background:var(--terminal);
+  color:#e5e7eb;
+  border-radius:16px;
+  padding:22px;
+  font-family:monospace;
+  font-size:.95rem;
+  box-shadow:0 20px 40px rgba(2,6,23,.35)
+}
+.prompt{color:#38bdf8}
+
+.button{
+  display:inline-block;margin-top:22px;
+  padding:12px 28px;
+  background:var(--primary);
+  color:#fff;border-radius:30px;
+  text-decoration:none;font-weight:700
+}
+
+main{max-width:1000px;margin:auto;padding:0 24px}
+section{margin-bottom:70px}
+.card{
+  background:var(--card);
+  border-radius:18px;
+  padding:32px;
+  box-shadow:0 10px 30px rgba(0,0,0,.06)
+}
+section h2{font-size:2rem;margin-bottom:20px;color:var(--primary)}
+
+ul{list-style:none}
+ul li{margin-bottom:10px;color:var(--muted)}
+ul li::before{content:'$';margin-right:10px;color:var(--secondary);font-weight:700}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+
+footer{
+  text-align:center;padding:30px;margin-top:60px;
+  background:#f1f5f9;color:var(--muted);font-size:.9rem
+}
+
+@media(max-width:900px){#hero{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <header>
   <nav>
-    <div class="logo">Əlizadə Pərvanə</div>
+    <div class="logo">Parvana Alizada</div>
     <ul>
-      <li><a href="#hero">Ana Səhifə</a></li>
-      <li><a href="#about">Haqqımda</a></li>
-      <li><a href="#certificates">Sertifikatlar</a></li>
-      <li><a href="#skills">Bacarıqlar</a></li>
-      <li><a href="#portfolio">Layihələr</a></li>
-      <li><a href="#contact">Əlaqə</a></li>
+      <li><a href="#about">Profile</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 </header>
 
 <section id="hero">
-  <h1 data-aos="zoom-in">Mən Pərvanə Əlizadə</h1>
-  <p data-aos="fade-up">Devops mühəndisi</p>
-  <a href="#contact" class="button" data-aos="fade-up" data-aos-delay="300">Mənimlə əlaqə saxla</a>
+  <div class="hero-text" data-aos="fade-right">
+    <h1>Junior <span>DevOps Engineer</span></h1>
+    <p>Linux-focused IT and DevOps specialist with hands-on experience in system administration, data center operations, and CI/CD environments.</p>
+    <a href="#contact" class="button">Contact Me</a>
+  </div>
+  <div class="terminal" data-aos="fade-left">
+    <div><span class="prompt">parvana@linux</span>:~$ kubectl get deploy</div>
+    <div>nginx-app      Ready</div>
+    <div>monitoring     Ready</div><br>
+    <div><span class="prompt">parvana@linux</span>:~$ ansible-playbook site.yml</div>
+    <div>✔ infrastructure configured successfully</div>
+  </div>
 </section>
 
 <main>
-  <section id="about" data-aos="fade-up">
-    <h2>Haqqımda</h2>
-    <p>IT sahəsində məqsədyönlü və bacarıqlı mütəxəssis kimi Linux, DevOps, sistem idarəetməsi və şəbəkə sahələrində dərin biliklərə malikəm. Hal-hazırda AzInTelecom şirkətində Data Center IT Technician vəzifəsində çalışır, peşəkar bacarıqlarımı davamlı olaraq təkmilləşdirirəm.</p>
-  </section>
-  <section id="certificates" data-aos="fade-up">
-    <h2>Peşəkar Sertifikatlarım</h2>
+<section id="about" data-aos="fade-up">
+  <div class="card">
+    <h2>Professional Profile</h2>
+    <p>I am an IT specialist with a strong focus on Linux and DevOps. I work with Linux systems (RHEL, Ubuntu), software installation and repository management (APT, YUM), disk partitioning, and mounting. I also have experience with Windows Server environments including Active Directory, DNS, and DHCP. In the DevOps area, I use Git, Bash, Ansible, Docker, and CI/CD pipelines, and I am actively learning Kubernetes through hands-on practice.</p>
+  </div>
+</section>
+
+<section id="skills" data-aos="fade-up">
+  <div class="card">
+    <h2>Technical Skills</h2>
+    <div class="grid">
+      <ul>
+        <li>Linux (RHEL, Ubuntu)</li>
+        <li>APT / YUM package management</li>
+        <li>Disk partitioning & mounting</li>
+        <li>Bash scripting</li>
+        <li>Docker & containers</li>
+      </ul>
+      <ul>
+        <li>Git & GitLab</li>
+        <li>Ansible automation</li>
+        <li>CI/CD (GitLab)</li>
+        <li>Kubernetes fundamentals</li>
+        <li>YAML configuration</li>
+      </ul>
+      <ul>
+        <li>Windows Server</li>
+        <li>Active Directory</li>
+        <li>DNS / DHCP</li>
+        <li>Data Center operations</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="experience" data-aos="fade-up">
+  <div class="card">
+    <h2>Work Experience</h2>
     <ul>
-      <li>RHCE (Red Hat Certified Engineer)</li>
-      <li>RHCSA (Red Hat Certified System Administrator)</li>
-      <li>CompTIA A+</li>
-      <li>CompTIA Server+</li>
-      <li>CKA (Certified Kubernetes Administrator) - Loading...</li>
+      <li><strong>Grandmart MMC – Junior DevOps Engineer</strong> (Sep 2025 – Present)</li>
+      <li><strong>AzinTelecom – Data Center IT Technician</strong> (Aug 2024 – Sep 2025)</li>
+      <li><strong>B2B Group – IT Technician (COP29)</strong> (Sep – Oct 2024)</li>
+      <li><strong>Kronos Enterprises – Helpdesk Technician (COP29)</strong> (Nov 2024)</li>
     </ul>
-  </section>
-  <section id="skills" data-aos="fade-up">
-    <h2>DevOps Bacarıqlarım</h2>
+  </div>
+</section>
+
+<section id="education" data-aos="fade-up">
+  <div class="card">
+    <h2>Education & Certificates</h2>
     <ul>
-      <li>Linux sistem idarəetməsi və təhlükəsizlik</li>
-      <li>Bash və YAML scripting</li>
-      <li>Docker & Docker Compose</li>
-      <li>Kubernetes (CKA hazırlığı)</li>
-      <li>Ansible ilə avtomatlaşdırma</li>
-      <li>Git və GitHub ilə versiya nəzarəti</li>
-      <li>CI/CD - Jenkins, GitHub Actions</li>
-      <li>Monitorinq: Zabbix, Prometheus, Grafana</li>
-      <li>Bulud platformaları: AWS, DigitalOcean</li>
+      <li>Bachelor of Computer Engineering – Sumgait State University (2020–2024)</li>
+      <li>Bachelor of Computer Networks – ASOIU (2016–2018)</li>
+      <li>CompTIA A+ (2024)</li>
+      <li>CompTIA Server+ (2024)</li>
+      <li>RHCSA, RHCE, CKA – In Progress</li>
     </ul>
-  </section>
-  <section id="portfolio" data-aos="fade-up">
-    <h2>Layihələrim</h2>
-    <ul>
-      <li><a href="https://github.com/ParvanaAli/simple-nginx-app" target="_blank">Nginx Docker App</a></li>
-      <li><a href="https://github.com/ParvanaAli/zabbix-monitoring" target="_blank">Zabbix Monitorinq Layihəsi</a></li>
-      <li><a href="https://github.com/ParvanaAli/ansible-playbooks" target="_blank">Ansible Playbook nümunələri</a></li>
-    </ul>
-  </section>
-  <section id="contact" data-aos="fade-up">
-    <h2>Əlaqə</h2>
-    <p>Email: <a href="mailto:aliza.parvana@gmail.com">aliza.parvana@gmail.com</a></p>
-    <p>Telefon: +994 50 526 9971</p>
-    <p>Sosial: <a href="https://www.linkedin.com/in/parvana-alizada/" target="_blank">LinkedIn</a></p>
-  </section>
+  </div>
+</section>
+
+<section id="contact" data-aos="fade-up">
+  <div class="card">
+    <h2>Contact</h2>
+    <p>Email: aliza.parvana@gmail.com</p>
+    <p>Phone: +994 50 526 99 71</p>
+    <p>LinkedIn: linkedin.com/in/parvana-alizada</p>
+  </div>
+</section>
 </main>
 
-<a href="#" id="backToTop">↑</a>
-
 <footer>
-  &copy; 2025 Əlizadə Pərvanə | Bütün hüquqlar qorunur.
+  © 2025 Parvana Alizada | Junior DevOps Engineer
 </footer>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-  AOS.init();
-  const btn = document.getElementById('backToTop');
-  window.onscroll = () => {
-    btn.style.display = window.scrollY > 300 ? 'block' : 'none';
-  };
-</script>
+<script>AOS.init({once:true});</script>
 </body>
 </html>
-
