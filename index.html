@@ -13,9 +13,9 @@
   --card:#ffffff;
   --border:#e5e7eb;
 
-  --primary:#2563eb;      /* blue */
-  --secondary:#0ea5e9;    /* sky */
-  --accent:#22c55e;       /* green */
+  --primary:#2563eb;
+  --secondary:#0ea5e9;
+  --accent:#22c55e;
   --text:#0f172a;
   --muted:#64748b;
 
@@ -51,6 +51,7 @@ nav{
   display:flex;justify-content:space-between;align-items:center;
   padding:14px 22px;
   gap:14px;
+  flex-wrap:wrap;
 }
 .logo{
   font-weight:900;
@@ -68,6 +69,18 @@ nav{
   border:1px solid rgba(37,99,235,.20);
   font-weight:800;
 }
+
+.menu-btn{
+  display:none;
+  border:1px solid rgba(2,6,23,.10);
+  background: rgba(255,255,255,.9);
+  border-radius: 12px;
+  padding:10px 12px;
+  font-weight:900;
+  color: var(--text);
+  cursor:pointer;
+}
+
 nav ul{list-style:none;display:flex;gap:18px;flex-wrap:wrap}
 nav a{
   text-decoration:none;color:var(--muted);
@@ -140,9 +153,7 @@ nav a.active{color:var(--primary); background: rgba(37,99,235,.12)}
 .button.secondary:hover{transform: translateY(-2px)}
 
 /* TERMINAL */
-.terminal-wrap{
-  position:relative;
-}
+.terminal-wrap{position:relative}
 .terminal{
   background: linear-gradient(180deg, var(--terminal2), var(--terminal));
   color:#e5e7eb;
@@ -157,16 +168,11 @@ nav a.active{color:var(--primary); background: rgba(37,99,235,.12)}
   gap:10px; margin-bottom:12px;
 }
 .dots{display:flex;gap:7px}
-.dots span{
-  width:10px;height:10px;border-radius:50%;
-  display:inline-block;
-}
+.dots span{width:10px;height:10px;border-radius:50%;display:inline-block}
 .dots span:nth-child(1){background:#ef4444}
 .dots span:nth-child(2){background:#f59e0b}
 .dots span:nth-child(3){background:#22c55e}
-.term-actions{
-  display:flex; gap:10px; flex-wrap:wrap;
-}
+.term-actions{display:flex; gap:10px; flex-wrap:wrap}
 .smallbtn{
   cursor:pointer;
   padding:8px 12px;border-radius:999px;
@@ -187,7 +193,6 @@ nav a.active{color:var(--primary); background: rgba(37,99,235,.12)}
 }
 .prompt{color:#38bdf8;font-weight:900}
 .ok{color:#22c55e;font-weight:900}
-.warn{color:#f59e0b;font-weight:900}
 .cursor{
   display:inline-block;
   width:10px;
@@ -213,16 +218,14 @@ section{margin-top: 28px; margin-bottom: 28px}
   box-shadow: var(--shadow);
 }
 
-/* ACCORDION HEADER */
+/* ACCORDION */
 .acc-head{
   display:flex;align-items:center;justify-content:space-between;
   gap:14px;
   cursor:pointer;
   user-select:none;
 }
-.acc-title{
-  display:flex;align-items:center;gap:12px;
-}
+.acc-title{display:flex;align-items:center;gap:12px}
 .pill{
   font-size:.78rem;
   font-weight:900;
@@ -242,17 +245,14 @@ section{margin-top: 28px; margin-bottom: 28px}
   color: var(--muted);
 }
 .card.open .chev{transform: rotate(180deg)}
-.card h2{
-  font-size:1.7rem;
-  color: var(--primary);
-}
+.card h2{font-size:1.7rem;color: var(--primary)}
 .acc-body{
   margin-top: 18px;
   overflow:hidden;
   max-height: 0px;
   transition: max-height .35s ease;
 }
-.card.open .acc-body{max-height: 1200px;}
+.card.open .acc-body{max-height: 1400px;}
 p{color: var(--muted); font-size:1.02rem}
 
 /* LISTS */
@@ -265,7 +265,7 @@ li::before{
   font-weight:900;
 }
 
-/* SKILLS BARS */
+/* SKILLS */
 .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
 .skill{
   padding: 14px 14px;
@@ -374,11 +374,55 @@ footer{
   font-size:.92rem;
 }
 
-/* RESPONSIVE */
-@media(max-width:900px){
-  #hero{grid-template-columns: 1fr; margin-top: 34px}
-  .hero-text h1{font-size: 2.4rem}
-  nav{padding:12px 14px}
+/* ===== Mobile improvements (hamburger menu + spacing) ===== */
+@media (max-width: 820px){
+  nav{align-items:flex-start}
+  .menu-btn{display:inline-flex; align-items:center; gap:10px}
+  nav ul{
+    width:100%;
+    display:none;
+    flex-direction:column;
+    gap:10px;
+    margin-top:12px;
+    padding:12px;
+    border:1px solid var(--border);
+    background:#fff;
+    border-radius:16px;
+    box-shadow: var(--shadow);
+  }
+  nav ul.open{display:flex}
+  nav a{padding:10px 12px}
+
+  #hero{
+    margin:28px auto 10px;
+    padding:12px 14px;
+    gap:18px;
+    grid-template-columns: 1fr;
+  }
+  .hero-text{padding:10px 4px}
+  .hero-text h1{font-size:2.05rem}
+  .hero-text p{font-size:1rem}
+  .kicker{font-size:.85rem}
+
+  .terminal{padding:14px}
+  .terminal pre{font-size:.88rem}
+
+  main{padding: 0 14px 36px}
+  .card{padding:18px}
+  .card h2{font-size:1.35rem}
+
+  .skills-grid{grid-template-columns:1fr}
+  .grid{grid-template-columns:1fr}
+
+  footer{padding:24px 14px}
+}
+
+@media (max-width: 420px){
+  .hero-text h1{font-size:1.85rem}
+  .button{width:100%; justify-content:center}
+  .cta-row{gap:10px}
+  .term-actions{gap:8px}
+  .smallbtn{padding:7px 10px}
 }
 </style>
 </head>
@@ -390,7 +434,10 @@ footer{
       Parvana Alizada
       <span class="badge">DevOps</span>
     </div>
-    <ul>
+
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰ Menu</button>
+
+    <ul id="navList">
       <li><a href="#about">Profile</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
@@ -405,7 +452,7 @@ footer{
   <div class="hero-text" data-aos="fade-right">
     <div class="kicker"><span class="dot"></span> Linux + DevOps • Automation • CI/CD</div>
     <h1>Junior <span>DevOps Engineer</span></h1>
-    <p>Linux-focused IT and DevOps Engenieer with hands-on experience in System Administration, Data Center Operations, and CI/CD environments.</p>
+    <p>Linux-focused IT and DevOps specialist with hands-on experience in system administration, data center operations, and CI/CD environments.</p>
     <div class="cta-row">
       <a href="#contact" class="button">Contact Me</a>
       <a href="#projects" class="button secondary">See Projects</a>
@@ -458,7 +505,7 @@ footer{
       <div class="chev">⌄</div>
     </div>
     <div class="acc-body">
-      <div class="skills-grid" id="skillsGrid">
+      <div class="skills-grid">
         <div class="skill" data-level="90">
           <div class="skill-top"><span class="skill-name">Linux (RHEL/Ubuntu)</span><span class="skill-val">90%</span></div>
           <div class="bar"><div class="fill"></div></div>
@@ -508,7 +555,7 @@ footer{
     <div class="acc-body">
       <div class="grid">
         <div class="proj">
-          <h3>Nginx </h3>
+          <h3>Nginx Docker App</h3>
           <p>A simple containerized Nginx app with clean structure and deployment-ready config.</p>
           <div class="tagrow">
             <span class="tag">docker</span><span class="tag">nginx</span><span class="tag">static</span>
@@ -607,6 +654,14 @@ footer{
 <script>
   AOS.init({once:true});
 
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('menuBtn');
+  const navList = document.getElementById('navList');
+  menuBtn?.addEventListener('click', () => navList.classList.toggle('open'));
+  document.querySelectorAll('#navList a').forEach(a=>{
+    a.addEventListener('click', ()=> navList.classList.remove('open'));
+  });
+
   // Back to top
   const back = document.getElementById('backToTop');
   window.addEventListener('scroll', () => {
@@ -627,7 +682,6 @@ footer{
       }
     });
   }, {rootMargin:'-50% 0px -45% 0px', threshold:0.01});
-
   sections.forEach(s=>io.observe(s));
 
   // Accordion open/close
@@ -652,7 +706,7 @@ footer{
   }, {threshold:0.35});
   skills.forEach(s=>skillObs.observe(s));
 
-  // Terminal typing demo (Linux/DevOps commands)
+  // Terminal typing demo
   const commands = [
     "kubectl get nodes -o wide",
     "docker ps --format 'table {{.Names}}\\t{{.Status}}'",
@@ -663,7 +717,6 @@ footer{
     "ss -lntp | grep ':80'"
   ];
 
-  const typed = document.getElementById('typed');
   const termOut = document.getElementById('termOut');
   const btnNext = document.getElementById('btnNext');
   const btnCopy = document.getElementById('btnCopy');
@@ -671,9 +724,15 @@ footer{
   let idx = 0;
   let typing = false;
 
+  function resetTerm(){
+    termOut.innerHTML = "<span class='prompt'>parvana@linux</span>:~$ <span id='typed'></span><span class='cursor'></span>";
+  }
+
   function typeCommand(text){
     if(typing) return;
     typing = true;
+
+    const typed = document.getElementById('typed');
     typed.textContent = "";
     let i = 0;
 
@@ -682,7 +741,6 @@ footer{
       i++;
       if(i > text.length){
         clearInterval(interval);
-        // print "fake output"
         setTimeout(()=>{
           const output = document.createElement('div');
           output.innerHTML =
@@ -695,22 +753,32 @@ footer{
     }, 35);
   }
 
-  // Start first command
+  resetTerm();
   typeCommand(commands[idx]);
 
-  btnNext.addEventListener('click', ()=>{
+  btnNext?.addEventListener('click', ()=>{
     idx = (idx + 1) % commands.length;
-    // reset terminal line
-    termOut.innerHTML = "<span class='prompt'>parvana@linux</span>:~$ <span id='typed'></span><span class='cursor'></span>";
-    // rebind typed span after reset
-    const newTyped = document.getElementById('typed');
-    // swap reference
-    typedRefSwap(newTyped);
+    resetTerm();
     typeCommand(commands[idx]);
   });
 
-  function typedRefSwap(newNode){
-    // update global reference safely
-    window.__typedNode = newNode;
+  // Copy command + toast
+  const toast = document.getElementById('toast');
+  function showToast(msg){
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(()=>toast.classList.remove('show'), 1200);
   }
-  // Use a getter to always point to latest node
+
+  btnCopy?.addEventListener('click', async ()=>{
+    const cmd = commands[idx];
+    try{
+      await navigator.clipboard.writeText(cmd);
+      showToast("Copied: " + cmd);
+    }catch(e){
+      showToast("Copy not allowed in this browser.");
+    }
+  });
+</script>
+</body>
+</html>
