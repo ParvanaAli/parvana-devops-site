@@ -1,398 +1,508 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="az">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Parvana Alizada | Junior DevOps Engineer</title>
+<title>Parvana Alizada | DevOps Portfolio</title>
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 <style>
 :root{
   --bg1:#f8fafc;
   --bg2:#eef2ff;
-  --card:#ffffff;
-  --border:#e5e7eb;
-
-  --primary:#2563eb;
-  --secondary:#0ea5e9;
-  --accent:#22c55e;
-  --text:#0f172a;
+  --ink:#0f172a;
   --muted:#64748b;
 
-  --terminal:#020617;
-  --terminal2:#0b1222;
+  --primary:#2563eb;   /* blue */
+  --secondary:#0ea5e9; /* sky */
+  --accent:#22c55e;    /* green */
 
-  --shadow: 0 14px 38px rgba(15, 23, 42, .08);
-  --shadow2: 0 18px 55px rgba(2,6,23,.30);
+  --line:#e5e7eb;
+  --glass: rgba(255,255,255,.78);
+
+  --term1:#0b1222;
+  --term2:#020617;
+
+  --shadow: 0 18px 55px rgba(2,6,23,.12);
+  --shadow2: 0 18px 55px rgba(2,6,23,.35);
 
   --radius: 18px;
+  --max: 1100px;
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
-  font-family: Inter,system-ui,-apple-system,Segoe UI,sans-serif;
-  background: radial-gradient(1200px 600px at 10% 10%, #dbeafe 0%, transparent 60%),
-              radial-gradient(900px 500px at 90% 20%, #e0f2fe 0%, transparent 55%),
-              linear-gradient(120deg,var(--bg1),var(--bg2));
-  color:var(--text);
-  line-height:1.7;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(1200px 700px at 10% 10%, #dbeafe 0%, transparent 60%),
+    radial-gradient(900px 600px at 90% 20%, #e0f2fe 0%, transparent 55%),
+    linear-gradient(120deg,var(--bg1),var(--bg2));
+  line-height: 1.65;
+  overflow-x:hidden;
 }
 
-/* HEADER */
+/* ===== Header ===== */
 header{
-  position:sticky;top:0;z-index:1000;
-  background:rgba(255,255,255,.88);
+  position: sticky; top:0; z-index: 999;
+  background: rgba(255,255,255,.86);
   backdrop-filter: blur(10px);
-  border-bottom:1px solid var(--border);
+  border-bottom: 1px solid var(--line);
 }
 nav{
-  max-width:1100px;margin:auto;
-  display:flex;justify-content:space-between;align-items:center;
-  padding:14px 22px; gap:14px; flex-wrap:wrap;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 14px 18px;
+  display:flex; align-items:center; justify-content:space-between;
+  gap: 12px;
+  flex-wrap: wrap;
 }
-.logo{
-  font-weight:900; letter-spacing:.2px;
-  font-size:1.05rem; color:var(--primary);
-  display:flex;align-items:center;gap:10px;
-}
-.badge{
-  font-size:.72rem; padding:4px 10px; border-radius:999px;
-  background: rgba(37,99,235,.12);
+.brand{
+  display:flex; align-items:center; gap:12px;
+  font-weight: 950;
   color: var(--primary);
-  border:1px solid rgba(37,99,235,.20);
-  font-weight:800;
+  letter-spacing:.2px;
+}
+.brand small{
+  font-weight: 900;
+  font-size:.75rem;
+  padding: 5px 10px;
+  border-radius:999px;
+  border: 1px solid rgba(37,99,235,.22);
+  background: rgba(37,99,235,.10);
+  color: var(--primary);
 }
 .menu-btn{
   display:none;
-  border:1px solid rgba(2,6,23,.10);
-  background: rgba(255,255,255,.9);
-  border-radius: 12px;
-  padding:10px 12px;
-  font-weight:900;
-  color: var(--text);
   cursor:pointer;
+  font-weight: 950;
+  border-radius: 14px;
+  padding: 10px 12px;
+  border: 1px solid rgba(2,6,23,.12);
+  background: rgba(255,255,255,.92);
 }
-
-nav ul{list-style:none;display:flex;gap:18px;flex-wrap:wrap}
+nav ul{
+  list-style:none;
+  display:flex; gap: 14px;
+  flex-wrap: wrap;
+  align-items:center;
+}
 nav a{
-  text-decoration:none;color:var(--muted);
-  font-weight:800;font-size:.92rem;
-  padding:8px 10px;border-radius:999px;
+  text-decoration:none;
+  color: var(--muted);
+  font-weight: 900;
+  font-size:.92rem;
+  padding: 8px 10px;
+  border-radius: 999px;
   transition: .2s ease;
 }
-nav a:hover{color:var(--primary); background: rgba(37,99,235,.08)}
-nav a.active{color:var(--primary); background: rgba(37,99,235,.12)}
+nav a:hover{ color: var(--primary); background: rgba(37,99,235,.08); }
+nav a.active{ color: var(--primary); background: rgba(37,99,235,.12); }
 
-/* HERO */
-#hero{
-  max-width:1100px;margin:64px auto 20px; padding: 22px 22px;
-  display:grid; grid-template-columns: 1.2fr 1fr;
-  gap:32px;
+/* ===== Full-bleed sections (no boxed cards) ===== */
+.full{
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding: 56px 0;
+  border-bottom: 1px solid rgba(229,231,235,.65);
 }
-.hero-text{padding: 22px 8px}
-.kicker{
-  display:inline-flex;align-items:center;gap:10px;
-  color:var(--muted); font-weight:900;
+.wrap{
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 18px;
+}
+
+.section-head{
+  display:flex; align-items:flex-end; justify-content:space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+h2{
+  font-size: 2rem;
+  line-height: 1.1;
+  color: var(--primary);
+  letter-spacing: .2px;
+}
+.sub{
+  color: var(--muted);
+  font-weight: 800;
+  max-width: 62ch;
+}
+.cmd-badges{
+  display:flex; gap:10px; flex-wrap:wrap;
+}
+.cmd{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size:.82rem;
+  font-weight: 900;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(14,165,233,.22);
   background: rgba(14,165,233,.10);
-  border:1px solid rgba(14,165,233,.20);
-  padding:8px 12px;border-radius:999px;
-  margin-bottom:14px;
+  color: #0369a1;
+}
+
+/* ===== Hero ===== */
+#hero{
+  padding: 64px 0 24px;
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 26px;
+  align-items: start;
+}
+.kicker{
+  display:inline-flex; align-items:center; gap:10px;
+  font-weight: 950;
+  color: var(--muted);
+  padding: 9px 12px;
+  border-radius: 999px;
+  border:1px solid rgba(34,197,94,.22);
+  background: rgba(34,197,94,.10);
+  margin-bottom: 12px;
 }
 .dot{
   width:10px;height:10px;border-radius:50%;
   background: var(--accent);
-  box-shadow: 0 0 0 6px rgba(34,197,94,.15);
+  box-shadow: 0 0 0 6px rgba(34,197,94,.16);
 }
-.hero-text h1{
-  font-size: 3rem; line-height:1.1; margin-bottom:12px;
+.hero h1{
+  font-size: 3rem;
+  line-height: 1.05;
+  margin-bottom: 12px;
 }
-.hero-text h1 span{
+.hero h1 span{
   background: linear-gradient(90deg, var(--primary), var(--secondary));
-  -webkit-background-clip:text; background-clip:text; color:transparent;
+  -webkit-background-clip:text;
+  background-clip:text;
+  color: transparent;
 }
-.hero-text p{
-  color:var(--muted); font-size:1.08rem; max-width: 52ch;
+.hero p{
+  font-size: 1.05rem;
+  color: var(--muted);
+  max-width: 60ch;
 }
-.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
-.button{
-  display:inline-flex;align-items:center;justify-content:center;
-  padding:12px 18px; background: var(--primary); color:#fff;
-  border-radius: 999px; text-decoration:none; font-weight:900;
-  box-shadow: 0 10px 22px rgba(37,99,235,.25);
-  transition:.2s ease;
+.cta{
+  margin-top: 18px;
+  display:flex; gap: 12px; flex-wrap: wrap;
 }
-.button:hover{transform: translateY(-2px); box-shadow: 0 14px 28px rgba(37,99,235,.30)}
-.button.secondary{
-  background:#ffffff; color: var(--primary);
-  border: 1px solid rgba(37,99,235,.25);
+.btn{
+  text-decoration:none;
+  font-weight: 950;
+  border-radius: 999px;
+  padding: 12px 16px;
+  display:inline-flex; align-items:center; justify-content:center;
+  transition: .2s ease;
+}
+.btn.primary{
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 12px 26px rgba(37,99,235,.25);
+}
+.btn.primary:hover{ transform: translateY(-2px); box-shadow: 0 16px 32px rgba(37,99,235,.28); }
+.btn.ghost{
+  background: rgba(255,255,255,.85);
+  border: 1px solid rgba(37,99,235,.22);
+  color: var(--primary);
   box-shadow: var(--shadow);
 }
-.button.secondary:hover{transform: translateY(-2px)}
+.btn.ghost:hover{ transform: translateY(-2px); }
 
-/* TERMINAL (Hero) */
-.terminal{
-  background: linear-gradient(180deg, var(--terminal2), var(--terminal));
-  color:#e5e7eb;
+/* ===== Corner Terminal (qara ekran) ===== */
+.term{
+  background: linear-gradient(180deg, var(--term1), var(--term2));
+  color: #e5e7eb;
   border-radius: var(--radius);
-  padding: 18px;
+  border: 1px solid rgba(148,163,184,.14);
   box-shadow: var(--shadow2);
-  border: 1px solid rgba(148,163,184,.15);
-  overflow:hidden;
+  overflow: hidden;
 }
 .term-top{
-  display:flex;align-items:center;justify-content:space-between;
-  gap:10px; margin-bottom:12px;
+  display:flex; align-items:center; justify-content:space-between;
+  gap: 10px;
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(148,163,184,.12);
 }
-.dots{display:flex;gap:7px}
+.dots{display:flex; gap:7px}
 .dots span{width:10px;height:10px;border-radius:50%;display:inline-block}
 .dots span:nth-child(1){background:#ef4444}
 .dots span:nth-child(2){background:#f59e0b}
 .dots span:nth-child(3){background:#22c55e}
 .term-actions{display:flex; gap:10px; flex-wrap:wrap}
-.smallbtn{
-  cursor:pointer; padding:8px 12px;border-radius:999px;
-  font-weight:900;font-size:.82rem;
-  border:1px solid rgba(148,163,184,.25);
-  background: rgba(148,163,184,.12);
-  color:#e5e7eb;
-  transition:.2s ease;
-}
-.smallbtn:hover{transform: translateY(-1px); background: rgba(148,163,184,.18)}
-.smallbtn:active{transform: translateY(0px)}
-.terminal pre{
-  margin:0; white-space:pre-wrap;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-  font-size: .94rem; line-height:1.6;
-}
-.prompt{color:#38bdf8;font-weight:900}
-.ok{color:#22c55e;font-weight:900}
-.cursor{
-  display:inline-block; width:10px; height:18px; background:#38bdf8;
-  margin-left:4px; animation: blink .9s infinite; transform: translateY(3px);
-}
-@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
-
-/* MAIN */
-main{max-width:1000px;margin:auto;padding: 0 22px 40px}
-section{margin: 28px 0}
-.card{
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: calc(var(--radius) + 2px);
-  padding: 24px;
-  box-shadow: var(--shadow);
-}
-
-/* ACCORDION */
-.acc-head{
-  display:flex;align-items:center;justify-content:space-between;
-  gap:14px; cursor:pointer; user-select:none;
-}
-.acc-title{display:flex;align-items:center;gap:12px}
-.pill{
-  font-size:.78rem; font-weight:900;
-  padding:6px 10px;border-radius:999px;
-  background: rgba(34,197,94,.10);
-  border:1px solid rgba(34,197,94,.22);
-  color:#15803d;
-}
-.chev{
-  width:36px;height:36px;border-radius:999px;
-  display:grid;place-items:center;
-  background: rgba(2,6,23,.04);
-  border:1px solid rgba(2,6,23,.08);
-  transition:.2s ease;
-  font-weight:900; color: var(--muted);
-}
-.card.open .chev{transform: rotate(180deg)}
-.card h2{font-size:1.7rem;color: var(--primary)}
-.acc-body{
-  margin-top: 18px; overflow:hidden;
-  max-height: 0px; transition: max-height .35s ease;
-}
-.card.open .acc-body{max-height: 1600px;}
-p{color: var(--muted); font-size:1.02rem}
-
-/* EXPERIENCE LIST */
-.clean-list{list-style:none}
-.clean-list li{margin-bottom:10px;color:var(--muted)}
-.clean-list li::before{
-  content:"$"; margin-right:10px;
-  color: var(--secondary); font-weight:900;
-}
-
-/* PROJECTS */
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
-.proj{
-  border:1px solid var(--border);
-  border-radius: 16px; padding: 18px;
-  background:#fff; transition:.2s ease;
-}
-.proj:hover{transform: translateY(-4px); box-shadow: var(--shadow)}
-.proj h3{font-size:1.05rem;color:var(--text);margin-bottom:6px}
-.proj p{font-size:.98rem}
-.proj a{
-  display:inline-flex;align-items:center;gap:10px;
-  margin-top:12px;text-decoration:none;
-  font-weight:900;color: var(--primary);
-}
-.tagrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-.tag{
-  font-size:.75rem; padding:5px 10px;border-radius:999px;
-  background: rgba(14,165,233,.10);
-  border:1px solid rgba(14,165,233,.20);
-  color:#0369a1; font-weight:900;
-}
-
-/* ===== SKILLS (Linux/DevOps Command UI) ===== */
-.skill-shell{
-  display:grid;
-  grid-template-columns: 1fr;
-  gap:14px;
-}
-.skill-tabs{
-  display:flex; gap:10px; flex-wrap:wrap;
-}
-.tab{
+.tbtn{
   cursor:pointer;
-  border-radius:999px;
-  padding:10px 14px;
-  font-weight:900;
-  border:1px solid rgba(37,99,235,.18);
-  background: rgba(37,99,235,.08);
-  color: var(--primary);
+  font-weight: 950;
+  font-size:.82rem;
+  border-radius: 999px;
+  padding: 8px 12px;
+  border: 1px solid rgba(148,163,184,.22);
+  background: rgba(148,163,184,.10);
+  color: #e5e7eb;
   transition:.2s ease;
 }
-.tab:hover{transform: translateY(-1px)}
-.tab.active{
-  background: linear-gradient(90deg, rgba(37,99,235,.16), rgba(14,165,233,.14));
-  border-color: rgba(37,99,235,.26);
+.tbtn:hover{ transform: translateY(-1px); background: rgba(148,163,184,.16); }
+.term pre{
+  margin:0;
+  padding: 14px;
+  white-space: pre-wrap;
+  font-size: .92rem;
+  line-height: 1.65;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
 }
+.prompt{ color:#38bdf8; font-weight: 950; }
+.ok{ color:#22c55e; font-weight: 950; }
+.warn{ color:#f59e0b; font-weight: 950; }
+.cursor{
+  display:inline-block;
+  width:10px;height:18px;
+  background:#38bdf8;
+  margin-left:4px;
+  transform: translateY(3px);
+  animation: blink .9s infinite;
+}
+@keyframes blink{ 0%,49%{opacity:1} 50%,100%{opacity:0} }
 
-.skill-terminal{
-  background: linear-gradient(180deg, var(--terminal2), var(--terminal));
-  color:#e5e7eb;
+/* ===== About / text blocks ===== */
+.lead{
+  font-size: 1.06rem;
+  color: var(--muted);
+  max-width: 75ch;
+}
+.split{
+  display:grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 22px;
+  align-items:start;
+}
+.glass{
+  background: var(--glass);
+  border: 1px solid rgba(229,231,235,.85);
   border-radius: var(--radius);
   padding: 16px;
-  box-shadow: var(--shadow2);
-  border: 1px solid rgba(148,163,184,.15);
+  box-shadow: var(--shadow);
 }
-.skill-terminal .top{
-  display:flex;justify-content:space-between;align-items:center;
-  gap:10px;margin-bottom:10px;
+.note{
+  font-weight: 900;
+  color: var(--muted);
+  display:flex;
+  gap: 10px;
+  align-items:flex-start;
 }
-.skill-terminal .title{
-  display:flex;align-items:center;gap:10px;
-  font-weight:900;
-}
-.kbd{
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-  font-size:.86rem;
-  padding:4px 8px;border-radius:10px;
-  border:1px solid rgba(148,163,184,.25);
-  background: rgba(148,163,184,.10);
-  color:#e5e7eb;
-}
-.skill-out{
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-  font-size:.92rem;
-  line-height:1.65;
-  white-space:pre-wrap;
-}
-.mini-actions{display:flex;gap:10px;flex-wrap:wrap}
-.mini{
-  cursor:pointer;
-  padding:8px 12px;border-radius:999px;
-  font-weight:900;font-size:.82rem;
-  border:1px solid rgba(148,163,184,.25);
-  background: rgba(148,163,184,.12);
-  color:#e5e7eb;
-  transition:.2s ease;
-}
-.mini:hover{transform: translateY(-1px); background: rgba(148,163,184,.18)}
+.note .emoji{font-size: 1.4rem; line-height:1;}
 
-/* TOAST */
+/* ===== NEW Skills: full-width bars (not in squares) ===== */
+.skills-wrap{
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+.skill-row{
+  display:grid;
+  grid-template-columns: 220px 1fr 70px;
+  gap: 14px;
+  align-items:center;
+  padding: 10px 0;
+  border-bottom: 1px dashed rgba(148,163,184,.35);
+}
+.skill-name{
+  font-weight: 950;
+  color: var(--ink);
+}
+.skill-meta{
+  color: var(--muted);
+  font-weight: 900;
+  font-size: .9rem;
+  text-align:right;
+}
+.track{
+  height: 12px;
+  border-radius: 999px;
+  background: rgba(2,6,23,.10);
+  overflow:hidden;
+  position: relative;
+}
+.fill{
+  height:100%;
+  width: 0%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+  transition: width 1.2s ease;
+}
+.skill-hint{
+  margin-top: 14px;
+  color: var(--muted);
+  font-weight: 800;
+}
+
+/* ===== Projects (still clean, but not boxed container around whole section) ===== */
+.projects-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 18px;
+}
+.project{
+  border: 1px solid rgba(229,231,235,.9);
+  border-radius: var(--radius);
+  background: rgba(255,255,255,.85);
+  box-shadow: var(--shadow);
+  padding: 16px;
+  transition: .2s ease;
+}
+.project:hover{ transform: translateY(-4px); }
+.project h3{ font-size: 1.05rem; margin-bottom: 6px; }
+.project p{ color: var(--muted); }
+.tags{ display:flex; gap:8px; flex-wrap:wrap; margin-top: 10px; }
+.tag{
+  font-weight: 950;
+  font-size: .78rem;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(14,165,233,.22);
+  background: rgba(14,165,233,.10);
+  color: #0369a1;
+}
+.project a{
+  display:inline-flex; margin-top: 12px;
+  text-decoration:none;
+  font-weight: 950;
+  color: var(--primary);
+}
+
+/* ===== Lists ===== */
+.ul{
+  list-style:none;
+  margin-top: 10px;
+}
+.ul li{
+  padding: 8px 0;
+  border-bottom: 1px dashed rgba(148,163,184,.35);
+  color: var(--muted);
+  font-weight: 850;
+}
+.ul li::before{
+  content:"$";
+  color: var(--secondary);
+  margin-right: 10px;
+  font-weight: 950;
+}
+
+/* ===== Tux sticker ===== */
+.tux{
+  position: fixed;
+  left: 16px;
+  bottom: 16px;
+  z-index: 1200;
+  display:flex; align-items:center; gap:10px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.88);
+  border: 1px solid rgba(229,231,235,.9);
+  box-shadow: var(--shadow);
+}
+.tux .penguin{
+  font-size: 1.5rem;
+  transform: rotate(-6deg);
+}
+.tux .txt{
+  font-weight: 950;
+  color: var(--muted);
+  font-size: .9rem;
+}
+.tux .txt code{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-weight: 950;
+  color: var(--primary);
+}
+
+/* ===== Toast + back to top ===== */
 .toast{
-  position: fixed; top: 80px; right: 18px;
-  background: #ffffff; border: 1px solid var(--border);
-  box-shadow: var(--shadow); border-radius: 14px;
-  padding: 12px 14px; color: var(--text);
-  font-weight:900;
-  opacity:0; transform: translateY(-8px);
-  transition: .25s ease; z-index: 2000;
+  position: fixed;
+  top: 80px;
+  right: 18px;
+  z-index: 2000;
+  background: rgba(255,255,255,.95);
+  border: 1px solid rgba(229,231,235,.9);
+  box-shadow: var(--shadow);
+  border-radius: 14px;
+  padding: 12px 14px;
+  font-weight: 950;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: .25s ease;
 }
-.toast.show{opacity:1; transform: translateY(0px)}
+.toast.show{ opacity: 1; transform: translateY(0); }
 
-/* BACK TO TOP */
 #backToTop{
-  position: fixed; bottom: 18px; right: 18px;
-  width:44px;height:44px;border-radius:999px;
-  display:grid;place-items:center;
-  background: var(--primary); color:#fff;
-  text-decoration:none; font-weight:900;
-  box-shadow: 0 16px 30px rgba(37,99,235,.28);
-  opacity:0; pointer-events:none;
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  display:grid;
+  place-items:center;
+  text-decoration:none;
+  background: var(--primary);
+  color:#fff;
+  font-weight: 950;
+  box-shadow: 0 18px 30px rgba(37,99,235,.25);
+  opacity:0;
+  pointer-events:none;
   transform: translateY(8px);
-  transition:.2s ease; z-index: 1500;
+  transition:.2s ease;
+  z-index: 1500;
 }
-#backToTop.show{opacity:1; pointer-events:auto; transform: translateY(0px)}
-#backToTop:hover{transform: translateY(-2px)}
+#backToTop.show{ opacity:1; pointer-events:auto; transform: translateY(0); }
 
-/* FOOTER */
+/* ===== Footer ===== */
 footer{
-  text-align:center; padding: 34px 18px; margin-top: 40px;
-  background: rgba(255,255,255,.70);
-  border-top: 1px solid var(--border);
-  color: var(--muted); font-size:.92rem;
+  padding: 28px 0;
+  color: var(--muted);
+  font-weight: 850;
+  text-align:center;
 }
 
-/* MOBILE */
+/* ===== Responsive ===== */
+@media (max-width: 920px){
+  .hero-grid{ grid-template-columns: 1fr; }
+  .hero h1{ font-size: 2.45rem; }
+  .split{ grid-template-columns: 1fr; }
+}
 @media (max-width: 820px){
-  nav{align-items:flex-start}
-  .menu-btn{display:inline-flex; align-items:center; gap:10px}
+  .menu-btn{ display:inline-flex; }
   nav ul{
-    width:100%;
+    width: 100%;
     display:none;
-    flex-direction:column;
-    gap:10px;
-    margin-top:12px;
-    padding:12px;
-    border:1px solid var(--border);
-    background:#fff;
-    border-radius:16px;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    padding: 12px;
+    border: 1px solid rgba(229,231,235,.9);
+    border-radius: 16px;
+    background: rgba(255,255,255,.92);
     box-shadow: var(--shadow);
   }
-  nav ul.open{display:flex}
-  nav a{padding:10px 12px}
+  nav ul.open{ display:flex; }
 
-  #hero{
-    margin:28px auto 10px;
-    padding:12px 14px;
-    gap:18px;
+  .skill-row{
     grid-template-columns: 1fr;
+    gap: 8px;
   }
-  .hero-text{padding:10px 4px}
-  .hero-text h1{font-size:2.05rem}
-  .hero-text p{font-size:1rem}
-  .kicker{font-size:.85rem}
-
-  .terminal{padding:14px}
-  .terminal pre{font-size:.88rem}
-
-  main{padding: 0 14px 36px}
-  .card{padding:18px}
-  .card h2{font-size:1.35rem}
-
-  .grid{grid-template-columns:1fr}
+  .skill-meta{ text-align:left; }
+  .tux{ left: 12px; right: 12px; width: calc(100% - 24px); justify-content:center; }
 }
 @media (max-width: 420px){
-  .hero-text h1{font-size:1.85rem}
-  .button{width:100%; justify-content:center}
-  .cta-row{gap:10px}
-  .term-actions{gap:8px}
-  .smallbtn{padding:7px 10px}
-  .tab{width:100%; justify-content:center}
+  .hero h1{ font-size: 2.05rem; }
+  .btn{ width: 100%; }
+  .cta{ gap: 10px; }
+  .term-actions{ gap: 8px; }
+  .tbtn{ padding: 7px 10px; }
 }
 </style>
 </head>
@@ -400,14 +510,14 @@ footer{
 <body>
 <header>
   <nav>
-    <div class="logo">
-      Parvana Alizada
-      <span class="badge">DevOps</span>
+    <div class="brand">
+      Parvana Alizada <small>DevOps</small>
     </div>
 
-    <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰ Menu</button>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu">☰ Menu</button>
 
     <ul id="navList">
+      <li><a href="#hero">Home</a></li>
       <li><a href="#about">Profile</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
@@ -418,403 +528,418 @@ footer{
   </nav>
 </header>
 
-<section id="hero">
-  <div class="hero-text" data-aos="fade-right">
-    <div class="kicker"><span class="dot"></span> Linux + DevOps • Automation • CI/CD</div>
-    <h1>Junior <span>DevOps Engineer</span></h1>
-    <p>Linux-focused IT and DevOps specialist with hands-on experience in system administration, data center operations, and CI/CD environments.</p>
-    <div class="cta-row">
-      <a href="#contact" class="button">Contact Me</a>
-      <a href="#projects" class="button secondary">See Projects</a>
-    </div>
-  </div>
+<!-- HERO -->
+<section id="hero" class="full">
+  <div class="wrap hero-grid">
+    <div class="hero" data-aos="fade-right">
+      <div class="kicker"><span class="dot"></span> Linux • DevOps • Automation • CI/CD</div>
+      <h1>Junior <span>DevOps Engineer</span></h1>
+      <p>
+        Linux-focused IT & DevOps specialist with hands-on experience in system administration, data center operations,
+        and CI/CD environments.
+      </p>
 
-  <div data-aos="fade-left">
-    <div class="terminal">
+      <div class="cta">
+        <a class="btn primary" href="#contact">Contact Me</a>
+        <a class="btn ghost" href="#projects">See Projects</a>
+      </div>
+
+      <div style="margin-top:16px" class="cmd-badges">
+        <span class="cmd">kubectl get pods -A</span>
+        <span class="cmd">docker compose up -d</span>
+        <span class="cmd">ansible-playbook site.yml</span>
+        <span class="cmd">journalctl -u nginx</span>
+      </div>
+    </div>
+
+    <!-- Corner black terminal -->
+    <div class="term" data-aos="fade-left">
       <div class="term-top">
         <div class="dots" aria-hidden="true"><span></span><span></span><span></span></div>
         <div class="term-actions">
-          <button class="smallbtn" id="btnCopyHero">Copy command</button>
-          <button class="smallbtn" id="btnNextHero">Next</button>
+          <button class="tbtn" id="termCopy">Copy</button>
+          <button class="tbtn" id="termNext">Next</button>
         </div>
       </div>
-      <pre id="termOutHero"><span class="prompt">parvana@linux</span>:~$ <span id="typedHero"></span><span class="cursor"></span></pre>
+      <pre id="termOut"><span class="prompt">parvana@linux</span>:~$ <span id="typed"></span><span class="cursor"></span></pre>
     </div>
   </div>
 </section>
 
-<main>
-
-<section id="about" data-aos="fade-up">
-  <div class="card open accordion">
-    <div class="acc-head" role="button" tabindex="0">
-      <div class="acc-title">
+<!-- ABOUT -->
+<section id="about" class="full">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
         <h2>Professional Profile</h2>
-        <span class="pill">whoami</span>
+        <p class="sub">“whoami” qısa cavab: Linux və DevOps işlərini sevən, əməliyyatda (ops) güclü, avtomatlaşdırmaya fokuslanan mühəndis.</p>
       </div>
-      <div class="chev">⌄</div>
+      <div class="cmd-badges">
+        <span class="cmd">whoami</span>
+        <span class="cmd">id</span>
+        <span class="cmd">uname -a</span>
+      </div>
     </div>
-    <div class="acc-body">
-      <p>
-        I am an IT specialist with a strong focus on Linux and DevOps. I work with Linux systems (RHEL, Ubuntu),
-        repository & package management (APT, YUM), disk partitioning, and mounting. I also have experience with
-        Windows Server environments including Active Directory, DNS, and DHCP. In the DevOps area, I use Git,
-        Bash, Ansible, Docker, and CI/CD pipelines, and I am actively learning Kubernetes through hands-on practice.
+
+    <div class="split">
+      <p class="lead">
+        I work with Linux systems (RHEL/Ubuntu), repository & package management (APT/YUM/DNF),
+        disk partitioning and mounts, troubleshooting, logs, and networking basics. I also have Windows Server
+        experience (AD/DNS/DHCP). In DevOps: Git, Bash, Ansible, Docker, CI/CD, and I’m actively improving Kubernetes
+        by hands-on practice.
       </p>
-    </div>
-  </div>
-</section>
 
-<!-- NEW SKILLS -->
-<section id="skills" data-aos="fade-up">
-  <div class="card open accordion">
-    <div class="acc-head" role="button" tabindex="0">
-      <div class="acc-title">
-        <h2>Skills (Linux-style)</h2>
-        <span class="pill">cat skills.sh</span>
-      </div>
-      <div class="chev">⌄</div>
-    </div>
-
-    <div class="acc-body">
-      <div class="skill-shell">
-        <div class="skill-tabs" role="tablist" aria-label="Skill categories">
-          <button class="tab active" data-tab="linux">Linux</button>
-          <button class="tab" data-tab="devops">DevOps</button>
-          <button class="tab" data-tab="cloud">Cloud & Monitoring</button>
-          <button class="tab" data-tab="windows">Windows Server</button>
-        </div>
-
-        <div class="skill-terminal">
-          <div class="top">
-            <div class="title">
-              <span class="prompt">parvana@linux</span><span style="color:#94a3b8">:~$</span>
-              <span class="kbd" id="skillCmd">sudo cat /etc/os-release</span>
-            </div>
-            <div class="mini-actions">
-              <button class="mini" id="skillCopy">Copy</button>
-              <button class="mini" id="skillRun">Run</button>
+      <div class="glass">
+        <div class="note">
+          <div class="emoji">🧠</div>
+          <div>
+            <div style="font-weight:950;color:var(--ink)">DevOps mindset</div>
+            <div style="margin-top:6px;color:var(--muted)">
+              “repeatable, observable, automated” — proseslər təmiz, log/monitoring var, deploy kontrollu.
             </div>
           </div>
-          <div class="skill-out" id="skillOut"></div>
+        </div>
+
+        <div class="note" style="margin-top:12px">
+          <div class="emoji">🛠️</div>
+          <div>
+            <div style="font-weight:950;color:var(--ink)">Daily commands</div>
+            <div style="margin-top:6px;color:var(--muted)">
+              <code style="font-family:ui-monospace;font-weight:950;color:var(--primary)">ss -lntp</code>,
+              <code style="font-family:ui-monospace;font-weight:950;color:var(--primary)">curl -I</code>,
+              <code style="font-family:ui-monospace;font-weight:950;color:var(--primary)">nginx -t</code>,
+              <code style="font-family:ui-monospace;font-weight:950;color:var(--primary)">systemctl status</code>
+            </div>
+          </div>
         </div>
       </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS (FULL WIDTH, NO BOXES) -->
+<section id="skills" class="full">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <h2>Skills</h2>
+        <p class="sub">Kvadrat kartların içində deyil — “full-width” Linux vibe. Scroll edəndə çubuqlar dolacaq.</p>
+      </div>
+      <div class="cmd-badges">
+        <span class="cmd">skills --show</span>
+        <span class="cmd">grep -i devops</span>
+        <span class="cmd">awk '{print $1}'</span>
+      </div>
+    </div>
+
+    <div class="skills-wrap" id="skillsWrap">
+      <div class="skill-row" data-level="92">
+        <div class="skill-name">Linux (RHEL/Ubuntu) • permissions, services, logs</div>
+        <div class="track"><div class="fill"></div></div>
+        <div class="skill-meta">92%</div>
+      </div>
+      <div class="skill-row" data-level="82">
+        <div class="skill-name">Bash • automation, text processing (grep/awk/sed)</div>
+        <div class="track"><div class="fill"></div></div>
+        <div class="skill-meta">82%</div>
+      </div>
+      <div class="skill-row" data-level="84">
+        <div class="skill-name">Git & GitLab • branches, MR flow, runners basics</div>
+        <div class="track"><div class="fill"></div></div>
+        <div class="skill-meta">84%</div>
+      </div>
+      <div class="skill-row" data-level="78">
+        <div class="skill-name">Ansible • playbooks, inventory, idempotency</div>
+        <div class="track"><div class="fill"></div></div>
+        <div class="skill-meta">78%</div>
+      </div>
+      <div class="skill-row" data-level="76">
+        <div class="skill-name">Docker • images, volumes, compose, troubleshooting</div>
+        <div class="track"><div class="fill"></div></div>
+        <div class="skill-meta">76%</div>
+      </div>
+      <div class="skill-row" data-level="66">
+        <div class="skill-name">Kubernetes • manifests, kubectl workflow (learning)</div>
+        <div class="track"><div class="fill"></div></div>
+        <div class="skill-meta">66%</div>
+      </div>
+      <div class="skill-row" data-level="72">
+        <div class="skill-name">Monitoring • Zabbix, Prometheus basics, Grafana</div>
+        <div class="track"><div class="fill"></div></div>
+        <div class="skill-meta">72%</div>
+      </div>
+      <div class="skill-row" data-level="70">
+        <div class="skill-name">Windows Server • AD/DNS/DHCP fundamentals</div>
+        <div class="track"><div class="fill"></div></div>
+        <div class="skill-meta">70%</div>
+      </div>
+    </div>
+
+    <div class="skill-hint">
+      Tip: Bu hissəni “command-style” etmək istəsən, növbəti dəfə skills-i terminal output kimi də yaza bilərik.
     </div>
   </div>
 </section>
 
-<section id="projects" data-aos="fade-up">
-  <div class="card open accordion">
-    <div class="acc-head" role="button" tabindex="0">
-      <div class="acc-title">
+<!-- PROJECTS -->
+<section id="projects" class="full">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
         <h2>Projects</h2>
-        <span class="pill">ls -la projects/</span>
+        <p class="sub">Real repo-lara link. Kartlar yüngül “glass” görünüşdə.</p>
       </div>
-      <div class="chev">⌄</div>
+      <div class="cmd-badges">
+        <span class="cmd">ls -la projects/</span>
+        <span class="cmd">git log --oneline</span>
+      </div>
     </div>
-    <div class="acc-body">
-      <div class="grid">
-        <div class="proj">
-          <h3>Nginx Docker App</h3>
-          <p>A simple containerized Nginx app with clean structure and deployment-ready config.</p>
-          <div class="tagrow">
-            <span class="tag">docker</span><span class="tag">nginx</span><span class="tag">static</span>
-          </div>
-          <a href="https://github.com/ParvanaAli/simple-nginx-app" target="_blank" rel="noreferrer">Open on GitHub →</a>
+
+    <div class="projects-grid">
+      <div class="project" data-aos="fade-up">
+        <h3>Nginx Docker App</h3>
+        <p>Simple containerized Nginx app + deployment-ready configs.</p>
+        <div class="tags">
+          <span class="tag">docker</span><span class="tag">nginx</span><span class="tag">ports</span>
         </div>
-        <div class="proj">
-          <h3>Zabbix Monitoring</h3>
-          <p>Monitoring setup with alerts & dashboards for infrastructure visibility and reliability.</p>
-          <div class="tagrow">
-            <span class="tag">zabbix</span><span class="tag">monitoring</span><span class="tag">alerts</span>
-          </div>
-          <a href="https://github.com/ParvanaAli/zabbix-monitoring" target="_blank" rel="noreferrer">Open on GitHub →</a>
+        <a href="https://github.com/ParvanaAli/simple-nginx-app" target="_blank" rel="noreferrer">Open on GitHub →</a>
+      </div>
+
+      <div class="project" data-aos="fade-up" data-aos-delay="80">
+        <h3>Zabbix Monitoring</h3>
+        <p>Monitoring setup with alerts & dashboards for infrastructure visibility.</p>
+        <div class="tags">
+          <span class="tag">zabbix</span><span class="tag">alerts</span><span class="tag">ops</span>
         </div>
-        <div class="proj">
-          <h3>Ansible Playbooks</h3>
-          <p>Reusable playbooks for system configuration, packages, users, and common hardening steps.</p>
-          <div class="tagrow">
-            <span class="tag">ansible</span><span class="tag">automation</span><span class="tag">yaml</span>
-          </div>
-          <a href="https://github.com/ParvanaAli/ansible-playbooks" target="_blank" rel="noreferrer">Open on GitHub →</a>
+        <a href="https://github.com/ParvanaAli/zabbix-monitoring" target="_blank" rel="noreferrer">Open on GitHub →</a>
+      </div>
+
+      <div class="project" data-aos="fade-up" data-aos-delay="160">
+        <h3>Ansible Playbooks</h3>
+        <p>Reusable playbooks for packages, users, and common configuration steps.</p>
+        <div class="tags">
+          <span class="tag">ansible</span><span class="tag">yaml</span><span class="tag">automation</span>
         </div>
+        <a href="https://github.com/ParvanaAli/ansible-playbooks" target="_blank" rel="noreferrer">Open on GitHub →</a>
       </div>
     </div>
   </div>
 </section>
 
-<section id="experience" data-aos="fade-up">
-  <div class="card open accordion">
-    <div class="acc-head" role="button" tabindex="0">
-      <div class="acc-title">
+<!-- EXPERIENCE -->
+<section id="experience" class="full">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
         <h2>Work Experience</h2>
-        <span class="pill">cat experience.txt</span>
+        <p class="sub">Ops təcrübəsi: data center, sistemlər, devops flow.</p>
       </div>
-      <div class="chev">⌄</div>
+      <div class="cmd-badges">
+        <span class="cmd">cat experience.txt</span>
+        <span class="cmd">tail -n 10</span>
+      </div>
     </div>
-    <div class="acc-body">
-      <ul class="clean-list">
-        <li><strong>Grandmart MMC – Junior DevOps Engineer</strong> (Sep 2025 – Present)</li>
-        <li><strong>AzinTelecom – Data Center IT Technician</strong> (Aug 2024 – Sep 2025)</li>
-        <li><strong>B2B Group – IT Technician (COP29)</strong> (Sep – Oct 2024)</li>
-        <li><strong>Kronos Enterprises – Helpdesk Technician (COP29)</strong> (Nov 2024)</li>
-      </ul>
-    </div>
+
+    <ul class="ul">
+      <li><strong>Grandmart MMC – Junior DevOps Engineer</strong> (Sep 2025 – Present)</li>
+      <li><strong>AzinTelecom – Data Center IT Technician</strong> (Aug 2024 – Sep 2025)</li>
+      <li><strong>B2B Group – IT Technician (COP29)</strong> (Sep – Oct 2024)</li>
+      <li><strong>Kronos Enterprises – Helpdesk Technician (COP29)</strong> (Nov 2024)</li>
+    </ul>
   </div>
 </section>
 
-<section id="education" data-aos="fade-up">
-  <div class="card open accordion">
-    <div class="acc-head" role="button" tabindex="0">
-      <div class="acc-title">
+<!-- EDUCATION -->
+<section id="education" class="full">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
         <h2>Education & Certificates</h2>
-        <span class="pill">certs --status</span>
+        <p class="sub">Sertifikatlar və təhsil — mərhələli inkişaf.</p>
       </div>
-      <div class="chev">⌄</div>
+      <div class="cmd-badges">
+        <span class="cmd">certs --status</span>
+        <span class="cmd">grep RHCE</span>
+      </div>
     </div>
-    <div class="acc-body">
-      <ul class="clean-list">
-        <li>Bachelor of Computer Engineering – Sumgait State University (2020–2024)</li>
-        <li>Bachelor of Computer Networks – ASOIU (2016–2018)</li>
-        <li>CompTIA A+ (2024)</li>
-        <li>CompTIA Server+ (2024)</li>
-        <li>RHCSA, RHCE, CKA – In Progress</li>
-      </ul>
-    </div>
+
+    <ul class="ul">
+      <li>Bachelor of Computer Engineering – Sumgait State University (2020–2024)</li>
+      <li>Bachelor of Computer Networks – ASOIU (2016–2018)</li>
+      <li>CompTIA A+ (2024)</li>
+      <li>CompTIA Server+ (2024)</li>
+      <li>RHCSA, RHCE, CKA – In Progress</li>
+    </ul>
   </div>
 </section>
 
-<section id="contact" data-aos="fade-up">
-  <div class="card open accordion">
-    <div class="acc-head" role="button" tabindex="0">
-      <div class="acc-title">
+<!-- CONTACT -->
+<section id="contact" class="full">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
         <h2>Contact</h2>
-        <span class="pill">ping -c 1 parvana</span>
+        <p class="sub">Bir ping ilə əlaqə: mail / tel / LinkedIn.</p>
       </div>
-      <div class="chev">⌄</div>
+      <div class="cmd-badges">
+        <span class="cmd">ping -c 1 parvana</span>
+        <span class="cmd">curl -I linkedin.com</span>
+      </div>
     </div>
-    <div class="acc-body">
+
+    <div class="glass">
       <p><strong>Email:</strong> <a href="mailto:aliza.parvana@gmail.com">aliza.parvana@gmail.com</a></p>
       <p><strong>Phone:</strong> +994 50 526 99 71</p>
-      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/parvana-alizada/" target="_blank" rel="noreferrer">linkedin.com/in/parvana-alizada</a></p>
+      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/parvana-alizada" target="_blank" rel="noreferrer">linkedin.com/in/parvana-alizada</a></p>
     </div>
+
+    <footer>
+      © 2025 Parvana Alizada | DevOps Portfolio
+    </footer>
   </div>
 </section>
-
-</main>
 
 <a href="#" id="backToTop" aria-label="Back to top">↑</a>
 <div class="toast" id="toast">Copied!</div>
 
-<footer>
-  © 2025 Parvana Alizada | Junior DevOps Engineer
-</footer>
+<!-- Tux sticker -->
+<div class="tux" title="Linux vibes">
+  <div class="penguin">🐧</div>
+  <div class="txt">Powered by <code>Linux</code> • keep calm &amp; <code>systemctl restart</code></div>
+</div>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-  AOS.init({once:true});
+AOS.init({once:true});
 
-  // Toast
-  const toast = document.getElementById('toast');
-  function showToast(msg){
-    toast.textContent = msg;
-    toast.classList.add('show');
-    setTimeout(()=>toast.classList.remove('show'), 1200);
-  }
+const toast = document.getElementById('toast');
+function showToast(msg){
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(()=>toast.classList.remove('show'), 1200);
+}
 
-  // Mobile menu
-  const menuBtn = document.getElementById('menuBtn');
-  const navList = document.getElementById('navList');
-  menuBtn?.addEventListener('click', () => navList.classList.toggle('open'));
-  document.querySelectorAll('#navList a').forEach(a=>{
-    a.addEventListener('click', ()=> navList.classList.remove('open'));
-  });
+// Mobile menu
+const menuBtn = document.getElementById('menuBtn');
+const navList = document.getElementById('navList');
+menuBtn?.addEventListener('click', ()=> navList.classList.toggle('open'));
+document.querySelectorAll('#navList a').forEach(a=>{
+  a.addEventListener('click', ()=> navList.classList.remove('open'));
+});
 
-  // Back to top
-  const back = document.getElementById('backToTop');
-  window.addEventListener('scroll', () => back.classList.toggle('show', window.scrollY > 380));
+// Back to top
+const back = document.getElementById('backToTop');
+window.addEventListener('scroll', ()=> back.classList.toggle('show', window.scrollY > 420));
 
-  // Active nav highlight
-  const links = Array.from(document.querySelectorAll('nav a'));
-  const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        links.forEach(l=>l.classList.remove('active'));
-        const id = '#'+e.target.id;
-        const active = links.find(l=>l.getAttribute('href')===id);
-        if(active) active.classList.add('active');
-      }
-    });
-  }, {rootMargin:'-50% 0px -45% 0px', threshold:0.01});
-  sections.forEach(s=>io.observe(s));
-
-  // Accordion
-  document.querySelectorAll('.accordion').forEach(card=>{
-    const head = card.querySelector('.acc-head');
-    const toggle = ()=> card.classList.toggle('open');
-    head.addEventListener('click', toggle);
-    head.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' ') toggle(); });
-  });
-
-  // Hero terminal typing
-  const heroCommands = [
-    "kubectl get nodes -o wide",
-    "docker ps --format 'table {{.Names}}\\t{{.Status}}'",
-    "ansible-playbook site.yml -i inventory",
-    "git push origin main",
-    "helm upgrade --install monitoring kube-prometheus-stack",
-    "journalctl -u nginx --since '10 min ago'",
-    "ss -lntp | grep ':80'"
-  ];
-  const termOutHero = document.getElementById('termOutHero');
-  const btnNextHero = document.getElementById('btnNextHero');
-  const btnCopyHero = document.getElementById('btnCopyHero');
-  let heroIdx = 0, heroTyping = false;
-
-  function resetHeroTerm(){
-    termOutHero.innerHTML = "<span class='prompt'>parvana@linux</span>:~$ <span id='typedHero'></span><span class='cursor'></span>";
-  }
-  function typeHero(text){
-    if(heroTyping) return;
-    heroTyping = true;
-    const typed = document.getElementById('typedHero');
-    typed.textContent = "";
-    let i=0;
-    const t = setInterval(()=>{
-      typed.textContent += text[i] || "";
-      i++;
-      if(i > text.length){
-        clearInterval(t);
-        setTimeout(()=>{
-          const out = document.createElement('div');
-          out.innerHTML = "<br><span class='ok'>✔</span> ok<br><span class='prompt'>parvana@linux</span>:~$ ";
-          termOutHero.appendChild(out);
-          heroTyping = false;
-        }, 220);
-      }
-    }, 32);
-  }
-  resetHeroTerm();
-  typeHero(heroCommands[heroIdx]);
-
-  btnNextHero?.addEventListener('click', ()=>{
-    heroIdx = (heroIdx + 1) % heroCommands.length;
-    resetHeroTerm();
-    typeHero(heroCommands[heroIdx]);
-  });
-  btnCopyHero?.addEventListener('click', async ()=>{
-    try{
-      await navigator.clipboard.writeText(heroCommands[heroIdx]);
-      showToast("Copied: " + heroCommands[heroIdx]);
-    }catch(e){
-      showToast("Copy not allowed in this browser.");
+// Active nav highlight
+const links = Array.from(document.querySelectorAll('nav a'));
+const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      links.forEach(l=>l.classList.remove('active'));
+      const id = '#'+e.target.id;
+      const active = links.find(l=>l.getAttribute('href')===id);
+      if(active) active.classList.add('active');
     }
   });
+}, {rootMargin:'-50% 0px -45% 0px', threshold:0.01});
+sections.forEach(s=>io.observe(s));
 
-  // ===== Skills terminal (tabs + run) =====
-  const skillCmd = document.getElementById('skillCmd');
-  const skillOut = document.getElementById('skillOut');
-  const skillCopy = document.getElementById('skillCopy');
-  const skillRun = document.getElementById('skillRun');
-
-  const skillData = {
-    linux: {
-      cmd: "sudo cat /etc/os-release && uname -a",
-      out:
-`NAME="Linux Admin Toolkit"
-ID=linux
-VERSION="RHEL / Ubuntu experience"
----
-- Package management: apt, yum/dnf
-- Users & permissions: useradd, sudoers, chmod/chown
-- Storage: partitioning, LVM basics, mounts, fstab
-- Networking: ss, ip, curl, dig
-- Logs: journalctl, /var/log/*`
-    },
-    devops: {
-      cmd: "git status && ansible-playbook site.yml && docker ps",
-      out:
-`On branch main
-nothing to commit, working tree clean
----
-✔ Ansible: playbooks, inventory, idempotency mindset
-✔ Docker: images, containers, ports, volumes, basic troubleshooting
-✔ CI/CD: GitLab pipelines, deploy habits, environment separation
-✔ Kubernetes: fundamentals (learning), manifests, kubectl workflow`
-    },
-    cloud: {
-      cmd: "kubectl get pods -A && prometheus --version && grafana-server -v",
-      out:
-`NAMESPACE     NAME                         STATUS
-monitoring    prometheus-0                  Running
-monitoring    grafana-6b7f9c9d7d-xxxxx      Running
----
-- Monitoring: Zabbix, Prometheus basics, Grafana dashboards
-- Alerting mindset: thresholds, incident response, logging
-- Cloud: AWS / DigitalOcean (basic usage & learning path)`
-    },
-    windows: {
-      cmd: "Get-ADUser -Filter * | Select -First 3",
-      out:
-`Windows Server Toolkit
----
-- Active Directory: users/groups, policies basics
-- DNS/DHCP: configuration & troubleshooting basics
-- Hybrid environment awareness: Linux + Windows operations`
-    }
-  };
-
-  let currentTab = "linux";
-
-  function renderSkill(tab){
-    currentTab = tab;
-    skillCmd.textContent = skillData[tab].cmd;
-    skillOut.textContent = ""; // will fill on "Run"
-    // small intro like terminal waiting
-    skillOut.textContent = "Ready. Click Run to execute…";
-  }
-
-  function fakeRun(){
-    const data = skillData[currentTab];
-    // typing effect into output
-    const header =
-`$ ${data.cmd}
-
-`;
-    const full = header + data.out;
-
-    let i = 0;
-    skillOut.textContent = "";
-    const interval = setInterval(()=>{
-      skillOut.textContent += full[i] || "";
-      i++;
-      if(i > full.length){
-        clearInterval(interval);
-      }
-    }, 6);
-  }
-
-  document.querySelectorAll('.tab').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
-      btn.classList.add('active');
-      renderSkill(btn.dataset.tab);
-    });
-  });
-
-  // init skills view
-  renderSkill("linux");
-
-  skillRun?.addEventListener('click', fakeRun);
-  skillCopy?.addEventListener('click', async ()=>{
-    try{
-      await navigator.clipboard.writeText(skillData[currentTab].cmd);
-      showToast("Copied: " + skillData[currentTab].cmd);
-    }catch(e){
-      showToast("Copy not allowed in this browser.");
+// Skills bars animate
+const skillRows = document.querySelectorAll('.skill-row');
+const skillObs = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const level = e.target.getAttribute('data-level') || 0;
+      const fill = e.target.querySelector('.fill');
+      fill.style.width = level + '%';
+      skillObs.unobserve(e.target);
     }
   });
+}, {threshold:0.2});
+skillRows.forEach(r=>skillObs.observe(r));
+
+// Terminal typing (more interesting)
+const commands = [
+  { cmd: "whoami", out: "parvana\n" },
+  { cmd: "uname -a", out: "Linux devops-lab 6.x.x #1 SMP x86_64 GNU/Linux\n" },
+  { cmd: "kubectl get pods -n monitoring", out: "prometheus-0   Running\ngrafana-xxxxx   Running\n" },
+  { cmd: "docker compose ps", out: "api      running\nnginx    running\n" },
+  { cmd: "ansible-playbook site.yml", out: "PLAY [all] *****\nTASK [nginx : ensure running] => ok\n\n" },
+  { cmd: "journalctl -u nginx --since '5 min ago'", out: "nginx[123]: reload successful\n" },
+  { cmd: "ping -c 1 github.com", out: "64 bytes from github.com: icmp_seq=1 ttl=54 time=38 ms\n" },
+  { cmd: "echo 'Ship it 🚀'", out: "Ship it 🚀\n" }
+];
+
+let idx = 0;
+let typing = false;
+
+const termOut = document.getElementById('termOut');
+const termNext = document.getElementById('termNext');
+const termCopy = document.getElementById('termCopy');
+
+function resetTerm(){
+  termOut.innerHTML = "<span class='prompt'>parvana@linux</span>:~$ <span id='typed'></span><span class='cursor'></span>";
+}
+
+function typeLine(text, cb){
+  const typed = document.getElementById('typed');
+  typed.textContent = "";
+  let i = 0;
+  const t = setInterval(()=>{
+    typed.textContent += text[i] || "";
+    i++;
+    if(i > text.length){
+      clearInterval(t);
+      cb?.();
+    }
+  }, 28);
+}
+
+function runCommand(){
+  if(typing) return;
+  typing = true;
+  resetTerm();
+  const item = commands[idx];
+
+  typeLine(item.cmd, ()=>{
+    setTimeout(()=>{
+      const out = document.createElement('div');
+      out.innerHTML = "<br><span class='ok'>✔</span> done<br>" +
+        "<span style='color:#e5e7eb'>" + escapeHtml(item.out).replaceAll("\n","<br>") + "</span>" +
+        "<span class='prompt'><br>parvana@linux</span>:~$ ";
+      termOut.appendChild(out);
+      typing = false;
+    }, 220);
+  });
+}
+
+function escapeHtml(str){
+  return str
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;");
+}
+
+runCommand();
+
+termNext?.addEventListener('click', ()=>{
+  idx = (idx + 1) % commands.length;
+  runCommand();
+});
+
+termCopy?.addEventListener('click', async ()=>{
+  const cmd = commands[idx].cmd;
+  try{
+    await navigator.clipboard.writeText(cmd);
+    showToast("Copied: " + cmd);
+  }catch(e){
+    showToast("Copy not allowed in this browser.");
+  }
+});
 </script>
+
 </body>
 </html>
