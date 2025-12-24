@@ -13,9 +13,9 @@
   --ink:#0f172a;
   --muted:#64748b;
 
-  --primary:#2563eb;   /* blue */
-  --secondary:#0ea5e9; /* sky */
-  --accent:#22c55e;    /* green */
+  --primary:#2563eb;
+  --secondary:#0ea5e9;
+  --accent:#22c55e;
 
   --line:#e5e7eb;
   --glass: rgba(255,255,255,.78);
@@ -43,7 +43,7 @@ body{
   overflow-x:hidden;
 }
 
-/* ===== Header ===== */
+/* Header */
 header{
   position: sticky; top:0; z-index: 999;
   background: rgba(255,255,255,.86);
@@ -73,6 +73,27 @@ nav{
   background: rgba(37,99,235,.10);
   color: var(--primary);
 }
+.right-controls{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+.lang{
+  display:flex; gap:6px;
+  border:1px solid rgba(2,6,23,.12);
+  background: rgba(255,255,255,.92);
+  border-radius: 999px;
+  padding: 6px;
+}
+.lang button{
+  cursor:pointer;
+  font-weight: 950;
+  border:0;
+  background: transparent;
+  color: var(--muted);
+  padding: 7px 10px;
+  border-radius: 999px;
+}
+.lang button.active{
+  background: rgba(37,99,235,.12);
+  color: var(--primary);
+}
 .menu-btn{
   display:none;
   cursor:pointer;
@@ -100,7 +121,7 @@ nav a{
 nav a:hover{ color: var(--primary); background: rgba(37,99,235,.08); }
 nav a.active{ color: var(--primary); background: rgba(37,99,235,.12); }
 
-/* ===== Full-bleed sections (no boxed cards) ===== */
+/* Full-bleed sections */
 .full{
   width: 100vw;
   margin-left: calc(50% - 50vw);
@@ -128,8 +149,9 @@ h2{
 }
 .sub{
   color: var(--muted);
-  font-weight: 800;
-  max-width: 62ch;
+  font-weight: 850;
+  max-width: 68ch;
+  margin-top: 8px;
 }
 .cmd-badges{
   display:flex; gap:10px; flex-wrap:wrap;
@@ -137,7 +159,7 @@ h2{
 .cmd{
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
   font-size:.82rem;
-  font-weight: 900;
+  font-weight: 950;
   padding: 8px 12px;
   border-radius: 999px;
   border: 1px solid rgba(14,165,233,.22);
@@ -145,10 +167,8 @@ h2{
   color: #0369a1;
 }
 
-/* ===== Hero ===== */
-#hero{
-  padding: 64px 0 24px;
-}
+/* Hero */
+#hero{ padding: 64px 0 24px; }
 .hero-grid{
   display:grid;
   grid-template-columns: 1.2fr 1fr;
@@ -212,7 +232,7 @@ h2{
 }
 .btn.ghost:hover{ transform: translateY(-2px); }
 
-/* ===== Corner Terminal (qara ekran) ===== */
+/* Terminal */
 .term{
   background: linear-gradient(180deg, var(--term1), var(--term2));
   color: #e5e7eb;
@@ -255,7 +275,6 @@ h2{
 }
 .prompt{ color:#38bdf8; font-weight: 950; }
 .ok{ color:#22c55e; font-weight: 950; }
-.warn{ color:#f59e0b; font-weight: 950; }
 .cursor{
   display:inline-block;
   width:10px;height:18px;
@@ -266,7 +285,7 @@ h2{
 }
 @keyframes blink{ 0%,49%{opacity:1} 50%,100%{opacity:0} }
 
-/* ===== About / text blocks ===== */
+/* About */
 .lead{
   font-size: 1.06rem;
   color: var(--muted);
@@ -293,8 +312,9 @@ h2{
   align-items:flex-start;
 }
 .note .emoji{font-size: 1.4rem; line-height:1;}
+.note strong{color:var(--ink)}
 
-/* ===== NEW Skills: full-width bars (not in squares) ===== */
+/* Skills bars full-width */
 .skills-wrap{
   margin-top: 22px;
   display: grid;
@@ -303,7 +323,7 @@ h2{
 }
 .skill-row{
   display:grid;
-  grid-template-columns: 220px 1fr 70px;
+  grid-template-columns: 260px 1fr 70px;
   gap: 14px;
   align-items:center;
   padding: 10px 0;
@@ -315,8 +335,8 @@ h2{
 }
 .skill-meta{
   color: var(--muted);
-  font-weight: 900;
-  font-size: .9rem;
+  font-weight: 950;
+  font-size: .92rem;
   text-align:right;
 }
 .track{
@@ -324,7 +344,6 @@ h2{
   border-radius: 999px;
   background: rgba(2,6,23,.10);
   overflow:hidden;
-  position: relative;
 }
 .fill{
   height:100%;
@@ -333,13 +352,8 @@ h2{
   background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
   transition: width 1.2s ease;
 }
-.skill-hint{
-  margin-top: 14px;
-  color: var(--muted);
-  font-weight: 800;
-}
 
-/* ===== Projects (still clean, but not boxed container around whole section) ===== */
+/* Projects */
 .projects-grid{
   display:grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -374,7 +388,7 @@ h2{
   color: var(--primary);
 }
 
-/* ===== Lists ===== */
+/* Lists */
 .ul{
   list-style:none;
   margin-top: 10px;
@@ -383,7 +397,7 @@ h2{
   padding: 8px 0;
   border-bottom: 1px dashed rgba(148,163,184,.35);
   color: var(--muted);
-  font-weight: 850;
+  font-weight: 900;
 }
 .ul li::before{
   content:"$";
@@ -392,7 +406,7 @@ h2{
   font-weight: 950;
 }
 
-/* ===== Tux sticker ===== */
+/* Tux sticker */
 .tux{
   position: fixed;
   left: 16px;
@@ -420,7 +434,7 @@ h2{
   color: var(--primary);
 }
 
-/* ===== Toast + back to top ===== */
+/* Toast + back to top */
 .toast{
   position: fixed;
   top: 80px;
@@ -460,15 +474,15 @@ h2{
 }
 #backToTop.show{ opacity:1; pointer-events:auto; transform: translateY(0); }
 
-/* ===== Footer ===== */
+/* Footer */
 footer{
   padding: 28px 0;
   color: var(--muted);
-  font-weight: 850;
+  font-weight: 900;
   text-align:center;
 }
 
-/* ===== Responsive ===== */
+/* Responsive */
 @media (max-width: 920px){
   .hero-grid{ grid-template-columns: 1fr; }
   .hero h1{ font-size: 2.45rem; }
@@ -495,6 +509,7 @@ footer{
     gap: 8px;
   }
   .skill-meta{ text-align:left; }
+
   .tux{ left: 12px; right: 12px; width: calc(100% - 24px); justify-content:center; }
 }
 @media (max-width: 420px){
@@ -514,16 +529,22 @@ footer{
       Parvana Alizada <small>DevOps</small>
     </div>
 
-    <button class="menu-btn" id="menuBtn" aria-label="Menu">☰ Menu</button>
+    <div class="right-controls">
+      <div class="lang" aria-label="Language switch">
+        <button id="btnAZ" class="active" type="button">AZ</button>
+        <button id="btnEN" type="button">EN</button>
+      </div>
+      <button class="menu-btn" id="menuBtn" aria-label="Menu">☰ Menu</button>
+    </div>
 
     <ul id="navList">
-      <li><a href="#hero">Home</a></li>
-      <li><a href="#about">Profile</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#hero" data-i18n="nav_home">Ana səhifə</a></li>
+      <li><a href="#about" data-i18n="nav_profile">Haqqımda</a></li>
+      <li><a href="#skills" data-i18n="nav_skills">Bacarıqlar</a></li>
+      <li><a href="#projects" data-i18n="nav_projects">Layihələr</a></li>
+      <li><a href="#experience" data-i18n="nav_exp">Təcrübə</a></li>
+      <li><a href="#education" data-i18n="nav_edu">Təhsil</a></li>
+      <li><a href="#contact" data-i18n="nav_contact">Əlaqə</a></li>
     </ul>
   </nav>
 </header>
@@ -532,16 +553,15 @@ footer{
 <section id="hero" class="full">
   <div class="wrap hero-grid">
     <div class="hero" data-aos="fade-right">
-      <div class="kicker"><span class="dot"></span> Linux • DevOps • Automation • CI/CD</div>
-      <h1>Junior <span>DevOps Engineer</span></h1>
-      <p>
-        Linux-focused IT & DevOps specialist with hands-on experience in system administration, data center operations,
-        and CI/CD environments.
+      <div class="kicker"><span class="dot"></span> <span data-i18n="hero_kicker">Linux • DevOps • Avtomatlaşdırma • CI/CD</span></div>
+      <h1 data-i18n="hero_title">Junior <span>DevOps Engineer</span></h1>
+      <p data-i18n="hero_desc">
+        Linux yönümlü IT və DevOps mütəxəssisi. Sistem idarəetməsi, data center əməliyyatları və CI/CD mühitlərində praktiki təcrübə.
       </p>
 
       <div class="cta">
-        <a class="btn primary" href="#contact">Contact Me</a>
-        <a class="btn ghost" href="#projects">See Projects</a>
+        <a class="btn primary" href="#contact" data-i18n="hero_cta1">Mənimlə əlaqə</a>
+        <a class="btn ghost" href="#projects" data-i18n="hero_cta2">Layihələrə bax</a>
       </div>
 
       <div style="margin-top:16px" class="cmd-badges">
@@ -552,13 +572,12 @@ footer{
       </div>
     </div>
 
-    <!-- Corner black terminal -->
     <div class="term" data-aos="fade-left">
       <div class="term-top">
         <div class="dots" aria-hidden="true"><span></span><span></span><span></span></div>
         <div class="term-actions">
-          <button class="tbtn" id="termCopy">Copy</button>
-          <button class="tbtn" id="termNext">Next</button>
+          <button class="tbtn" id="termCopy" data-i18n="btn_copy">Kopyala</button>
+          <button class="tbtn" id="termNext" data-i18n="btn_next">Növbəti</button>
         </div>
       </div>
       <pre id="termOut"><span class="prompt">parvana@linux</span>:~$ <span id="typed"></span><span class="cursor"></span></pre>
@@ -571,8 +590,10 @@ footer{
   <div class="wrap">
     <div class="section-head">
       <div>
-        <h2>Professional Profile</h2>
-        <p class="sub">“whoami” qısa cavab: Linux və DevOps işlərini sevən, əməliyyatda (ops) güclü, avtomatlaşdırmaya fokuslanan mühəndis.</p>
+        <h2 data-i18n="about_title">Haqqımda</h2>
+        <p class="sub" data-i18n="about_sub">
+          Məqsədim: stabil sistemlər, təmiz deploy prosesi və ölçülə bilən (monitoring/logs) əməliyyatlar.
+        </p>
       </div>
       <div class="cmd-badges">
         <span class="cmd">whoami</span>
@@ -582,33 +603,39 @@ footer{
     </div>
 
     <div class="split">
-      <p class="lead">
-        I work with Linux systems (RHEL/Ubuntu), repository & package management (APT/YUM/DNF),
-        disk partitioning and mounts, troubleshooting, logs, and networking basics. I also have Windows Server
-        experience (AD/DNS/DHCP). In DevOps: Git, Bash, Ansible, Docker, CI/CD, and I’m actively improving Kubernetes
-        by hands-on practice.
+      <p class="lead" data-i18n="about_text">
+        Linux (RHEL/Ubuntu) sistemləri, paket idarəetməsi (APT/YUM/DNF), disk/mount işləri, servis idarəetməsi (systemd),
+        log analizi və şəbəkə troubleshooting mövzularında praktik təcrübəm var. DevOps tərəfdə Git, Bash, Ansible, Docker,
+        CI/CD prosesləri ilə işləyirəm və Kubernetes bacarığımı hands-on praktika ilə artırıram.
       </p>
 
       <div class="glass">
         <div class="note">
-          <div class="emoji">🧠</div>
+          <div class="emoji">🧩</div>
           <div>
-            <div style="font-weight:950;color:var(--ink)">DevOps mindset</div>
-            <div style="margin-top:6px;color:var(--muted)">
-              “repeatable, observable, automated” — proseslər təmiz, log/monitoring var, deploy kontrollu.
+            <strong data-i18n="about_box1_t">Mənim stilim</strong>
+            <div style="margin-top:6px" data-i18n="about_box1_d">
+              “Az klik, çox nəticə” — standartlaşdırma, avtomatlaşdırma, düzgün log/monitoring və səliqəli konfiqurasiyalar.
             </div>
           </div>
         </div>
 
         <div class="note" style="margin-top:12px">
-          <div class="emoji">🛠️</div>
+          <div class="emoji">⚙️</div>
           <div>
-            <div style="font-weight:950;color:var(--ink)">Daily commands</div>
-            <div style="margin-top:6px;color:var(--muted)">
-              <code style="font-family:ui-monospace;font-weight:950;color:var(--primary)">ss -lntp</code>,
-              <code style="font-family:ui-monospace;font-weight:950;color:var(--primary)">curl -I</code>,
-              <code style="font-family:ui-monospace;font-weight:950;color:var(--primary)">nginx -t</code>,
-              <code style="font-family:ui-monospace;font-weight:950;color:var(--primary)">systemctl status</code>
+            <strong data-i18n="about_box2_t">Gündəlik alətlər</strong>
+            <div style="margin-top:6px" data-i18n="about_box2_d">
+              ss, curl, nginx -t, systemctl, journalctl, dig, docker logs, kubectl describe
+            </div>
+          </div>
+        </div>
+
+        <div class="note" style="margin-top:12px">
+          <div class="emoji">🚀</div>
+          <div>
+            <strong data-i18n="about_box3_t">Fokus</strong>
+            <div style="margin-top:6px" data-i18n="about_box3_d">
+              CI/CD axını, təhlükəsiz deploy, rollback planı və incident zamanı sürətli reaksiyalar.
             </div>
           </div>
         </div>
@@ -618,66 +645,64 @@ footer{
   </div>
 </section>
 
-<!-- SKILLS (FULL WIDTH, NO BOXES) -->
+<!-- SKILLS -->
 <section id="skills" class="full">
   <div class="wrap">
     <div class="section-head">
       <div>
-        <h2>Skills</h2>
-        <p class="sub">Kvadrat kartların içində deyil — “full-width” Linux vibe. Scroll edəndə çubuqlar dolacaq.</p>
+        <h2 data-i18n="skills_title">Bacarıqlar</h2>
+        <p class="sub" data-i18n="skills_sub">
+          “Full-width” skill barlar — real işdə istifadə etdiyim sahələr. Səhifəni aşağı sürüşdürəndə dolur.
+        </p>
       </div>
       <div class="cmd-badges">
-        <span class="cmd">skills --show</span>
         <span class="cmd">grep -i devops</span>
         <span class="cmd">awk '{print $1}'</span>
+        <span class="cmd">sed -n '1,20p'</span>
       </div>
     </div>
 
     <div class="skills-wrap" id="skillsWrap">
       <div class="skill-row" data-level="92">
-        <div class="skill-name">Linux (RHEL/Ubuntu) • permissions, services, logs</div>
+        <div class="skill-name" data-i18n="s1">Linux • services, permissions, logs</div>
         <div class="track"><div class="fill"></div></div>
         <div class="skill-meta">92%</div>
       </div>
       <div class="skill-row" data-level="82">
-        <div class="skill-name">Bash • automation, text processing (grep/awk/sed)</div>
+        <div class="skill-name" data-i18n="s2">Bash • automation, grep/awk/sed</div>
         <div class="track"><div class="fill"></div></div>
         <div class="skill-meta">82%</div>
       </div>
       <div class="skill-row" data-level="84">
-        <div class="skill-name">Git & GitLab • branches, MR flow, runners basics</div>
+        <div class="skill-name" data-i18n="s3">Git & GitLab • workflow, runners</div>
         <div class="track"><div class="fill"></div></div>
         <div class="skill-meta">84%</div>
       </div>
       <div class="skill-row" data-level="78">
-        <div class="skill-name">Ansible • playbooks, inventory, idempotency</div>
+        <div class="skill-name" data-i18n="s4">Ansible • playbooks, inventory</div>
         <div class="track"><div class="fill"></div></div>
         <div class="skill-meta">78%</div>
       </div>
       <div class="skill-row" data-level="76">
-        <div class="skill-name">Docker • images, volumes, compose, troubleshooting</div>
+        <div class="skill-name" data-i18n="s5">Docker • images, compose, volumes</div>
         <div class="track"><div class="fill"></div></div>
         <div class="skill-meta">76%</div>
       </div>
       <div class="skill-row" data-level="66">
-        <div class="skill-name">Kubernetes • manifests, kubectl workflow (learning)</div>
+        <div class="skill-name" data-i18n="s6">Kubernetes • kubectl, manifests (learning)</div>
         <div class="track"><div class="fill"></div></div>
         <div class="skill-meta">66%</div>
       </div>
       <div class="skill-row" data-level="72">
-        <div class="skill-name">Monitoring • Zabbix, Prometheus basics, Grafana</div>
+        <div class="skill-name" data-i18n="s7">Monitoring • Zabbix/Prometheus/Grafana</div>
         <div class="track"><div class="fill"></div></div>
         <div class="skill-meta">72%</div>
       </div>
       <div class="skill-row" data-level="70">
-        <div class="skill-name">Windows Server • AD/DNS/DHCP fundamentals</div>
+        <div class="skill-name" data-i18n="s8">Windows Server • AD/DNS/DHCP</div>
         <div class="track"><div class="fill"></div></div>
         <div class="skill-meta">70%</div>
       </div>
-    </div>
-
-    <div class="skill-hint">
-      Tip: Bu hissəni “command-style” etmək istəsən, növbəti dəfə skills-i terminal output kimi də yaza bilərik.
     </div>
   </div>
 </section>
@@ -687,41 +712,43 @@ footer{
   <div class="wrap">
     <div class="section-head">
       <div>
-        <h2>Projects</h2>
-        <p class="sub">Real repo-lara link. Kartlar yüngül “glass” görünüşdə.</p>
+        <h2 data-i18n="proj_title">Layihələr</h2>
+        <p class="sub" data-i18n="proj_sub">
+          Açıq repolar — real konfiqurasiya və praktiki nümunələr.
+        </p>
       </div>
       <div class="cmd-badges">
-        <span class="cmd">ls -la projects/</span>
+        <span class="cmd">ls -la</span>
         <span class="cmd">git log --oneline</span>
       </div>
     </div>
 
     <div class="projects-grid">
       <div class="project" data-aos="fade-up">
-        <h3>Nginx Docker App</h3>
-        <p>Simple containerized Nginx app + deployment-ready configs.</p>
+        <h3 data-i18n="p1_t">Nginx Docker App</h3>
+        <p data-i18n="p1_d">Sadə Nginx app: container, portlar, konfigurasiya və deploy üçün baza.</p>
         <div class="tags">
           <span class="tag">docker</span><span class="tag">nginx</span><span class="tag">ports</span>
         </div>
-        <a href="https://github.com/ParvanaAli/simple-nginx-app" target="_blank" rel="noreferrer">Open on GitHub →</a>
+        <a href="https://github.com/ParvanaAli/simple-nginx-app" target="_blank" rel="noreferrer" data-i18n="open_github">GitHub-da aç →</a>
       </div>
 
       <div class="project" data-aos="fade-up" data-aos-delay="80">
-        <h3>Zabbix Monitoring</h3>
-        <p>Monitoring setup with alerts & dashboards for infrastructure visibility.</p>
+        <h3 data-i18n="p2_t">Zabbix Monitoring</h3>
+        <p data-i18n="p2_d">Alertlər və dashboardlar: infra görünürlüyü və etibarlılıq üçün.</p>
         <div class="tags">
           <span class="tag">zabbix</span><span class="tag">alerts</span><span class="tag">ops</span>
         </div>
-        <a href="https://github.com/ParvanaAli/zabbix-monitoring" target="_blank" rel="noreferrer">Open on GitHub →</a>
+        <a href="https://github.com/ParvanaAli/zabbix-monitoring" target="_blank" rel="noreferrer" data-i18n="open_github">GitHub-da aç →</a>
       </div>
 
       <div class="project" data-aos="fade-up" data-aos-delay="160">
-        <h3>Ansible Playbooks</h3>
-        <p>Reusable playbooks for packages, users, and common configuration steps.</p>
+        <h3 data-i18n="p3_t">Ansible Playbooks</h3>
+        <p data-i18n="p3_d">Playbook nümunələri: paketlər, userlər, basic hardening və konfiqurasiya.</p>
         <div class="tags">
           <span class="tag">ansible</span><span class="tag">yaml</span><span class="tag">automation</span>
         </div>
-        <a href="https://github.com/ParvanaAli/ansible-playbooks" target="_blank" rel="noreferrer">Open on GitHub →</a>
+        <a href="https://github.com/ParvanaAli/ansible-playbooks" target="_blank" rel="noreferrer" data-i18n="open_github">GitHub-da aç →</a>
       </div>
     </div>
   </div>
@@ -732,8 +759,8 @@ footer{
   <div class="wrap">
     <div class="section-head">
       <div>
-        <h2>Work Experience</h2>
-        <p class="sub">Ops təcrübəsi: data center, sistemlər, devops flow.</p>
+        <h2 data-i18n="exp_title">Təcrübə</h2>
+        <p class="sub" data-i18n="exp_sub">Ops mühiti: data center, servis dayanıqlığı, troubleshooting.</p>
       </div>
       <div class="cmd-badges">
         <span class="cmd">cat experience.txt</span>
@@ -742,10 +769,10 @@ footer{
     </div>
 
     <ul class="ul">
-      <li><strong>Grandmart MMC – Junior DevOps Engineer</strong> (Sep 2025 – Present)</li>
-      <li><strong>AzinTelecom – Data Center IT Technician</strong> (Aug 2024 – Sep 2025)</li>
-      <li><strong>B2B Group – IT Technician (COP29)</strong> (Sep – Oct 2024)</li>
-      <li><strong>Kronos Enterprises – Helpdesk Technician (COP29)</strong> (Nov 2024)</li>
+      <li data-i18n="e1"><strong>Grandmart MMC – Junior DevOps Engineer</strong> (Sep 2025 – Present)</li>
+      <li data-i18n="e2"><strong>AzinTelecom – Data Center IT Technician</strong> (Aug 2024 – Sep 2025)</li>
+      <li data-i18n="e3"><strong>B2B Group – IT Technician (COP29)</strong> (Sep – Oct 2024)</li>
+      <li data-i18n="e4"><strong>Kronos Enterprises – Helpdesk Technician (COP29)</strong> (Nov 2024)</li>
     </ul>
   </div>
 </section>
@@ -755,8 +782,8 @@ footer{
   <div class="wrap">
     <div class="section-head">
       <div>
-        <h2>Education & Certificates</h2>
-        <p class="sub">Sertifikatlar və təhsil — mərhələli inkişaf.</p>
+        <h2 data-i18n="edu_title">Təhsil & Sertifikatlar</h2>
+        <p class="sub" data-i18n="edu_sub">Möhkəm baza + davamlı inkişaf.</p>
       </div>
       <div class="cmd-badges">
         <span class="cmd">certs --status</span>
@@ -765,11 +792,11 @@ footer{
     </div>
 
     <ul class="ul">
-      <li>Bachelor of Computer Engineering – Sumgait State University (2020–2024)</li>
-      <li>Bachelor of Computer Networks – ASOIU (2016–2018)</li>
-      <li>CompTIA A+ (2024)</li>
-      <li>CompTIA Server+ (2024)</li>
-      <li>RHCSA, RHCE, CKA – In Progress</li>
+      <li data-i18n="ed1">Bachelor of Computer Engineering – Sumgait State University (2020–2024)</li>
+      <li data-i18n="ed2">Bachelor of Computer Networks – ASOIU (2016–2018)</li>
+      <li data-i18n="ed3">CompTIA A+ (2024)</li>
+      <li data-i18n="ed4">CompTIA Server+ (2024)</li>
+      <li data-i18n="ed5">RHCSA, RHCE, CKA – In Progress</li>
     </ul>
   </div>
 </section>
@@ -779,22 +806,22 @@ footer{
   <div class="wrap">
     <div class="section-head">
       <div>
-        <h2>Contact</h2>
-        <p class="sub">Bir ping ilə əlaqə: mail / tel / LinkedIn.</p>
+        <h2 data-i18n="c_title">Əlaqə</h2>
+        <p class="sub" data-i18n="c_sub">Gəlin birlikdə daha stabil sistemlər quraq 🙂</p>
       </div>
       <div class="cmd-badges">
-        <span class="cmd">ping -c 1 parvana</span>
+        <span class="cmd">ping -c 1 github.com</span>
         <span class="cmd">curl -I linkedin.com</span>
       </div>
     </div>
 
     <div class="glass">
-      <p><strong>Email:</strong> <a href="mailto:aliza.parvana@gmail.com">aliza.parvana@gmail.com</a></p>
-      <p><strong>Phone:</strong> +994 50 526 99 71</p>
-      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/parvana-alizada" target="_blank" rel="noreferrer">linkedin.com/in/parvana-alizada</a></p>
+      <p><strong data-i18n="c_email">Email:</strong> <a href="mailto:aliza.parvana@gmail.com">aliza.parvana@gmail.com</a></p>
+      <p><strong data-i18n="c_phone">Telefon:</strong> +994 50 526 99 71</p>
+      <p><strong data-i18n="c_li">LinkedIn:</strong> <a href="https://www.linkedin.com/in/parvana-alizada" target="_blank" rel="noreferrer">linkedin.com/in/parvana-alizada</a></p>
     </div>
 
-    <footer>
+    <footer data-i18n="footer">
       © 2025 Parvana Alizada | DevOps Portfolio
     </footer>
   </div>
@@ -803,10 +830,11 @@ footer{
 <a href="#" id="backToTop" aria-label="Back to top">↑</a>
 <div class="toast" id="toast">Copied!</div>
 
-<!-- Tux sticker -->
 <div class="tux" title="Linux vibes">
   <div class="penguin">🐧</div>
-  <div class="txt">Powered by <code>Linux</code> • keep calm &amp; <code>systemctl restart</code></div>
+  <div class="txt" data-i18n="tux">
+    Powered by <code>Linux</code> • keep calm & <code>systemctl restart</code>
+  </div>
 </div>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -861,7 +889,7 @@ const skillObs = new IntersectionObserver((entries)=>{
 }, {threshold:0.2});
 skillRows.forEach(r=>skillObs.observe(r));
 
-// Terminal typing (more interesting)
+// Terminal typing
 const commands = [
   { cmd: "whoami", out: "parvana\n" },
   { cmd: "uname -a", out: "Linux devops-lab 6.x.x #1 SMP x86_64 GNU/Linux\n" },
@@ -875,7 +903,6 @@ const commands = [
 
 let idx = 0;
 let typing = false;
-
 const termOut = document.getElementById('termOut');
 const termNext = document.getElementById('termNext');
 const termCopy = document.getElementById('termCopy');
@@ -883,7 +910,6 @@ const termCopy = document.getElementById('termCopy');
 function resetTerm(){
   termOut.innerHTML = "<span class='prompt'>parvana@linux</span>:~$ <span id='typed'></span><span class='cursor'></span>";
 }
-
 function typeLine(text, cb){
   const typed = document.getElementById('typed');
   typed.textContent = "";
@@ -897,7 +923,9 @@ function typeLine(text, cb){
     }
   }, 28);
 }
-
+function escapeHtml(str){
+  return str.replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;");
+}
 function runCommand(){
   if(typing) return;
   typing = true;
@@ -907,7 +935,8 @@ function runCommand(){
   typeLine(item.cmd, ()=>{
     setTimeout(()=>{
       const out = document.createElement('div');
-      out.innerHTML = "<br><span class='ok'>✔</span> done<br>" +
+      out.innerHTML =
+        "<br><span class='ok'>✔</span> done<br>" +
         "<span style='color:#e5e7eb'>" + escapeHtml(item.out).replaceAll("\n","<br>") + "</span>" +
         "<span class='prompt'><br>parvana@linux</span>:~$ ";
       termOut.appendChild(out);
@@ -915,30 +944,153 @@ function runCommand(){
     }, 220);
   });
 }
-
-function escapeHtml(str){
-  return str
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;");
-}
-
 runCommand();
-
 termNext?.addEventListener('click', ()=>{
   idx = (idx + 1) % commands.length;
   runCommand();
 });
-
 termCopy?.addEventListener('click', async ()=>{
   const cmd = commands[idx].cmd;
   try{
     await navigator.clipboard.writeText(cmd);
-    showToast("Copied: " + cmd);
+    showToast((currentLang==="az" ? "Kopyalandı: " : "Copied: ") + cmd);
   }catch(e){
-    showToast("Copy not allowed in this browser.");
+    showToast(currentLang==="az" ? "Kopyalama icazəsi yoxdur." : "Copy not allowed.");
   }
 });
+
+// ===== i18n (AZ/EN toggle) =====
+let currentLang = "az";
+const dict = {
+  az: {
+    nav_home:"Ana səhifə", nav_profile:"Haqqımda", nav_skills:"Bacarıqlar", nav_projects:"Layihələr",
+    nav_exp:"Təcrübə", nav_edu:"Təhsil", nav_contact:"Əlaqə",
+    btn_copy:"Kopyala", btn_next:"Növbəti",
+
+    hero_kicker:"Linux • DevOps • Avtomatlaşdırma • CI/CD",
+    hero_title:"Junior <span>DevOps Engineer</span>",
+    hero_desc:"Linux yönümlü IT və DevOps mütəxəssisi. Sistem idarəetməsi, data center əməliyyatları və CI/CD mühitlərində praktiki təcrübə.",
+    hero_cta1:"Mənimlə əlaqə",
+    hero_cta2:"Layihələrə bax",
+
+    about_title:"Haqqımda",
+    about_sub:"Məqsədim: stabil sistemlər, təmiz deploy prosesi və ölçülə bilən (monitoring/logs) əməliyyatlar.",
+    about_text:"Linux (RHEL/Ubuntu) sistemləri, paket idarəetməsi (APT/YUM/DNF), disk/mount işləri, servis idarəetməsi (systemd), log analizi və şəbəkə troubleshooting mövzularında praktik təcrübəm var. DevOps tərəfdə Git, Bash, Ansible, Docker, CI/CD prosesləri ilə işləyirəm və Kubernetes bacarığımı hands-on praktika ilə artırıram.",
+    about_box1_t:"Mənim stilim",
+    about_box1_d:"“Az klik, çox nəticə” — standartlaşdırma, avtomatlaşdırma, düzgün log/monitoring və səliqəli konfiqurasiyalar.",
+    about_box2_t:"Gündəlik alətlər",
+    about_box2_d:"ss, curl, nginx -t, systemctl, journalctl, dig, docker logs, kubectl describe",
+    about_box3_t:"Fokus",
+    about_box3_d:"CI/CD axını, təhlükəsiz deploy, rollback planı və incident zamanı sürətli reaksiyalar.",
+
+    skills_title:"Bacarıqlar",
+    skills_sub:"“Full-width” skill barlar — real işdə istifadə etdiyim sahələr. Səhifəni aşağı sürüşdürəndə dolur.",
+    s1:"Linux • services, permissions, logs",
+    s2:"Bash • automation, grep/awk/sed",
+    s3:"Git & GitLab • workflow, runners",
+    s4:"Ansible • playbooks, inventory",
+    s5:"Docker • images, compose, volumes",
+    s6:"Kubernetes • kubectl, manifests (learning)",
+    s7:"Monitoring • Zabbix/Prometheus/Grafana",
+    s8:"Windows Server • AD/DNS/DHCP",
+
+    proj_title:"Layihələr",
+    proj_sub:"Açıq repolar — real konfiqurasiya və praktiki nümunələr.",
+    p1_t:"Nginx Docker App",
+    p1_d:"Sadə Nginx app: container, portlar, konfigurasiya və deploy üçün baza.",
+    p2_t:"Zabbix Monitoring",
+    p2_d:"Alertlər və dashboardlar: infra görünürlüyü və etibarlılıq üçün.",
+    p3_t:"Ansible Playbooks",
+    p3_d:"Playbook nümunələri: paketlər, userlər, basic hardening və konfiqurasiya.",
+    open_github:"GitHub-da aç →",
+
+    exp_title:"Təcrübə",
+    exp_sub:"Ops mühiti: data center, servis dayanıqlığı, troubleshooting.",
+    edu_title:"Təhsil & Sertifikatlar",
+    edu_sub:"Möhkəm baza + davamlı inkişaf.",
+    c_title:"Əlaqə",
+    c_sub:"Gəlin birlikdə daha stabil sistemlər quraq 🙂",
+    c_email:"Email:",
+    c_phone:"Telefon:",
+    c_li:"LinkedIn:",
+    footer:"© 2025 Parvana Alizada | DevOps Portfolio",
+    tux:"Powered by <code>Linux</code> • keep calm & <code>systemctl restart</code>"
+  },
+  en: {
+    nav_home:"Home", nav_profile:"Profile", nav_skills:"Skills", nav_projects:"Projects",
+    nav_exp:"Experience", nav_edu:"Education", nav_contact:"Contact",
+    btn_copy:"Copy", btn_next:"Next",
+
+    hero_kicker:"Linux • DevOps • Automation • CI/CD",
+    hero_title:"Junior <span>DevOps Engineer</span>",
+    hero_desc:"Linux-focused IT & DevOps specialist with hands-on experience in system administration, data center operations, and CI/CD environments.",
+    hero_cta1:"Contact Me",
+    hero_cta2:"See Projects",
+
+    about_title:"Profile",
+    about_sub:"My goal: stable systems, clean deployments, and measurable operations (monitoring/logs).",
+    about_text:"I have hands-on experience with Linux (RHEL/Ubuntu), package management (APT/YUM/DNF), storage & mounts, systemd services, log analysis, and network troubleshooting. On the DevOps side I work with Git, Bash, Ansible, Docker, and CI/CD, and I’m improving Kubernetes skills through hands-on practice.",
+    about_box1_t:"How I work",
+    about_box1_d:"“Less clicks, more outcomes” — standardization, automation, good observability, and clean configuration.",
+    about_box2_t:"Daily tools",
+    about_box2_d:"ss, curl, nginx -t, systemctl, journalctl, dig, docker logs, kubectl describe",
+    about_box3_t:"Focus",
+    about_box3_d:"CI/CD flow, safe deployments, rollback plans, and fast incident response.",
+
+    skills_title:"Skills",
+    skills_sub:"Full-width skill bars — areas I actually use. They animate as you scroll.",
+    s1:"Linux • services, permissions, logs",
+    s2:"Bash • automation, grep/awk/sed",
+    s3:"Git & GitLab • workflow, runners",
+    s4:"Ansible • playbooks, inventory",
+    s5:"Docker • images, compose, volumes",
+    s6:"Kubernetes • kubectl, manifests (learning)",
+    s7:"Monitoring • Zabbix/Prometheus/Grafana",
+    s8:"Windows Server • AD/DNS/DHCP",
+
+    proj_title:"Projects",
+    proj_sub:"Public repos — real configurations and practical examples.",
+    p1_t:"Nginx Docker App",
+    p1_d:"Simple Nginx app: container, ports, config, and a solid deployment base.",
+    p2_t:"Zabbix Monitoring",
+    p2_d:"Alerts & dashboards for infrastructure visibility and reliability.",
+    p3_t:"Ansible Playbooks",
+    p3_d:"Reusable playbooks for packages, users, basic hardening and configuration.",
+    open_github:"Open on GitHub →",
+
+    exp_title:"Experience",
+    exp_sub:"Ops work: data center, service reliability, troubleshooting.",
+    edu_title:"Education & Certificates",
+    edu_sub:"Strong foundation + continuous growth.",
+    c_title:"Contact",
+    c_sub:"Let’s build stable systems together 🙂",
+    c_email:"Email:",
+    c_phone:"Phone:",
+    c_li:"LinkedIn:",
+    footer:"© 2025 Parvana Alizada | DevOps Portfolio",
+    tux:"Powered by <code>Linux</code> • keep calm & <code>systemctl restart</code>"
+  }
+};
+
+function setLang(lang){
+  currentLang = lang;
+  document.documentElement.lang = lang === "az" ? "az" : "en";
+
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key = el.getAttribute('data-i18n');
+    const val = dict[lang][key];
+    if(typeof val === "string") el.innerHTML = val;
+  });
+
+  document.getElementById('btnAZ').classList.toggle('active', lang==="az");
+  document.getElementById('btnEN').classList.toggle('active', lang==="en");
+}
+
+document.getElementById('btnAZ').addEventListener('click', ()=> setLang('az'));
+document.getElementById('btnEN').addEventListener('click', ()=> setLang('en'));
+
+// default AZ
+setLang('az');
 </script>
 
 </body>
