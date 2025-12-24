@@ -5,97 +5,395 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Parvana Alizada | Junior DevOps Engineer</title>
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
 <style>
 :root{
-  --bg:#f8fafc;
+  --bg1:#f8fafc;
+  --bg2:#eef2ff;
   --card:#ffffff;
-  --primary:#2563eb;
-  --secondary:#0ea5e9;
-  --text:#111827;
-  --muted:#6b7280;
+  --border:#e5e7eb;
+
+  --primary:#2563eb;      /* blue */
+  --secondary:#0ea5e9;    /* sky */
+  --accent:#22c55e;       /* green */
+  --text:#0f172a;
+  --muted:#64748b;
+
   --terminal:#020617;
+  --terminal2:#0b1222;
+
+  --shadow: 0 14px 38px rgba(15, 23, 42, .08);
+  --shadow2: 0 18px 55px rgba(2,6,23,.30);
+
+  --radius: 18px;
 }
+
 *{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
-  font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;
-  background:linear-gradient(120deg,#f8fafc,#eef2ff);
+  font-family: Inter,system-ui,-apple-system,Segoe UI,sans-serif;
+  background: radial-gradient(1200px 600px at 10% 10%, #dbeafe 0%, transparent 60%),
+              radial-gradient(900px 500px at 90% 20%, #e0f2fe 0%, transparent 55%),
+              linear-gradient(120deg,var(--bg1),var(--bg2));
   color:var(--text);
   line-height:1.7;
 }
+
+/* HEADER */
 header{
-  position:sticky;top:0;z-index:100;
-  background:rgba(255,255,255,.95);
-  backdrop-filter:blur(8px);
-  border-bottom:1px solid #e5e7eb;
+  position:sticky;top:0;z-index:1000;
+  background:rgba(255,255,255,.88);
+  backdrop-filter: blur(10px);
+  border-bottom:1px solid var(--border);
 }
 nav{
   max-width:1100px;margin:auto;
   display:flex;justify-content:space-between;align-items:center;
-  padding:16px 24px
+  padding:14px 22px;
+  gap:14px;
 }
-.logo{font-weight:800;font-size:1.3rem;color:var(--primary)}
-nav ul{list-style:none;display:flex;gap:22px}
-nav a{text-decoration:none;color:var(--muted);font-weight:600}
-nav a:hover{color:var(--primary)}
+.logo{
+  font-weight:900;
+  letter-spacing:.2px;
+  font-size:1.05rem;
+  color:var(--primary);
+  display:flex;align-items:center;gap:10px;
+}
+.badge{
+  font-size:.72rem;
+  padding:4px 10px;
+  border-radius:999px;
+  background: rgba(37,99,235,.12);
+  color: var(--primary);
+  border:1px solid rgba(37,99,235,.20);
+  font-weight:800;
+}
+nav ul{list-style:none;display:flex;gap:18px;flex-wrap:wrap}
+nav a{
+  text-decoration:none;color:var(--muted);
+  font-weight:700;font-size:.92rem;
+  padding:8px 10px;border-radius:999px;
+  transition: .2s ease;
+}
+nav a:hover{color:var(--primary); background: rgba(37,99,235,.08)}
+nav a.active{color:var(--primary); background: rgba(37,99,235,.12)}
 
+/* HERO */
 #hero{
-  max-width:1100px;margin:70px auto;padding:40px 24px;
-  display:grid;grid-template-columns:1.2fr 1fr;gap:40px
+  max-width:1100px;margin:64px auto 20px; padding: 22px 22px;
+  display:grid; grid-template-columns: 1.2fr 1fr;
+  gap:32px;
 }
-.hero-text h1{font-size:3rem;margin-bottom:10px}
-.hero-text span{color:var(--primary)}
-.hero-text p{color:var(--muted);font-size:1.1rem}
-
-.terminal{
-  background:var(--terminal);
-  color:#e5e7eb;
-  border-radius:16px;
-  padding:22px;
-  font-family:monospace;
-  font-size:.95rem;
-  box-shadow:0 20px 40px rgba(2,6,23,.35)
+.hero-text{
+  padding: 22px 8px;
 }
-.prompt{color:#38bdf8}
-
+.kicker{
+  display:inline-flex;align-items:center;gap:10px;
+  color:var(--muted);
+  font-weight:800;
+  background: rgba(14,165,233,.10);
+  border:1px solid rgba(14,165,233,.20);
+  padding:8px 12px;
+  border-radius:999px;
+  margin-bottom:14px;
+}
+.dot{
+  width:10px;height:10px;border-radius:50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 6px rgba(34,197,94,.15);
+}
+.hero-text h1{
+  font-size: 3rem;
+  line-height:1.1;
+  margin-bottom:12px;
+}
+.hero-text h1 span{
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.hero-text p{
+  color:var(--muted);
+  font-size:1.08rem;
+  max-width: 52ch;
+}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
 .button{
-  display:inline-block;margin-top:22px;
-  padding:12px 28px;
-  background:var(--primary);
-  color:#fff;border-radius:30px;
-  text-decoration:none;font-weight:700
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:12px 18px;
+  background: var(--primary);
+  color:#fff;
+  border-radius: 999px;
+  text-decoration:none;
+  font-weight:900;
+  box-shadow: 0 10px 22px rgba(37,99,235,.25);
+  transition:.2s ease;
+}
+.button:hover{transform: translateY(-2px); box-shadow: 0 14px 28px rgba(37,99,235,.30)}
+.button.secondary{
+  background: #ffffff;
+  color: var(--primary);
+  border: 1px solid rgba(37,99,235,.25);
+  box-shadow: var(--shadow);
+}
+.button.secondary:hover{transform: translateY(-2px)}
+
+/* TERMINAL */
+.terminal-wrap{
+  position:relative;
+}
+.terminal{
+  background: linear-gradient(180deg, var(--terminal2), var(--terminal));
+  color:#e5e7eb;
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow2);
+  border: 1px solid rgba(148,163,184,.15);
+  overflow:hidden;
+}
+.term-top{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:10px; margin-bottom:12px;
+}
+.dots{display:flex;gap:7px}
+.dots span{
+  width:10px;height:10px;border-radius:50%;
+  display:inline-block;
+}
+.dots span:nth-child(1){background:#ef4444}
+.dots span:nth-child(2){background:#f59e0b}
+.dots span:nth-child(3){background:#22c55e}
+.term-actions{
+  display:flex; gap:10px; flex-wrap:wrap;
+}
+.smallbtn{
+  cursor:pointer;
+  padding:8px 12px;border-radius:999px;
+  font-weight:800;font-size:.82rem;
+  border:1px solid rgba(148,163,184,.25);
+  background: rgba(148,163,184,.12);
+  color:#e5e7eb;
+  transition:.2s ease;
+}
+.smallbtn:hover{transform: translateY(-1px); background: rgba(148,163,184,.18)}
+.smallbtn:active{transform: translateY(0px)}
+.terminal pre{
+  margin:0;
+  white-space:pre-wrap;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: .94rem;
+  line-height:1.6;
+}
+.prompt{color:#38bdf8;font-weight:900}
+.ok{color:#22c55e;font-weight:900}
+.warn{color:#f59e0b;font-weight:900}
+.cursor{
+  display:inline-block;
+  width:10px;
+  height:18px;
+  background:#38bdf8;
+  margin-left:4px;
+  animation: blink .9s infinite;
+  transform: translateY(3px);
+}
+@keyframes blink{
+  0%,49%{opacity:1}
+  50%,100%{opacity:0}
 }
 
-main{max-width:1000px;margin:auto;padding:0 24px}
-section{margin-bottom:70px}
+/* MAIN */
+main{max-width:1000px;margin:auto;padding: 0 22px 40px}
+section{margin-top: 28px; margin-bottom: 28px}
 .card{
-  background:var(--card);
-  border-radius:18px;
-  padding:32px;
-  box-shadow:0 10px 30px rgba(0,0,0,.06)
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) + 2px);
+  padding: 24px;
+  box-shadow: var(--shadow);
 }
-section h2{font-size:2rem;margin-bottom:20px;color:var(--primary)}
 
+/* ACCORDION HEADER */
+.acc-head{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:14px;
+  cursor:pointer;
+  user-select:none;
+}
+.acc-title{
+  display:flex;align-items:center;gap:12px;
+}
+.pill{
+  font-size:.78rem;
+  font-weight:900;
+  padding:6px 10px;
+  border-radius:999px;
+  background: rgba(34,197,94,.10);
+  border:1px solid rgba(34,197,94,.22);
+  color: #15803d;
+}
+.chev{
+  width:36px;height:36px;border-radius:999px;
+  display:grid;place-items:center;
+  background: rgba(2,6,23,.04);
+  border:1px solid rgba(2,6,23,.08);
+  transition:.2s ease;
+  font-weight:900;
+  color: var(--muted);
+}
+.card.open .chev{transform: rotate(180deg)}
+.card h2{
+  font-size:1.7rem;
+  color: var(--primary);
+}
+.acc-body{
+  margin-top: 18px;
+  overflow:hidden;
+  max-height: 0px;
+  transition: max-height .35s ease;
+}
+.card.open .acc-body{max-height: 1200px;}
+p{color: var(--muted); font-size:1.02rem}
+
+/* LISTS */
 ul{list-style:none}
-ul li{margin-bottom:10px;color:var(--muted)}
-ul li::before{content:'$';margin-right:10px;color:var(--secondary);font-weight:700}
-
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
-
-footer{
-  text-align:center;padding:30px;margin-top:60px;
-  background:#f1f5f9;color:var(--muted);font-size:.9rem
+li{margin-bottom:10px;color:var(--muted)}
+li::before{
+  content:"$";
+  margin-right:10px;
+  color: var(--secondary);
+  font-weight:900;
 }
 
-@media(max-width:900px){#hero{grid-template-columns:1fr}}
+/* SKILLS BARS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.skill{
+  padding: 14px 14px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(37,99,235,.05), rgba(14,165,233,.03));
+}
+.skill-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
+.skill-name{font-weight:900;color:var(--text)}
+.skill-val{font-weight:900;color:var(--muted);font-size:.92rem}
+.bar{
+  height:10px;border-radius:999px;
+  background: rgba(2,6,23,.08);
+  overflow:hidden;
+}
+.fill{
+  height:100%;
+  width:0%;
+  background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+  border-radius:999px;
+  transition: width 1.2s ease;
+}
+
+/* PROJECTS */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.proj{
+  border:1px solid var(--border);
+  border-radius: 16px;
+  padding: 18px;
+  background: #fff;
+  transition:.2s ease;
+}
+.proj:hover{transform: translateY(-4px); box-shadow: var(--shadow)}
+.proj h3{font-size:1.05rem;color:var(--text);margin-bottom:6px}
+.proj p{font-size:.98rem}
+.proj a{
+  display:inline-flex;align-items:center;gap:10px;
+  margin-top:12px;
+  text-decoration:none;
+  font-weight:900;
+  color: var(--primary);
+}
+.tagrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.tag{
+  font-size:.75rem;
+  padding:5px 10px;
+  border-radius:999px;
+  background: rgba(14,165,233,.10);
+  border:1px solid rgba(14,165,233,.20);
+  color: #0369a1;
+  font-weight:900;
+}
+
+/* TOAST */
+.toast{
+  position: fixed;
+  top: 80px;
+  right: 18px;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  border-radius: 14px;
+  padding: 12px 14px;
+  color: var(--text);
+  font-weight:800;
+  opacity:0;
+  transform: translateY(-8px);
+  transition: .25s ease;
+  z-index: 2000;
+}
+.toast.show{opacity:1; transform: translateY(0px)}
+
+/* BACK TO TOP */
+#backToTop{
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  width:44px;height:44px;border-radius:999px;
+  display:grid;place-items:center;
+  background: var(--primary);
+  color:#fff;
+  text-decoration:none;
+  font-weight:900;
+  box-shadow: 0 16px 30px rgba(37,99,235,.28);
+  opacity:0;
+  pointer-events:none;
+  transform: translateY(8px);
+  transition:.2s ease;
+  z-index: 1500;
+}
+#backToTop.show{
+  opacity:1;
+  pointer-events:auto;
+  transform: translateY(0px);
+}
+#backToTop:hover{transform: translateY(-2px)}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding: 34px 18px;
+  margin-top: 40px;
+  background: rgba(255,255,255,.70);
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size:.92rem;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  #hero{grid-template-columns: 1fr; margin-top: 34px}
+  .hero-text h1{font-size: 2.4rem}
+  nav{padding:12px 14px}
+}
 </style>
 </head>
+
 <body>
 <header>
   <nav>
-    <div class="logo">Parvana Alizada</div>
+    <div class="logo">
+      Parvana Alizada
+      <span class="badge">DevOps</span>
+    </div>
     <ul>
       <li><a href="#about">Profile</a></li>
       <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#education">Education</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -105,95 +403,314 @@ footer{
 
 <section id="hero">
   <div class="hero-text" data-aos="fade-right">
+    <div class="kicker"><span class="dot"></span> Linux + DevOps • Automation • CI/CD</div>
     <h1>Junior <span>DevOps Engineer</span></h1>
-    <p>Linux-focused IT and DevOps specialist with hands-on experience in system administration, data center operations, and CI/CD environments.</p>
-    <a href="#contact" class="button">Contact Me</a>
+    <p>Linux-focused IT and DevOps Engenieer with hands-on experience in System Administration, Data Center Operations, and CI/CD environments.</p>
+    <div class="cta-row">
+      <a href="#contact" class="button">Contact Me</a>
+      <a href="#projects" class="button secondary">See Projects</a>
+    </div>
   </div>
-  <div class="terminal" data-aos="fade-left">
-    <div><span class="prompt">parvana@linux</span>:~$ kubectl get deploy</div>
-    <div>nginx-app      Ready</div>
-    <div>monitoring     Ready</div><br>
-    <div><span class="prompt">parvana@linux</span>:~$ ansible-playbook site.yml</div>
-    <div>✔ infrastructure configured successfully</div>
+
+  <div class="terminal-wrap" data-aos="fade-left">
+    <div class="terminal">
+      <div class="term-top">
+        <div class="dots" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div class="term-actions">
+          <button class="smallbtn" id="btnCopy">Copy command</button>
+          <button class="smallbtn" id="btnNext">Next</button>
+        </div>
+      </div>
+      <pre id="termOut"><span class="prompt">parvana@linux</span>:~$ <span id="typed"></span><span class="cursor"></span></pre>
+    </div>
   </div>
 </section>
 
 <main>
+
 <section id="about" data-aos="fade-up">
-  <div class="card">
-    <h2>Professional Profile</h2>
-    <p>I am an IT specialist with a strong focus on Linux and DevOps. I work with Linux systems (RHEL, Ubuntu), software installation and repository management (APT, YUM), disk partitioning, and mounting. I also have experience with Windows Server environments including Active Directory, DNS, and DHCP. In the DevOps area, I use Git, Bash, Ansible, Docker, and CI/CD pipelines, and I am actively learning Kubernetes through hands-on practice.</p>
+  <div class="card open accordion">
+    <div class="acc-head" role="button" tabindex="0">
+      <div class="acc-title">
+        <h2>Professional Profile</h2>
+        <span class="pill">whoami</span>
+      </div>
+      <div class="chev">⌄</div>
+    </div>
+    <div class="acc-body">
+      <p>
+        I am an IT specialist with a strong focus on Linux and DevOps. I work with Linux systems (RHEL, Ubuntu),
+        repository & package management (APT, YUM), disk partitioning, and mounting. I also have experience with
+        Windows Server environments including Active Directory, DNS, and DHCP. In the DevOps area, I use Git,
+        Bash, Ansible, Docker, and CI/CD pipelines, and I am actively learning Kubernetes through hands-on practice.
+      </p>
+    </div>
   </div>
 </section>
 
 <section id="skills" data-aos="fade-up">
-  <div class="card">
-    <h2>Technical Skills</h2>
-    <div class="grid">
-      <ul>
-        <li>Linux (RHEL, Ubuntu)</li>
-        <li>APT / YUM package management</li>
-        <li>Disk partitioning & mounting</li>
-        <li>Bash scripting</li>
-        <li>Docker & containers</li>
-      </ul>
-      <ul>
-        <li>Git & GitLab</li>
-        <li>Ansible automation</li>
-        <li>CI/CD (GitLab)</li>
-        <li>Kubernetes fundamentals</li>
-        <li>YAML configuration</li>
-      </ul>
-      <ul>
-        <li>Windows Server</li>
-        <li>Active Directory</li>
-        <li>DNS / DHCP</li>
-        <li>Data Center operations</li>
-      </ul>
+  <div class="card open accordion">
+    <div class="acc-head" role="button" tabindex="0">
+      <div class="acc-title">
+        <h2>Technical Skills</h2>
+        <span class="pill">skills --list</span>
+      </div>
+      <div class="chev">⌄</div>
+    </div>
+    <div class="acc-body">
+      <div class="skills-grid" id="skillsGrid">
+        <div class="skill" data-level="90">
+          <div class="skill-top"><span class="skill-name">Linux (RHEL/Ubuntu)</span><span class="skill-val">90%</span></div>
+          <div class="bar"><div class="fill"></div></div>
+        </div>
+        <div class="skill" data-level="80">
+          <div class="skill-top"><span class="skill-name">Bash Scripting</span><span class="skill-val">80%</span></div>
+          <div class="bar"><div class="fill"></div></div>
+        </div>
+        <div class="skill" data-level="82">
+          <div class="skill-top"><span class="skill-name">Git & GitLab</span><span class="skill-val">82%</span></div>
+          <div class="bar"><div class="fill"></div></div>
+        </div>
+        <div class="skill" data-level="78">
+          <div class="skill-top"><span class="skill-name">Ansible Automation</span><span class="skill-val">78%</span></div>
+          <div class="bar"><div class="fill"></div></div>
+        </div>
+        <div class="skill" data-level="76">
+          <div class="skill-top"><span class="skill-name">Docker & Containers</span><span class="skill-val">76%</span></div>
+          <div class="bar"><div class="fill"></div></div>
+        </div>
+        <div class="skill" data-level="65">
+          <div class="skill-top"><span class="skill-name">Kubernetes Fundamentals</span><span class="skill-val">65%</span></div>
+          <div class="bar"><div class="fill"></div></div>
+        </div>
+        <div class="skill" data-level="70">
+          <div class="skill-top"><span class="skill-name">CI/CD (GitLab)</span><span class="skill-val">70%</span></div>
+          <div class="bar"><div class="fill"></div></div>
+        </div>
+        <div class="skill" data-level="72">
+          <div class="skill-top"><span class="skill-name">Windows Server (AD/DNS/DHCP)</span><span class="skill-val">72%</span></div>
+          <div class="bar"><div class="fill"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" data-aos="fade-up">
+  <div class="card open accordion">
+    <div class="acc-head" role="button" tabindex="0">
+      <div class="acc-title">
+        <h2>Projects</h2>
+        <span class="pill">ls -la projects/</span>
+      </div>
+      <div class="chev">⌄</div>
+    </div>
+    <div class="acc-body">
+      <div class="grid">
+        <div class="proj">
+          <h3>Nginx </h3>
+          <p>A simple containerized Nginx app with clean structure and deployment-ready config.</p>
+          <div class="tagrow">
+            <span class="tag">docker</span><span class="tag">nginx</span><span class="tag">static</span>
+          </div>
+          <a href="https://github.com/ParvanaAli/simple-nginx-app" target="_blank" rel="noreferrer">Open on GitHub →</a>
+        </div>
+        <div class="proj">
+          <h3>Zabbix Monitoring</h3>
+          <p>Monitoring setup with alerts & dashboards for infrastructure visibility and reliability.</p>
+          <div class="tagrow">
+            <span class="tag">zabbix</span><span class="tag">monitoring</span><span class="tag">alerts</span>
+          </div>
+          <a href="https://github.com/ParvanaAli/zabbix-monitoring" target="_blank" rel="noreferrer">Open on GitHub →</a>
+        </div>
+        <div class="proj">
+          <h3>Ansible Playbooks</h3>
+          <p>Reusable playbooks for system configuration, packages, users, and common hardening steps.</p>
+          <div class="tagrow">
+            <span class="tag">ansible</span><span class="tag">automation</span><span class="tag">yaml</span>
+          </div>
+          <a href="https://github.com/ParvanaAli/ansible-playbooks" target="_blank" rel="noreferrer">Open on GitHub →</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <section id="experience" data-aos="fade-up">
-  <div class="card">
-    <h2>Work Experience</h2>
-    <ul>
-      <li><strong>Grandmart MMC – Junior DevOps Engineer</strong> (Sep 2025 – Present)</li>
-      <li><strong>AzinTelecom – Data Center IT Technician</strong> (Aug 2024 – Sep 2025)</li>
-      <li><strong>B2B Group – IT Technician (COP29)</strong> (Sep – Oct 2024)</li>
-      <li><strong>Kronos Enterprises – Helpdesk Technician (COP29)</strong> (Nov 2024)</li>
-    </ul>
+  <div class="card open accordion">
+    <div class="acc-head" role="button" tabindex="0">
+      <div class="acc-title">
+        <h2>Work Experience</h2>
+        <span class="pill">cat experience.txt</span>
+      </div>
+      <div class="chev">⌄</div>
+    </div>
+    <div class="acc-body">
+      <ul>
+        <li><strong>Grandmart MMC – Junior DevOps Engineer</strong> (Sep 2025 – Present)</li>
+        <li><strong>AzinTelecom – Data Center IT Technician</strong> (Aug 2024 – Sep 2025)</li>
+        <li><strong>B2B Group – IT Technician (COP29)</strong> (Sep – Oct 2024)</li>
+        <li><strong>Kronos Enterprises – Helpdesk Technician (COP29)</strong> (Nov 2024)</li>
+      </ul>
+    </div>
   </div>
 </section>
 
 <section id="education" data-aos="fade-up">
-  <div class="card">
-    <h2>Education & Certificates</h2>
-    <ul>
-      <li>Bachelor of Computer Engineering – Sumgait State University (2020–2024)</li>
-      <li>Bachelor of Computer Networks – ASOIU (2016–2018)</li>
-      <li>CompTIA A+ (2024)</li>
-      <li>CompTIA Server+ (2024)</li>
-      <li>RHCSA, RHCE, CKA – In Progress</li>
-    </ul>
+  <div class="card open accordion">
+    <div class="acc-head" role="button" tabindex="0">
+      <div class="acc-title">
+        <h2>Education & Certificates</h2>
+        <span class="pill">certs --status</span>
+      </div>
+      <div class="chev">⌄</div>
+    </div>
+    <div class="acc-body">
+      <ul>
+        <li>Bachelor of Computer Engineering – Sumgait State University (2020–2024)</li>
+        <li>Bachelor of Computer Networks – ASOIU (2016–2018)</li>
+        <li>CompTIA A+ (2024)</li>
+        <li>CompTIA Server+ (2024)</li>
+        <li>RHCSA, RHCE, CKA – In Progress</li>
+      </ul>
+    </div>
   </div>
 </section>
 
 <section id="contact" data-aos="fade-up">
-  <div class="card">
-    <h2>Contact</h2>
-    <p>Email: aliza.parvana@gmail.com</p>
-    <p>Phone: +994 50 526 99 71</p>
-    <p>LinkedIn: linkedin.com/in/parvana-alizada</p>
+  <div class="card open accordion">
+    <div class="acc-head" role="button" tabindex="0">
+      <div class="acc-title">
+        <h2>Contact</h2>
+        <span class="pill">ping -c 1 parvana</span>
+      </div>
+      <div class="chev">⌄</div>
+    </div>
+    <div class="acc-body">
+      <p><strong>Email:</strong> <a href="mailto:aliza.parvana@gmail.com">aliza.parvana@gmail.com</a></p>
+      <p><strong>Phone:</strong> +994 50 526 99 71</p>
+      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/parvana-alizada/" target="_blank" rel="noreferrer">linkedin.com/in/parvana-alizada</a></p>
+    </div>
   </div>
 </section>
+
 </main>
+
+<a href="#" id="backToTop" aria-label="Back to top">↑</a>
+<div class="toast" id="toast">Copied!</div>
 
 <footer>
   © 2025 Parvana Alizada | Junior DevOps Engineer
 </footer>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>AOS.init({once:true});</script>
-</body>
-</html>
+<script>
+  AOS.init({once:true});
+
+  // Back to top
+  const back = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    back.classList.toggle('show', window.scrollY > 380);
+  });
+
+  // Active nav highlight
+  const links = Array.from(document.querySelectorAll('nav a'));
+  const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        links.forEach(l=>l.classList.remove('active'));
+        const id = '#'+e.target.id;
+        const active = links.find(l=>l.getAttribute('href')===id);
+        if(active) active.classList.add('active');
+      }
+    });
+  }, {rootMargin:'-50% 0px -45% 0px', threshold:0.01});
+
+  sections.forEach(s=>io.observe(s));
+
+  // Accordion open/close
+  document.querySelectorAll('.accordion').forEach(card=>{
+    const head = card.querySelector('.acc-head');
+    const toggle = ()=> card.classList.toggle('open');
+    head.addEventListener('click', toggle);
+    head.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' ') toggle(); });
+  });
+
+  // Skills bars animate on view
+  const skills = document.querySelectorAll('.skill');
+  const skillObs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const level = e.target.getAttribute('data-level') || 0;
+        const fill = e.target.querySelector('.fill');
+        fill.style.width = level + '%';
+        skillObs.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.35});
+  skills.forEach(s=>skillObs.observe(s));
+
+  // Terminal typing demo (Linux/DevOps commands)
+  const commands = [
+    "kubectl get nodes -o wide",
+    "docker ps --format 'table {{.Names}}\\t{{.Status}}'",
+    "ansible-playbook site.yml -i inventory",
+    "git push origin main",
+    "helm upgrade --install monitoring kube-prometheus-stack",
+    "journalctl -u nginx --since '10 min ago'",
+    "ss -lntp | grep ':80'"
+  ];
+
+  const typed = document.getElementById('typed');
+  const termOut = document.getElementById('termOut');
+  const btnNext = document.getElementById('btnNext');
+  const btnCopy = document.getElementById('btnCopy');
+
+  let idx = 0;
+  let typing = false;
+
+  function typeCommand(text){
+    if(typing) return;
+    typing = true;
+    typed.textContent = "";
+    let i = 0;
+
+    const interval = setInterval(()=>{
+      typed.textContent += text[i] || "";
+      i++;
+      if(i > text.length){
+        clearInterval(interval);
+        // print "fake output"
+        setTimeout(()=>{
+          const output = document.createElement('div');
+          output.innerHTML =
+            "<br><span class='ok'>✔</span> command executed successfully<br>" +
+            "<span class='prompt'>parvana@linux</span>:~$ ";
+          termOut.appendChild(output);
+          typing = false;
+        }, 250);
+      }
+    }, 35);
+  }
+
+  // Start first command
+  typeCommand(commands[idx]);
+
+  btnNext.addEventListener('click', ()=>{
+    idx = (idx + 1) % commands.length;
+    // reset terminal line
+    termOut.innerHTML = "<span class='prompt'>parvana@linux</span>:~$ <span id='typed'></span><span class='cursor'></span>";
+    // rebind typed span after reset
+    const newTyped = document.getElementById('typed');
+    // swap reference
+    typedRefSwap(newTyped);
+    typeCommand(commands[idx]);
+  });
+
+  function typedRefSwap(newNode){
+    // update global reference safely
+    window.__typedNode = newNode;
+  }
+  // Use a getter to always point to latest node
