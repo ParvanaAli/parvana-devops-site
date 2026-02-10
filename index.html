@@ -1,279 +1,1659 @@
 <!DOCTYPE html>
 <html lang="az">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Parvana Alizada | DevOps Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parvana Alizada | DevOps Engineer</title>
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-/* ================= ROOT ================= */
-:root{
-  --bg1:#f8fafc;
-  --bg2:#eef2ff;
-  --ink:#0f172a;
-  --muted:#64748b;
-
-  --primary:#38bdf8;
-  --secondary:#22c55e;
-  --accent:#0ea5e9;
-
-  --line:#e5e7eb;
-  --glass: rgba(255,255,255,.82);
-
-  --term1:#0b1222;
-  --term2:#020617;
-
-  --radius:18px;
-  --max:1100px;
+:root {
+  /* Light mode */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-terminal: #1a1f2e;
+  
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  
+  --accent-cyan: #06b6d4;
+  --accent-green: #10b981;
+  --accent-blue: #3b82f6;
+  --accent-purple: #8b5cf6;
+  
+  --border-primary: #e2e8f0;
+  --border-bright: #06b6d4;
+  
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
 }
 
-/* ================= BASE ================= */
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  font-family:Inter,system-ui,sans-serif;
-  color:var(--ink);
-  background:
-    radial-gradient(1200px 700px at 10% 10%, #dbeafe 0%, transparent 60%),
-    radial-gradient(900px 600px at 90% 20%, #e0f2fe 0%, transparent 55%),
-    linear-gradient(120deg,var(--bg1),var(--bg2));
-  line-height:1.65;
-  overflow-x:hidden;
+[data-theme="dark"] {
+  --bg-primary: #0a0e1a;
+  --bg-secondary: #12161f;
+  --bg-card: #1a1f2e;
+  --bg-terminal: #0d1117;
+  
+  --text-primary: #e6edf3;
+  --text-secondary: #8b949e;
+  --text-muted: #58606a;
+  
+  --accent-cyan: #00d9ff;
+  --accent-green: #39ff14;
+  --accent-blue: #4fc3f7;
+  --accent-purple: #a78bfa;
+  
+  --border-primary: #30363d;
+  --border-bright: #58a6ff;
+  
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.4);
+  --shadow-lg: 0 10px 25px rgba(0,0,0,0.5);
 }
 
-/* ================= DARK MODE ================= */
-body.dark{
-  background:
-    radial-gradient(1000px 600px at 10% 10%, #022c22 0%, transparent 60%),
-    radial-gradient(900px 600px at 90% 20%, #020617 0%, transparent 55%),
-    linear-gradient(180deg,#020617,#020617);
-  color:#e5e7eb;
-}
-body.dark header{background:rgba(2,6,23,.95)}
-body.dark h1, body.dark h2{color:#38bdf8}
-body.dark p, body.dark .sub, body.dark .lead{color:#cbd5f5}
-
-body.dark .cmd{
-  background:#020617;
-  border:1px solid #38bdf8;
-  color:#38bdf8;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body.dark .glass{
-  background:rgba(2,6,23,.7);
-  border:1px solid #020617;
+html {
+  scroll-behavior: smooth;
 }
 
-/* ================= HEADER ================= */
-header{
-  position:sticky;top:0;z-index:999;
-  background:rgba(255,255,255,.9);
-  backdrop-filter:blur(10px);
-  border-bottom:1px solid var(--line);
-}
-nav{
-  max-width:var(--max);
-  margin:auto;
-  padding:14px 18px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-.brand{font-weight:900;color:var(--primary)}
-.theme-btn{
-  cursor:pointer;
-  border:0;
-  background:none;
-  font-size:1.2rem;
+body {
+  font-family: 'JetBrains Mono', 'Consolas', 'Monaco', monospace;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.7;
+  overflow-x: hidden;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* ================= SECTIONS ================= */
-.full{padding:64px 0;border-bottom:1px solid var(--line)}
-.wrap{max-width:var(--max);margin:auto;padding:0 18px}
-
-/* ================= HERO ================= */
-.hero-grid{
-  display:grid;
-  grid-template-columns:1.2fr 1fr;
-  gap:26px;
-}
-.kicker{
-  font-weight:900;
-  color:var(--muted);
-  margin-bottom:10px;
-}
-.hero h1{font-size:3rem}
-.hero h1 span{
-  background:linear-gradient(90deg,#38bdf8,#22c55e);
-  -webkit-background-clip:text;
-  color:transparent;
+::-webkit-scrollbar {
+  width: 10px;
 }
 
-.cmd-badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
-.cmd{
-  font-family:monospace;
-  font-weight:900;
-  padding:6px 12px;
-  border-radius:999px;
-  border:1px solid #38bdf8;
-  background:#e0f2fe;
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
 }
 
-/* ================= PENGUINS ================= */
-.penguins{
-  margin-top:16px;
-  font-size:1.5rem;
-}
-.penguins span{margin-right:6px}
-
-/* ================= TERMINAL ================= */
-.term{
-  background:linear-gradient(180deg,var(--term1),var(--term2));
-  color:#e5e7eb;
-  border-radius:18px;
-  padding:16px;
-  position:relative;
-}
-.term::after{
-  content:"🐧";
-  position:absolute;
-  right:14px;
-  bottom:10px;
-  opacity:.15;
-  font-size:3rem;
-}
-.prompt{color:#22c55e;font-weight:900}
-.cursor{
-  display:inline-block;
-  width:10px;height:18px;
-  background:#38bdf8;
-  animation:blink 1s infinite;
-}
-@keyframes blink{50%{opacity:0}}
-
-/* ================= ABOUT ================= */
-.lead{max-width:75ch;color:var(--muted)}
-.glass{
-  background:var(--glass);
-  border-radius:18px;
-  padding:16px;
+::-webkit-scrollbar-thumb {
+  background: var(--border-primary);
+  border-radius: 5px;
 }
 
-/* ================= SKILLS ================= */
-.skill-row{
-  display:grid;
-  grid-template-columns:220px 1fr;
-  gap:12px;
-  margin-bottom:12px;
-}
-.track{
-  height:10px;
-  border-radius:999px;
-  background:#cbd5f5;
-}
-.fill{
-  height:100%;
-  border-radius:999px;
-  background:linear-gradient(90deg,#38bdf8,#22c55e);
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-cyan);
 }
 
-/* ================= LIST ================= */
-.ul{list-style:none}
-.ul li::before{content:"$ ";color:#22c55e}
+::selection {
+  background: rgba(6, 182, 212, 0.3);
+  color: var(--text-primary);
+}
 
-/* ================= FOOTER ================= */
-footer{text-align:center;padding:28px 0;color:var(--muted)}
+/* Header */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-primary);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+}
 
-/* ================= RESPONSIVE ================= */
-@media(max-width:900px){
-  .hero-grid{grid-template-columns:1fr}
-  .hero h1{font-size:2.2rem}
+nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--accent-cyan);
+  letter-spacing: 0.5px;
+}
+
+.brand::before {
+  content: '$';
+  font-size: 1.5rem;
+  color: var(--accent-green);
+}
+
+.brand small {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 6px;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid var(--accent-green);
+  color: var(--accent-green);
+}
+
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.theme-toggle {
+  cursor: pointer;
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  border: 1px solid var(--border-primary);
+  background: var(--bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent-cyan);
+  transform: scale(1.05);
+}
+
+.lang-toggle {
+  display: flex;
+  gap: 6px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: 8px;
+  padding: 6px;
+}
+
+.lang-toggle button {
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 6px 14px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.lang-toggle button.active {
+  background: var(--accent-cyan);
+  color: var(--bg-primary);
+}
+
+.menu-toggle {
+  display: none;
+  font-family: inherit;
+  font-weight: 600;
+  padding: 10px 16px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: 8px;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 8px;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+.nav-menu a {
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 10px 16px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+  color: var(--accent-cyan);
+  background: rgba(6, 182, 212, 0.1);
+}
+
+/* Sections */
+section {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  padding: 80px 0;
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  color: var(--accent-cyan);
+  letter-spacing: 1px;
+  line-height: 1.2;
+}
+
+.section-title::before {
+  content: '# ';
+  color: var(--accent-green);
+}
+
+.section-subtitle {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-top: 12px;
+  max-width: 70ch;
+  font-weight: 400;
+}
+
+.cmd-badges {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.cmd-badge {
+  font-size: 0.85rem;
+  padding: 8px 16px;
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid var(--accent-blue);
+  border-radius: 8px;
+  color: var(--accent-blue);
+  font-weight: 500;
+}
+
+.cmd-badge::before {
+  content: '$ ';
+  color: var(--accent-green);
+}
+
+/* Hero */
+#hero {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  padding: 100px 0;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 50px;
+  align-items: start;
+}
+
+.hero-content {
+  padding-top: 20px;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 18px;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid var(--accent-green);
+  border-radius: 999px;
+  margin-bottom: 24px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  background: var(--accent-green);
+  border-radius: 50%;
+  animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+  }
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.hero-title .highlight {
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-description {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  max-width: 60ch;
+  margin-bottom: 30px;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.btn-primary {
+  background: var(--accent-cyan);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(6, 182, 212, 0.3);
+}
+
+.btn-secondary {
+  background: var(--bg-card);
+  color: var(--accent-cyan);
+  border: 1px solid var(--accent-cyan);
+}
+
+.btn-secondary:hover {
+  background: rgba(6, 182, 212, 0.1);
+  transform: translateY(-2px);
+}
+
+.quick-commands {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Terminal */
+.terminal {
+  background: var(--bg-terminal);
+  border: 1px solid var(--border-primary);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  transition: all 0.3s ease;
+}
+
+.terminal:hover {
+  border-color: var(--accent-cyan);
+}
+
+.terminal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.terminal-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.dot.red { background: #ff5f56; }
+.dot.yellow { background: #ffbd2e; }
+.dot.green { background: #27c93f; }
+
+.terminal-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.terminal-btn {
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  color: #e6edf3;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.terminal-btn:hover {
+  background: rgba(0, 217, 255, 0.2);
+  border-color: var(--accent-cyan);
+}
+
+.terminal-body {
+  padding: 24px;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  font-family: 'JetBrains Mono', monospace;
+  min-height: 350px;
+  color: #e6edf3;
+}
+
+.prompt {
+  color: #00d9ff;
+  font-weight: 700;
+}
+
+.success {
+  color: #39ff14;
+  font-weight: 700;
+}
+
+.output {
+  color: #8b949e;
+}
+
+.cursor {
+  display: inline-block;
+  width: 8px;
+  height: 18px;
+  background: #00d9ff;
+  margin-left: 4px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* About */
+.about-content {
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: var(--text-secondary);
+  max-width: 90ch;
+}
+
+/* Skills */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.skill-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.skill-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--accent-cyan);
+}
+
+.skill-item h3 {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+
+.skill-item p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* Projects */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+.project-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
+  border-radius: 12px;
+  padding: 28px;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent-cyan);
+  box-shadow: var(--shadow-lg);
+}
+
+.project-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+}
+
+.project-card p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.project-tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.tag {
+  font-size: 0.8rem;
+  padding: 6px 14px;
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid var(--accent-blue);
+  border-radius: 6px;
+  color: var(--accent-blue);
+  font-weight: 500;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accent-cyan);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.project-link:hover {
+  gap: 12px;
+}
+
+/* Timeline */
+.timeline-list {
+  list-style: none;
+}
+
+.timeline-item {
+  padding: 20px 0 20px 30px;
+  border-left: 2px solid var(--border-primary);
+  margin-bottom: 20px;
+  position: relative;
+  color: var(--text-secondary);
+  font-weight: 500;
+  line-height: 1.8;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -7px;
+  top: 24px;
+  width: 12px;
+  height: 12px;
+  background: var(--accent-cyan);
+  border-radius: 50%;
+  border: 2px solid var(--bg-primary);
+}
+
+.timeline-item strong {
+  color: var(--text-primary);
+  display: block;
+  margin-bottom: 6px;
+  font-size: 1.05rem;
+}
+
+/* Certifications */
+.certs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.cert-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.cert-card:hover {
+  border-color: var(--accent-green);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+}
+
+.cert-icon {
+  font-size: 2.5rem;
+}
+
+.cert-info h4 {
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+
+.cert-info .status {
+  font-size: 0.85rem;
+  color: var(--accent-green);
+  font-weight: 600;
+}
+
+.cert-info .status.in-progress {
+  color: #f59e0b;
+}
+
+/* Contact */
+.contact-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
+  border-radius: 12px;
+  padding: 32px;
+  max-width: 700px;
+  box-shadow: var(--shadow-sm);
+}
+
+.contact-item {
+  padding: 16px 0;
+  border-bottom: 1px dashed var(--border-primary);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.contact-item:last-child {
+  border-bottom: none;
+}
+
+.contact-item strong {
+  color: var(--text-primary);
+  min-width: 120px;
+  font-size: 0.95rem;
+}
+
+.contact-item a {
+  color: var(--accent-cyan);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.contact-item a:hover {
+  opacity: 0.8;
+}
+
+/* Linux Badge */
+.linux-badge {
+  position: fixed;
+  left: 24px;
+  bottom: 24px;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
+  border-radius: 999px;
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
+}
+
+.linux-badge:hover {
+  border-color: var(--accent-green);
+  transform: scale(1.05);
+}
+
+.penguin-icon {
+  font-size: 1.8rem;
+  animation: wiggle 3s infinite;
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+.linux-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.linux-text code {
+  color: var(--accent-green);
+  font-weight: 700;
+}
+
+/* Back to Top */
+.back-to-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 50px;
+  height: 50px;
+  background: var(--accent-cyan);
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  z-index: 998;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.back-to-top:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  top: 100px;
+  right: 24px;
+  z-index: 9999;
+  padding: 16px 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--accent-green);
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 40px 24px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .menu-toggle {
+    display: inline-flex;
+  }
+  
+  .nav-menu {
+    width: 100%;
+    flex-direction: column;
+    background: var(--bg-card);
+    border: 1px solid var(--border-primary);
+    border-radius: 12px;
+    padding: 16px;
+    margin-top: 16px;
+    display: none;
+  }
+  
+  .nav-menu.active {
+    display: flex;
+  }
+  
+  .linux-badge {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    width: calc(100% - 24px);
+    justify-content: center;
+  }
+  
+  .back-to-top {
+    right: 12px;
+    bottom: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .skills-grid,
+  .projects-grid,
+  .certs-grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
 </head>
 
 <body>
 
+<!-- Header -->
 <header>
   <nav>
-    <div class="brand">Parvana Alizada | DevOps</div>
-    <button class="theme-btn" onclick="toggleTheme()">🌙</button>
+    <div class="brand">
+      Parvana Alizada
+      <small>DevOps</small>
+    </div>
+    
+    <div class="nav-controls">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <span id="themeIcon">🌙</span>
+      </button>
+      <div class="lang-toggle">
+        <button id="btnAZ" class="active">AZ</button>
+        <button id="btnEN">EN</button>
+      </div>
+      <button class="menu-toggle" id="menuToggle">☰ Menu</button>
+    </div>
+    
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="#hero" data-i18n="nav_home">Ana səhifə</a></li>
+      <li><a href="#about" data-i18n="nav_about">Haqqımda</a></li>
+      <li><a href="#skills" data-i18n="nav_skills">Bacarıqlar</a></li>
+      <li><a href="#projects" data-i18n="nav_projects">Layihələr</a></li>
+      <li><a href="#experience" data-i18n="nav_experience">Təcrübə</a></li>
+      <li><a href="#education" data-i18n="nav_education">Təhsil</a></li>
+      <li><a href="#contact" data-i18n="nav_contact">Əlaqə</a></li>
+    </ul>
   </nav>
 </header>
 
-<section class="full">
-<div class="wrap hero-grid">
-  <div>
-    <div class="kicker">Linux • DevOps • CI/CD</div>
-    <h1>Junior <span>DevOps Engineer</span></h1>
-    <p class="lead">
-      Linux-focused IT & DevOps specialist with hands-on experience in real production environments.
+<!-- Hero -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content" data-aos="fade-right">
+        <div class="status-badge">
+          <span class="status-dot"></span>
+          <span data-i18n="hero_badge">Linux • DevOps • Automation • CI/CD</span>
+        </div>
+        
+        <h1 class="hero-title">
+          Junior <span class="highlight" data-i18n="hero_title">DevOps Engineer</span>
+        </h1>
+        
+        <p class="hero-description" data-i18n="hero_desc">
+          Linux yönümlü IT və DevOps mütəxəssisi. Sistem idarəetməsi, data center əməliyyatları və CI/CD mühitlərində praktiki təcrübə.
+        </p>
+        
+        <div class="hero-cta">
+          <a href="#contact" class="btn btn-primary" data-i18n="hero_cta1">Mənimlə əlaqə</a>
+          <a href="#projects" class="btn btn-secondary" data-i18n="hero_cta2">Layihələrə bax</a>
+        </div>
+        
+        <div class="quick-commands">
+          <span class="cmd-badge">kubectl get pods -A</span>
+          <span class="cmd-badge">docker compose up -d</span>
+          <span class="cmd-badge">ansible-playbook site.yml</span>
+        </div>
+      </div>
+      
+      <div class="terminal-wrapper" data-aos="fade-left">
+        <div class="terminal">
+          <div class="terminal-header">
+            <div class="terminal-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <div class="terminal-actions">
+              <button class="terminal-btn" id="termCopy" data-i18n="btn_copy">Copy</button>
+              <button class="terminal-btn" id="termNext" data-i18n="btn_next">Next</button>
+            </div>
+          </div>
+          <div class="terminal-body">
+            <div id="terminalOutput">
+              <span class="prompt">parvana@devops</span>:~$ <span id="typedText"></span><span class="cursor"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title" data-i18n="about_title">Haqqımda</h2>
+        <p class="section-subtitle" data-i18n="about_subtitle">
+          Professional background və texniki ekspertiza
+        </p>
+      </div>
+      <div class="cmd-badges">
+        <span class="cmd-badge">whoami</span>
+        <span class="cmd-badge">cat /etc/profile</span>
+      </div>
+    </div>
+    
+    <p class="about-content" data-i18n="about_content">
+      IT mütəxəssisi olaraq Linux və DevOps sahələrində ixtisaslaşmışam. Linux sistemləri (RHEL, Ubuntu) üzərində proqram təminatının quraşdırılması və repo idarəetməsi (APT, YUM), disk bölmələri və mounting əməliyyatları ilə işləyirəm. Həmçinin Windows Server mühitlərində Active Directory, DNS və DHCP təcrübəm var.
+      <br><br>
+      DevOps sahəsində Git, Bash və Ansible ilə əsas avtomatlaşdırma tapşırıqlarını yerinə yetirirəm. Kubernetes-i özüm öyrənirəm və Pods, Deployments, Services, ConfigMaps, Secrets və PVC-lər haqqında praktiki biliklərim var. YAML və konfiqurasiya faylları ilə əsas səviyyədə tanışam. Davamlı öyrənməyə və real texniki problemləri həll etməyə fokuslanmışam.
     </p>
+  </div>
+</section>
 
-    <div class="cmd-badges">
-      <span class="cmd"># kubectl get pods</span>
-      <span class="cmd"># docker compose up -d</span>
-      <span class="cmd"># ansible-playbook site.yml</span>
+<!-- Skills -->
+<section id="skills">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title" data-i18n="skills_title">Bacarıqlar</h2>
+        <p class="section-subtitle" data-i18n="skills_subtitle">
+          Texniki bacarıqlar və alətlər
+        </p>
+      </div>
+      <div class="cmd-badges">
+        <span class="cmd-badge">cat /proc/skills</span>
+        <span class="cmd-badge">grep -i tech</span>
+      </div>
     </div>
-
-    <div class="penguins">
-      <span>🐧</span><span>🐧</span><span>🐧</span>
-      <span style="color:#22c55e">●</span>
-      <span style="color:#38bdf8">●</span>
-      <span style="color:#a855f7">●</span>
-      <span style="color:#ef4444">●</span>
+    
+    <div class="skills-grid">
+      <div class="skill-item" data-aos="fade-up">
+        <h3 data-i18n="skill1_title">Linux System Administration</h3>
+        <p data-i18n="skill1_desc">RHEL, Ubuntu, package management (APT/YUM/DNF), disk operations, systemd services</p>
+      </div>
+      
+      <div class="skill-item" data-aos="fade-up" data-aos-delay="100">
+        <h3 data-i18n="skill2_title">Windows Server</h3>
+        <p data-i18n="skill2_desc">Active Directory, DNS, DHCP configuration və idarəetmə</p>
+      </div>
+      
+      <div class="skill-item" data-aos="fade-up" data-aos-delay="200">
+        <h3 data-i18n="skill3_title">DevOps Tools</h3>
+        <p data-i18n="skill3_desc">Git, Bash scripting, Ansible playbooks, basic automation</p>
+      </div>
+      
+      <div class="skill-item" data-aos="fade-up" data-aos-delay="300">
+        <h3 data-i18n="skill4_title">Containerization</h3>
+        <p data-i18n="skill4_desc">Docker containers, images, volumes, basic Docker Compose</p>
+      </div>
+      
+      <div class="skill-item" data-aos="fade-up" data-aos-delay="400">
+        <h3 data-i18n="skill5_title">Kubernetes (Learning)</h3>
+        <p data-i18n="skill5_desc">Pods, Deployments, Services, ConfigMaps, Secrets, PVCs</p>
+      </div>
+      
+      <div class="skill-item" data-aos="fade-up" data-aos-delay="500">
+        <h3 data-i18n="skill6_title">Monitoring</h3>
+        <p data-i18n="skill6_desc">Zabbix, Prometheus, Grafana - basic dashboards və alerts</p>
+      </div>
+      
+      <div class="skill-item" data-aos="fade-up" data-aos-delay="600">
+        <h3 data-i18n="skill7_title">Networking</h3>
+        <p data-i18n="skill7_desc">TCP/IP, DNS, DHCP, basic troubleshooting, network configuration</p>
+      </div>
+      
+      <div class="skill-item" data-aos="fade-up" data-aos-delay="700">
+        <h3 data-i18n="skill8_title">Data Center Operations</h3>
+        <p data-i18n="skill8_desc">Hardware support, server maintenance, cable management, monitoring</p>
+      </div>
     </div>
   </div>
+</section>
 
-  <div class="term">
-<pre><span class="prompt">parvana@linux</span>:~$ kubectl get nodes
-✔ Ready
-<span class="prompt">parvana@linux</span>:~$<span class="cursor"></span></pre>
+<!-- Projects -->
+<section id="projects">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title" data-i18n="projects_title">Layihələr</h2>
+        <p class="section-subtitle" data-i18n="projects_subtitle">
+          GitHub repoları və praktiki nümunələr
+        </p>
+      </div>
+      <div class="cmd-badges">
+        <span class="cmd-badge">ls -la ~/projects</span>
+        <span class="cmd-badge">git log</span>
+      </div>
+    </div>
+    
+    <div class="projects-grid">
+      <div class="project-card" data-aos="fade-up">
+        <h3 data-i18n="project1_title">Nginx Docker App</h3>
+        <p data-i18n="project1_desc">Sadə Nginx konteyner tətbiqi: portlar, konfiqurasiya və deploy.</p>
+        <div class="project-tags">
+          <span class="tag">docker</span>
+          <span class="tag">nginx</span>
+          <span class="tag">containerization</span>
+        </div>
+        <a href="https://github.com/ParvanaAli/simple-nginx-app" target="_blank" class="project-link" data-i18n="project_link">
+          GitHub-da aç →
+        </a>
+      </div>
+      
+      <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+        <h3 data-i18n="project2_title">Zabbix Monitoring</h3>
+        <p data-i18n="project2_desc">Monitoring konfiqurasiyası: alertlər və dashboardlar.</p>
+        <div class="project-tags">
+          <span class="tag">zabbix</span>
+          <span class="tag">monitoring</span>
+          <span class="tag">alerts</span>
+        </div>
+        <a href="https://github.com/ParvanaAli/zabbix-monitoring" target="_blank" class="project-link" data-i18n="project_link">
+          GitHub-da aç →
+        </a>
+      </div>
+      
+      <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+        <h3 data-i18n="project3_title">Ansible Playbooks</h3>
+        <p data-i18n="project3_desc">Avtomatlaşdırma playbook-ları: paket quraşdırma, user management.</p>
+        <div class="project-tags">
+          <span class="tag">ansible</span>
+          <span class="tag">automation</span>
+          <span class="tag">yaml</span>
+        </div>
+        <a href="https://github.com/ParvanaAli/ansible-playbooks" target="_blank" class="project-link" data-i18n="project_link">
+          GitHub-da aç →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Experience -->
+<section id="experience">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title" data-i18n="experience_title">İş Təcrübəsi</h2>
+        <p class="section-subtitle" data-i18n="experience_subtitle">
+          Professional karyera yolu
+        </p>
+      </div>
+      <div class="cmd-badges">
+        <span class="cmd-badge">cat experience.log</span>
+        <span class="cmd-badge">tail -n 10</span>
+      </div>
+    </div>
+    
+    <ul class="timeline-list">
+      <li class="timeline-item" data-i18n="exp1">
+        <strong>Grandmart MMC – Junior DevOps Engineer</strong>
+        Sentyabr 2025 – Hazırda
+      </li>
+      <li class="timeline-item" data-i18n="exp2">
+        <strong>AzinTelecom – Data Center IT Technician</strong>
+        Avqust 2024 – Sentyabr 2025
+      </li>
+      <li class="timeline-item" data-i18n="exp3">
+        <strong>B2B Group – IT Technician (COP29)</strong>
+        Sentyabr – Oktyabr 2024
+      </li>
+      <li class="timeline-item" data-i18n="exp4">
+        <strong>Kronos Enterprises – Helpdesk Technician (COP29)</strong>
+        Noyabr 2024
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- Education -->
+<section id="education">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title" data-i18n="education_title">Təhsil & Sertifikatlar</h2>
+        <p class="section-subtitle" data-i18n="education_subtitle">
+          Akademik təhsil və professional sertifikatlar
+        </p>
+      </div>
+      <div class="cmd-badges">
+        <span class="cmd-badge">cat /etc/education</span>
+        <span class="cmd-badge">ls certs/</span>
+      </div>
+    </div>
+    
+    <div class="certs-grid">
+      <div class="cert-card" data-aos="fade-up">
+        <div class="cert-icon">✅</div>
+        <div class="cert-info">
+          <h4>CompTIA A+</h4>
+          <span class="status">2024</span>
+        </div>
+      </div>
+      
+      <div class="cert-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="cert-icon">✅</div>
+        <div class="cert-info">
+          <h4>CompTIA Server+</h4>
+          <span class="status">2024</span>
+        </div>
+      </div>
+      
+      <div class="cert-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="cert-icon">✅</div>
+        <div class="cert-info">
+          <h4>CKA</h4>
+          <span class="status">2025</span>
+        </div>
+      </div>
+      
+      <div class="cert-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="cert-icon">✅</div>
+        <div class="cert-info">
+          <h4>RHCSA</h4>
+          <span class="status">2024</span>
+        </div>
+      </div>
+      
+      <div class="cert-card" data-aos="fade-up" data-aos-delay="400">
+        <div class="cert-icon">✅</div>
+        <div class="cert-info">
+          <h4>RHCE</h4>
+          <span class="status">2025</span>
+        </div>
+      </div>
+      
+      <div class="cert-card" data-aos="fade-up" data-aos-delay="500">
+        <div class="cert-icon">⏳</div>
+        <div class="cert-info">
+          <h4>CKAD</h4>
+          <span class="status in-progress" data-i18n="cert_progress">In Progress</span>
+        </div>
+      </div>
+    </div>
+    
+    <ul class="timeline-list" style="margin-top: 40px;">
+      <li class="timeline-item" data-i18n="edu1">
+        <strong>Sumqayıt Dövlət Universiteti</strong>
+        Bachelor of Computer Engineering (2020–2024)
+      </li>
+      <li class="timeline-item" data-i18n="edu2">
+        <strong>ASOIU</strong>
+        Bachelor of Computer Networks (2016–2018)
+      </li>
+      <li class="timeline-item" data-i18n="edu3">
+        <strong>Ugur IT Academy</strong>
+        Linux DevOps Administrator
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title" data-i18n="contact_title">Əlaqə</h2>
+        <p class="section-subtitle" data-i18n="contact_subtitle">
+          Birlikdə işləməyə hazıram
+        </p>
+      </div>
+      <div class="cmd-badges">
+        <span class="cmd-badge">ping parvana.dev</span>
+        <span class="cmd-badge">curl -I linkedin</span>
+      </div>
+    </div>
+    
+    <div class="contact-card">
+      <div class="contact-item">
+        <strong data-i18n="contact_email">Email:</strong>
+        <a href="mailto:aliza.parvana@gmail.com">aliza.parvana@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <strong data-i18n="contact_phone">Telefon:</strong>
+        <a href="tel:+994505269971">+994 50 526 99 71</a>
+      </div>
+      <div class="contact-item">
+        <strong>LinkedIn:</strong>
+        <a href="https://www.linkedin.com/in/parvana-alizada" target="_blank">linkedin.com/in/parvana-alizada</a>
+      </div>
+      <div class="contact-item">
+        <strong>GitHub:</strong>
+        <a href="https://github.com/ParvanaAli" target="_blank">github.com/ParvanaAli</a>
+      </div>
+    </div>
+    
+    <footer data-i18n="footer">
+      © 2025 Parvana Alizada | DevOps Engineer
+    </footer>
+  </div>
+</section>
+
+<!-- Linux Badge -->
+<div class="linux-badge">
+  <div class="penguin-icon">🐧</div>
+  <div class="linux-text">
+    <code>systemctl status portfolio</code>
   </div>
 </div>
-</section>
 
-<section class="full">
-<div class="wrap">
-<h2>About</h2>
-<p class="lead">
-I am an IT specialist with a strong focus on Linux and DevOps. I work with Linux systems (RHEL, Ubuntu),
-APT/YUM, disk partitioning, mounting, Windows Server (AD, DNS, DHCP).
-</p>
-<p class="lead">
-DevOps side: Git, Bash, Ansible, Docker, Kubernetes (Pods, Deployments, Services, ConfigMaps, Secrets, PVCs).
-</p>
-</div>
-</section>
+<!-- Back to Top -->
+<a href="#hero" class="back-to-top" id="backToTop">↑</a>
 
-<section class="full">
-<div class="wrap">
-<h2>Education</h2>
-<ul class="ul">
-  <li>Uğur IT Academy – Linux & DevOps Administrator</li>
-  <li>Bachelor of Computer Engineering – Sumgait State University (2020–2024)</li>
-  <li>Bachelor of Computer Networks – ASOIU (2016–2018)</li>
-</ul>
+<!-- Toast -->
+<div class="toast" id="toast">Copied!</div>
 
-<h2 style="margin-top:18px">Certificates</h2>
-<ul class="ul">
-  <li>RHCSA – In Progress</li>
-  <li>RHCE – In Progress</li>
-  <li><strong>CKA – Certified ✅</strong></li>
-  <li>CKAD – In Progress</li>
-</ul>
-</div>
-</section>
-
-<footer>
-© 2025 Parvana Alizada • Powered by Linux 🐧
-</footer>
-
+<!-- Scripts -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-function toggleTheme(){
-  document.body.classList.toggle("dark");
+// Initialize AOS
+AOS.init({
+  duration: 800,
+  once: true,
+  offset: 100
+});
+
+// Theme Toggle
+const themeToggle = document.getElementById('themeToggle');
+const themeIcon = document.getElementById('themeIcon');
+const html = document.documentElement;
+
+// Load saved theme
+const savedTheme = localStorage.getItem('theme') || 'light';
+html.setAttribute('data-theme', savedTheme);
+updateThemeIcon(savedTheme);
+
+themeToggle.addEventListener('click', () => {
+  const currentTheme = html.getAttribute('data-theme');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  
+  html.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+  updateThemeIcon(newTheme);
+});
+
+function updateThemeIcon(theme) {
+  themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
 }
+
+// Toast
+const toast = document.getElementById('toast');
+function showToast(message) {
+  toast.textContent = message;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2000);
+}
+
+// Mobile menu
+const menuToggle = document.getElementById('menuToggle');
+const navMenu = document.getElementById('navMenu');
+
+menuToggle?.addEventListener('click', () => {
+  navMenu.classList.toggle('active');
+});
+
+document.querySelectorAll('.nav-menu a').forEach(link => {
+  link.addEventListener('click', () => {
+    navMenu.classList.remove('active');
+  });
+});
+
+// Back to top
+const backToTop = document.getElementById('backToTop');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 500) {
+    backToTop.classList.add('visible');
+  } else {
+    backToTop.classList.remove('visible');
+  }
+});
+
+// Active nav
+const navLinks = document.querySelectorAll('.nav-menu a');
+const sections = Array.from(navLinks).map(link => {
+  const href = link.getAttribute('href');
+  return document.querySelector(href);
+}).filter(Boolean);
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(link => link.classList.remove('active'));
+      const activeLink = Array.from(navLinks).find(
+        link => link.getAttribute('href') === `#${entry.target.id}`
+      );
+      if (activeLink) activeLink.classList.add('active');
+    }
+  });
+}, { rootMargin: '-50% 0px -45% 0px', threshold: 0 });
+
+sections.forEach(section => observer.observe(section));
+
+// Terminal
+const commands = [
+  { cmd: 'whoami', out: 'parvana\n' },
+  { cmd: 'uname -a', out: 'Linux devops-lab 6.8.0-51 #1 SMP x86_64 GNU/Linux\n' },
+  { cmd: 'kubectl get nodes', out: 'NAME          STATUS   ROLES           AGE   VERSION\nmaster-node   Ready    control-plane   45d   v1.28.0\nworker-1      Ready    <none>          45d   v1.28.0\nworker-2      Ready    <none>          45d   v1.28.0\n' },
+  { cmd: 'docker ps --format "{{.Names}}: {{.Status}}"', out: 'nginx: Up 3 days\npostgres: Up 3 days\nredis: Up 3 days\n' },
+  { cmd: 'ansible all -m ping', out: 'web1 | SUCCESS => {"ping": "pong"}\nweb2 | SUCCESS => {"ping": "pong"}\ndb1 | SUCCESS => {"ping": "pong"}\n' },
+  { cmd: 'systemctl status nginx', out: '● nginx.service - A high performance web server\n   Loaded: loaded (/lib/systemd/system/nginx.service)\n   Active: active (running)\n' },
+  { cmd: 'journalctl -u docker --since "10 min ago" | tail -3', out: 'Feb 10 16:45:12 dockerd[1234]: Container started successfully\nFeb 10 16:45:13 dockerd[1234]: Network bridge configured\nFeb 10 16:45:14 dockerd[1234]: Health check passed\n' },
+  { cmd: 'git log --oneline -5', out: '7a8b9c2 feat: add monitoring dashboard\n3d4e5f6 fix: resolve deployment issue\n1a2b3c4 docs: update README\n9e8f7g6 refactor: optimize ansible playbook\n5h4i3j2 chore: update dependencies\n' }
+];
+
+let currentCommandIndex = 0;
+let isTyping = false;
+
+const terminalOutput = document.getElementById('terminalOutput');
+
+function resetTerminal() {
+  terminalOutput.innerHTML = '<span class="prompt">parvana@devops</span>:~$ <span id="typedText"></span><span class="cursor"></span>';
+}
+
+function typeCommand(text, callback) {
+  const typed = document.getElementById('typedText');
+  if (!typed) return;
+  
+  typed.textContent = '';
+  let i = 0;
+  
+  const typeInterval = setInterval(() => {
+    if (i < text.length) {
+      typed.textContent += text[i];
+      i++;
+    } else {
+      clearInterval(typeInterval);
+      if (callback) callback();
+    }
+  }, 50);
+}
+
+function executeCommand() {
+  if (isTyping) return;
+  isTyping = true;
+  
+  resetTerminal();
+  const command = commands[currentCommandIndex];
+  
+  typeCommand(command.cmd, () => {
+    setTimeout(() => {
+      const outputDiv = document.createElement('div');
+      outputDiv.innerHTML = `<br><span class="success">✓</span> executed<br><span class="output">${command.out.replace(/\n/g, '<br>')}</span><span class="prompt"><br>parvana@devops</span>:~$ `;
+      terminalOutput.appendChild(outputDiv);
+      isTyping = false;
+    }, 300);
+  });
+}
+
+executeCommand();
+
+document.getElementById('termNext')?.addEventListener('click', () => {
+  currentCommandIndex = (currentCommandIndex + 1) % commands.length;
+  executeCommand();
+});
+
+document.getElementById('termCopy')?.addEventListener('click', async () => {
+  const command = commands[currentCommandIndex].cmd;
+  try {
+    await navigator.clipboard.writeText(command);
+    showToast(`Copied: ${command}`);
+  } catch (err) {
+    showToast('Copy failed');
+  }
+});
+
+// i18n
+let currentLang = 'az';
+
+const translations = {
+  az: {
+    nav_home: 'Ana səhifə',
+    nav_about: 'Haqqımda',
+    nav_skills: 'Bacarıqlar',
+    nav_projects: 'Layihələr',
+    nav_experience: 'Təcrübə',
+    nav_education: 'Təhsil',
+    nav_contact: 'Əlaqə',
+    
+    btn_copy: 'Copy',
+    btn_next: 'Next',
+    
+    hero_badge: 'Linux • DevOps • Automation • CI/CD',
+    hero_title: 'DevOps Engineer',
+    hero_desc: 'Linux yönümlü IT və DevOps mütəxəssisi. Sistem idarəetməsi, data center əməliyyatları və CI/CD mühitlərində praktiki təcrübə.',
+    hero_cta1: 'Mənimlə əlaqə',
+    hero_cta2: 'Layihələrə bax',
+    
+    about_title: 'Haqqımda',
+    about_subtitle: 'Professional background və texniki ekspertiza',
+    about_content: 'IT mütəxəssisi olaraq Linux və DevOps sahələrində ixtisaslaşmışam. Linux sistemləri (RHEL, Ubuntu) üzərində proqram təminatının quraşdırılması və repo idarəetməsi (APT, YUM), disk bölmələri və mounting əməliyyatları ilə işləyirəm. Həmçinin Windows Server mühitlərində Active Directory, DNS və DHCP təcrübəm var.<br><br>DevOps sahəsində Git, Bash və Ansible ilə əsas avtomatlaşdırma tapşırıqlarını yerinə yetirirəm. Kubernetes-i özüm öyrənirəm və Pods, Deployments, Services, ConfigMaps, Secrets və PVC-lər haqqında praktiki biliklərim var. YAML və konfiqurasiya faylları ilə əsas səviyyədə tanışam. Davamlı öyrənməyə və real texniki problemləri həll etməyə fokuslanmışam.',
+    
+    skills_title: 'Bacarıqlar',
+    skills_subtitle: 'Texniki bacarıqlar və alətlər',
+    skill1_title: 'Linux System Administration',
+    skill1_desc: 'RHEL, Ubuntu, package management (APT/YUM/DNF), disk operations, systemd services',
+    skill2_title: 'Windows Server',
+    skill2_desc: 'Active Directory, DNS, DHCP configuration və idarəetmə',
+    skill3_title: 'DevOps Tools',
+    skill3_desc: 'Git, Bash scripting, Ansible playbooks, basic automation',
+    skill4_title: 'Containerization',
+    skill4_desc: 'Docker containers, images, volumes, basic Docker Compose',
+    skill5_title: 'Kubernetes (Learning)',
+    skill5_desc: 'Pods, Deployments, Services, ConfigMaps, Secrets, PVCs',
+    skill6_title: 'Monitoring',
+    skill6_desc: 'Zabbix, Prometheus, Grafana - basic dashboards və alerts',
+    skill7_title: 'Networking',
+    skill7_desc: 'TCP/IP, DNS, DHCP, basic troubleshooting, network configuration',
+    skill8_title: 'Data Center Operations',
+    skill8_desc: 'Hardware support, server maintenance, cable management, monitoring',
+    
+    projects_title: 'Layihələr',
+    projects_subtitle: 'GitHub repoları və praktiki nümunələr',
+    project1_title: 'Nginx Docker App',
+    project1_desc: 'Sadə Nginx konteyner tətbiqi: portlar, konfiqurasiya və deploy.',
+    project2_title: 'Zabbix Monitoring',
+    project2_desc: 'Monitoring konfiqurasiyası: alertlər və dashboardlar.',
+    project3_title: 'Ansible Playbooks',
+    project3_desc: 'Avtomatlaşdırma playbook-ları: paket quraşdırma, user management.',
+    project_link: 'GitHub-da aç →',
+    
+    experience_title: 'İş Təcrübəsi',
+    experience_subtitle: 'Professional karyera yolu',
+    exp1: '<strong>Grandmart MMC – Junior DevOps Engineer</strong><br>Sentyabr 2025 – Hazırda',
+    exp2: '<strong>AzinTelecom – Data Center IT Technician</strong><br>Avqust 2024 – Sentyabr 2025',
+    exp3: '<strong>B2B Group – IT Technician (COP29)</strong><br>Sentyabr – Oktyabr 2024',
+    exp4: '<strong>Kronos Enterprises – Helpdesk Technician (COP29)</strong><br>Noyabr 2024',
+    
+    education_title: 'Təhsil & Sertifikatlar',
+    education_subtitle: 'Akademik təhsil və professional sertifikatlar',
+    cert_progress: 'In Progress',
+    edu1: '<strong>Sumqayıt Dövlət Universiteti</strong><br>Bachelor of Computer Engineering (2020–2024)',
+    edu2: '<strong>ASOIU</strong><br>Bachelor of Computer Networks (2016–2018)',
+    edu3: '<strong>Ugur IT Academy</strong><br>Linux DevOps Administrator',
+    
+    contact_title: 'Əlaqə',
+    contact_subtitle: 'Birlikdə işləməyə hazıram',
+    contact_email: 'Email:',
+    contact_phone: 'Telefon:',
+    
+    footer: '© 2025 Parvana Alizada | DevOps Engineer'
+  },
+  
+  en: {
+    nav_home: 'Home',
+    nav_about: 'About',
+    nav_skills: 'Skills',
+    nav_projects: 'Projects',
+    nav_experience: 'Experience',
+    nav_education: 'Education',
+    nav_contact: 'Contact',
+    
+    btn_copy: 'Copy',
+    btn_next: 'Next',
+    
+    hero_badge: 'Linux • DevOps • Automation • CI/CD',
+    hero_title: 'DevOps Engineer',
+    hero_desc: 'Linux-focused IT & DevOps specialist with hands-on experience in system administration, data center operations, and CI/CD environments.',
+    hero_cta1: 'Contact Me',
+    hero_cta2: 'View Projects',
+    
+    about_title: 'About Me',
+    about_subtitle: 'Professional background and technical expertise',
+    about_content: 'I am an IT specialist with a strong focus on Linux and DevOps. I work with Linux systems (RHEL, Ubuntu) and handle software installation and repository management (APT, YUM), disk partitioning, and mounting. I also have experience working with Windows Server environments, including Active Directory, DNS, and DHCP.<br><br>In the DevOps area, I work with Git, Bash, and Ansible for basic automation tasks. I am learning Kubernetes through self-study and have hands-on knowledge of Pods, Deployments, Services, ConfigMaps, Secrets, and PVCs. I have a basic understanding of YAML and configuration files. I am motivated to continuously learn and focus on solving real-world technical challenges.',
+    
+    skills_title: 'Skills',
+    skills_subtitle: 'Technical skills and tools',
+    skill1_title: 'Linux System Administration',
+    skill1_desc: 'RHEL, Ubuntu, package management (APT/YUM/DNF), disk operations, systemd services',
+    skill2_title: 'Windows Server',
+    skill2_desc: 'Active Directory, DNS, DHCP configuration and management',
+    skill3_title: 'DevOps Tools',
+    skill3_desc: 'Git, Bash scripting, Ansible playbooks, basic automation',
+    skill4_title: 'Containerization',
+    skill4_desc: 'Docker containers, images, volumes, basic Docker Compose',
+    skill5_title: 'Kubernetes (Learning)',
+    skill5_desc: 'Pods, Deployments, Services, ConfigMaps, Secrets, PVCs',
+    skill6_title: 'Monitoring',
+    skill6_desc: 'Zabbix, Prometheus, Grafana - basic dashboards and alerts',
+    skill7_title: 'Networking',
+    skill7_desc: 'TCP/IP, DNS, DHCP, basic troubleshooting, network configuration',
+    skill8_title: 'Data Center Operations',
+    skill8_desc: 'Hardware support, server maintenance, cable management, monitoring',
+    
+    projects_title: 'Projects',
+    projects_subtitle: 'GitHub repositories and practical examples',
+    project1_title: 'Nginx Docker App',
+    project1_desc: 'Simple Nginx container application: ports, configuration and deployment.',
+    project2_title: 'Zabbix Monitoring',
+    project2_desc: 'Monitoring configuration: alerts and dashboards.',
+    project3_title: 'Ansible Playbooks',
+    project3_desc: 'Automation playbooks: package installation, user management.',
+    project_link: 'Open on GitHub →',
+    
+    experience_title: 'Work Experience',
+    experience_subtitle: 'Professional career path',
+    exp1: '<strong>Grandmart MMC – Junior DevOps Engineer</strong><br>September 2025 – Present',
+    exp2: '<strong>AzinTelecom – Data Center IT Technician</strong><br>August 2024 – September 2025',
+    exp3: '<strong>B2B Group – IT Technician (COP29)</strong><br>September – October 2024',
+    exp4: '<strong>Kronos Enterprises – Helpdesk Technician (COP29)</strong><br>November 2024',
+    
+    education_title: 'Education & Certifications',
+    education_subtitle: 'Academic education and professional certifications',
+    cert_progress: 'In Progress',
+    edu1: '<strong>Sumgait State University</strong><br>Bachelor of Computer Engineering (2020–2024)',
+    edu2: '<strong>ASOIU</strong><br>Bachelor of Computer Networks (2016–2018)',
+    edu3: '<strong>Ugur IT Academy</strong><br>Linux DevOps Administrator',
+    
+    contact_title: 'Contact',
+    contact_subtitle: 'Ready to collaborate',
+    contact_email: 'Email:',
+    contact_phone: 'Phone:',
+    
+    footer: '© 2025 Parvana Alizada | DevOps Engineer'
+  }
+};
+
+function setLanguage(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  
+  document.querySelectorAll('[data-i18n]').forEach(element => {
+    const key = element.getAttribute('data-i18n');
+    if (translations[lang][key]) {
+      element.innerHTML = translations[lang][key];
+    }
+  });
+  
+  document.getElementById('btnAZ').classList.toggle('active', lang === 'az');
+  document.getElementById('btnEN').classList.toggle('active', lang === 'en');
+}
+
+document.getElementById('btnAZ').addEventListener('click', () => setLanguage('az'));
+document.getElementById('btnEN').addEventListener('click', () => setLanguage('en'));
+
+setLanguage('az');
 </script>
 
 </body>
