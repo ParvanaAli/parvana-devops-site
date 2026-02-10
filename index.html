@@ -7,198 +7,215 @@
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 <style>
+/* ================= ROOT ================= */
 :root{
   --bg1:#f8fafc;
   --bg2:#eef2ff;
   --ink:#0f172a;
   --muted:#64748b;
 
-  --primary:#2563eb;
+  --primary:#38bdf8;
   --secondary:#22c55e;
   --accent:#0ea5e9;
 
   --line:#e5e7eb;
   --glass: rgba(255,255,255,.85);
 
-  --dark-bg:#020617;
-  --dark-panel:#020617;
-  --dark-text:#e5e7eb;
+  --term1:#0b1222;
+  --term2:#020617;
 
   --radius:18px;
   --max:1100px;
 }
 
+/* ================= BASE ================= */
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
   font-family:Inter,system-ui,sans-serif;
-  background:linear-gradient(120deg,var(--bg1),var(--bg2));
+  background:
+    radial-gradient(1200px 700px at 10% 10%, #dbeafe 0%, transparent 60%),
+    radial-gradient(900px 600px at 90% 20%, #e0f2fe 0%, transparent 55%),
+    linear-gradient(120deg,var(--bg1),var(--bg2));
   color:var(--ink);
   line-height:1.65;
+  overflow-x:hidden;
 }
 
+/* ================= DARK MODE ================= */
 body.dark{
-  background:linear-gradient(180deg,#020617,#020617);
-  color:var(--dark-text);
+  background:
+    radial-gradient(900px 600px at 10% 10%, #022c22 0%, transparent 60%),
+    radial-gradient(900px 600px at 90% 20%, #020617 0%, transparent 55%),
+    linear-gradient(180deg,#020617,#020617);
+  color:#e5e7eb;
 }
+body.dark h1,
+body.dark h2{color:#38bdf8}
+body.dark p,
+body.dark .lead,
+body.dark .sub{color:#cbd5f5}
+body.dark header{background:rgba(2,6,23,.9)}
+body.dark .cmd{
+  background:#020617;
+  border:1px solid #38bdf8;
+  color:#38bdf8;
+}
+body.dark .prompt{color:#22c55e}
+body.dark .ok{color:#22c55e}
+body.dark .cursor{background:#38bdf8}
 
+/* ================= HEADER ================= */
 header{
   position:sticky;top:0;z-index:999;
   background:rgba(255,255,255,.9);
   border-bottom:1px solid var(--line);
 }
-body.dark header{background:rgba(2,6,23,.9)}
-
 nav{
   max-width:var(--max);
-  margin:0 auto;
+  margin:auto;
   padding:14px 18px;
-  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 .brand{font-weight:900;color:var(--primary)}
-nav ul{list-style:none;display:flex;gap:14px}
-nav a{text-decoration:none;font-weight:900;color:var(--muted)}
-nav a:hover{color:var(--primary)}
-
-.full{padding:64px 0;border-bottom:1px solid var(--line)}
-.wrap{max-width:var(--max);margin:0 auto;padding:0 18px}
-
-h1,h2{color:var(--primary)}
-body.dark h1,body.dark h2{color:var(--accent)}
-
-.hero-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:28px}
-
-.term{
-  background:var(--dark-bg);
-  color:var(--dark-text);
-  border-radius:var(--radius);
-  padding:16px;
+.toggle{
+  cursor:pointer;
+  font-size:1.2rem;
 }
 
+/* ================= SECTIONS ================= */
+.full{padding:64px 0;border-bottom:1px solid var(--line)}
+.wrap{max-width:var(--max);margin:auto;padding:0 18px}
+
+/* ================= HERO ================= */
+.hero-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:26px}
+.kicker{font-weight:900;color:var(--muted)}
+.hero h1{font-size:3rem}
+.cmd{font-family:monospace;font-weight:900;padding:6px 10px;border-radius:999px;border:1px solid #38bdf8}
+
+/* ================= TERMINAL ================= */
+.term{
+  background:linear-gradient(180deg,var(--term1),var(--term2));
+  color:#e5e7eb;
+  border-radius:18px;
+  padding:16px;
+  margin-top:12px;
+}
 .prompt{color:#22c55e;font-weight:900}
-.cmd{color:#38bdf8}
-.ok{color:#22c55e}
-.error{color:#ef4444}
-.warn{color:#facc15}
+.cursor{display:inline-block;width:10px;height:18px;background:#38bdf8;animation:blink 1s infinite}
+@keyframes blink{50%{opacity:0}}
 
-.skills-wrap{margin-top:24px;display:grid;gap:12px}
-.skill-row{display:grid;grid-template-columns:1fr 4fr;gap:12px;align-items:center}
-.track{height:8px;background:#cbd5f5;border-radius:999px;overflow:hidden}
-.fill{height:100%;background:linear-gradient(90deg,var(--primary),var(--secondary));width:0}
+/* ================= SKILLS ================= */
+.skill-row{display:grid;grid-template-columns:1fr 4fr;gap:12px}
+.track{height:8px;background:#cbd5f5;border-radius:999px}
+.fill{height:100%;background:linear-gradient(90deg,#38bdf8,#22c55e)}
 
-body.light .skill-meta{display:none}
+/* ================= LIST ================= */
+.ul{list-style:none}
+.ul li::before{content:\"$ \";color:#22c55e}
 
-.ul{list-style:none;margin-top:14px}
-.ul li{padding:8px 0;border-bottom:1px dashed var(--line)}
+/* ================= PENGUINS ================= */
+.penguins{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-top:20px;
+}
+.penguins span{
+  font-size:1.6rem;
+  opacity:.9;
+}
 
-.tux{position:fixed;bottom:16px;left:16px;background:var(--glass);padding:10px 14px;border-radius:999px}
-body.dark .tux{background:#020617}
+/* ================= FOOTER ================= */
+footer{text-align:center;padding:28px 0;color:var(--muted)}
 
-@media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
+/* ================= RESPONSIVE ================= */
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr}
+  .hero h1{font-size:2.2rem}
+}
 </style>
 </head>
+
 <body class="light">
+
 <header>
 <nav>
-<div class="brand">Parvana Alizada | DevOps</div>
-<ul>
-<li><a href="#hero">Home</a></li>
-<li><a href="#about">About</a></li>
-<li><a href="#skills">Skills</a></li>
-<li><a href="#experience">Experience</a></li>
-<li><a href="#education">Education</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
-<button onclick="toggleMode()">🌙</button>
+  <div class="brand">Parvana Alizada | DevOps</div>
+  <div class="toggle" onclick="toggleMode()">🌙</div>
 </nav>
 </header>
 
-<section id="hero" class="full">
+<section class="full">
 <div class="wrap hero-grid">
-<div>
-<h1>Junior DevOps Engineer</h1>
-<p>Linux • DevOps • Automation • CI/CD</p>
-</div>
-<div class="term">
-<pre><span class="prompt">parvana@linux</span>:~$ <span class="cmd">kubectl get pods</span>
-<span class="ok">✔</span> api Running
-</pre>
-</div>
+  <div>
+    <div class="kicker">Linux • DevOps • CI/CD</div>
+    <h1>Junior DevOps Engineer</h1>
+    <p>Linux-focused IT & DevOps specialist</p>
+
+    <div class="penguins">
+      <span>🐧</span><span>🐧</span><span>🐧</span><span>🐧</span>
+      <span>🟢🐧</span><span>🔵🐧</span><span>🟣🐧</span><span>🔴🐧</span>
+    </div>
+
+    <div style="margin-top:12px">
+      <span class="cmd"># kubectl get pods</span>
+      <span class="cmd"># docker compose up -d</span>
+      <span class="cmd"># ansible-playbook site.yml</span>
+    </div>
+  </div>
+
+  <div class="term">
+    <pre><span class="prompt">parvana@linux</span>:~$ kubectl get nodes
+<span class="ok">✔</span> Ready
+<span class="prompt">parvana@linux</span>:~$<span class="cursor"></span></pre>
+  </div>
 </div>
 </section>
 
-<section id="about" class="full">
+<section class="full">
 <div class="wrap">
-<h2>Professional Profile</h2>
-<p>I am an IT specialist with a strong focus on Linux and DevOps. I work with Linux systems (RHEL, Ubuntu) and handle software installation, repository management (APT, YUM), disk partitioning, and mounting.</p>
-<p>I also have experience with Windows Server environments, including Active Directory, DNS, and DHCP.</p>
-<p>In the DevOps area, I work with Git, Bash, and Ansible for automation tasks. I am learning Kubernetes and have hands-on experience with Pods, Deployments, Services, ConfigMaps, Secrets, and PVCs.</p>
-<p>I am motivated to continuously learn and solve real-world technical challenges.</p>
+<h2>About</h2>
+<p class="lead">
+I am an IT specialist with a strong focus on Linux and DevOps. I work with Linux systems (RHEL, Ubuntu),
+APT/YUM, disk partitioning, mounting, Windows Server (AD, DNS, DHCP).
+</p>
+<p class="lead">
+DevOps side: Git, Bash, Ansible, Docker, Kubernetes (Pods, Deployments, Services, ConfigMaps, Secrets, PVCs).
+</p>
 </div>
 </section>
 
-<section id="skills" class="full">
-<div class="wrap">
-<h2>Skills</h2>
-<div class="skills-wrap">
-<div class="skill-row" data-level="85"><div>Linux</div><div class="track"><div class="fill"></div></div></div>
-<div class="skill-row" data-level="75"><div>Docker</div><div class="track"><div class="fill"></div></div></div>
-<div class="skill-row" data-level="70"><div>Kubernetes</div><div class="track"><div class="fill"></div></div></div>
-</div>
-</div>
-</section>
-
-<section id="experience" class="full">
-<div class="wrap">
-<h2>Experience</h2>
-<ul class="ul">
-<li>Work closely with developers to execute daily build and deployment processes</li>
-<li>Monitor and adjust GitLab CI/CD pipelines</li>
-<li>Build and run containerized applications using Docker</li>
-<li>Perform Linux system administration and log analysis</li>
-<li>Troubleshoot deployment issues in real time</li>
-<li>Provisioned and managed Azure servers and environments</li>
-</ul>
-</div>
-</section>
-
-<section id="education" class="full">
+<section class="full">
 <div class="wrap">
 <h2>Education</h2>
 <ul class="ul">
-<li>Uğur IT Academy – Linux & DevOps Administrator</li>
-<li>Bachelor of Computer Engineering – Sumgait State University</li>
+  <li>Uğur IT Academy – Linux & DevOps Administrator</li>
+  <li>Bachelor of Computer Engineering – SSU</li>
 </ul>
-<h2>Certificates</h2>
+
+<h2 style="margin-top:18px">Certificates</h2>
 <ul class="ul">
-<li>RHCSA – In Progress</li>
-<li>RHCE – In Progress</li>
-<li>CKA – Certified </li>
-<li>CKAD – In Progress</li>
+  <li>RHCSA – In Progress</li>
+  <li>RHCE – In Progress</li>
+  <li><strong>CKA – Certified </strong></li>
+  <li>CKAD – In Progress</li>
 </ul>
 </div>
 </section>
 
-<section id="contact" class="full">
-<div class="wrap">
-<h2>Contact</h2>
-<p>Email: aliza.parvana@gmail.com</p>
-</div>
-</section>
-
-<div class="tux">🐧 Powered by Linux</div>
+<footer>
+© 2025 Parvana Alizada • Powered by Linux 🐧
+</footer>
 
 <script>
 function toggleMode(){
- document.body.classList.toggle('dark');
- document.body.classList.toggle('light');
+  document.body.classList.toggle('dark');
+  document.body.classList.toggle('light');
 }
-
-const rows=document.querySelectorAll('.skill-row');
-rows.forEach(r=>{
- const fill=r.querySelector('.fill');
- fill.style.width=r.dataset.level+'%';
-});
 </script>
+
 </body>
 </html>
