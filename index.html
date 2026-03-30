@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Parvana Alizada | Junior DevOps Engineer</title>
+<title>Parvana Alizada | DevOps Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
@@ -413,7 +413,7 @@ footer{text-align:center;padding:28px 24px;border-top:1px solid var(--border);fo
 </section>
 
 <footer>
-  <span style="color:var(--cyan)">parvana@devops</span>:<span style="color:var(--red)">~</span>$ echo "© 2025 Parvana Alizada | Junior DevOps Engineer | Baku, AZ"
+  <span style="color:var(--cyan)">parvana@devops</span>:<span style="color:var(--red)">~</span>$ echo "© 2025 Parvana Alizada | DevOps Engineer | Baku, AZ"
   <br><span style="color:var(--green);font-size:.72rem;">✓ portfolio.service — Active (running) since 2025</span>
 </footer>
 
@@ -482,25 +482,12 @@ addEventListener('scroll',()=>btt.classList.toggle('show',scrollY>400));
 function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2000);}
 
 /* ===== ACTIVE NAV ===== */
-new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
-      const l=document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
-      if(l)l.classList.add('active');
-    }
-  });
-},{rootMargin:'-40% 0px -55% 0px'}).observe.call(
-  new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));const l=document.querySelector(`.nav-links a[href="#${e.target.id}"]`);if(l)l.classList.add('active');}});},{rootMargin:'-40% 0px -55% 0px'}),
-  document.querySelector('section')
-);
-// simpler version:
 const secObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));const l=document.querySelector(`.nav-links a[href="#${e.target.id}"]`);if(l)l.classList.add('active');}});},{rootMargin:'-40% 0px -55% 0px'});
 document.querySelectorAll('section[id]').forEach(s=>secObs.observe(s));
 
 /* ===== TERMINAL ===== */
 const CMDS=[
-  {cmd:'whoami',out:`<span class="t-ok">parvana</span>\n<span style="color:#2e5570"># Junior DevOps Engineer @ Grandmart MMC</span>`},
+  {cmd:'whoami',out:`<span class="t-ok">parvana</span>\n<span style="color:#2e5570"># DevOps Engineer @ Grandmart MMC</span>`},
   {cmd:'cat /etc/skills.conf',out:`<span style="color:#2e5570"># TECH STACK</span>\n<span class="t-ok">LINUX</span>="RHEL Ubuntu Systemd LVM SELinux Firewalld"\n<span class="t-ok">CICD</span>="GitLab-CI GitHub-Actions Ansible Bash YAML"\n<span class="t-ok">CONTAINERS</span>="Docker Kubernetes"\n<span class="t-ok">CLOUD</span>="Azure Nginx SSL Certbot"\n<span class="t-ok">MONITORING</span>="Zabbix Prometheus Grafana"`},
   {cmd:'kubectl get nodes',out:`<span class="t-out">NAME            STATUS   ROLES           AGE</span>\n<span class="t-ok">master-node</span>     Ready    control-plane   90d\n<span class="t-ok">worker-1</span>        Ready    &lt;none&gt;          90d\n<span class="t-ok">worker-2</span>        Ready    &lt;none&gt;          90d`},
   {cmd:'docker ps --format "{{.Names}}: {{.Status}}"',out:`<span class="t-ok">nginx</span>: Up 5 days\n<span class="t-ok">postgres</span>: Up 5 days\n<span class="t-ok">redis</span>: Up 5 days\n<span class="t-ok">gitlab</span>: Up 30 days`},
@@ -523,12 +510,12 @@ az:{
   nav_home:'Ana Səhifə',nav_about:'Haqqımda',nav_skills:'Bacarıqlar',nav_exp:'Təcrübə',nav_proj:'Layihələr',nav_edu:'Təhsil',nav_contact:'Əlaqə',
   t_copy:'kopyala',t_next:'növbəti',
   status:'Aktiv • İşə hazır',location:'Bakı, Azərbaycan',
-  hero_role:'Junior DevOps Engineer · Linux · CI/CD',
+  hero_role:'DevOps Engineer · Linux · CI/CD',
   hero_desc:'Linux yönümlü DevOps mütəxəssisi. Azure, GitLab CI/CD, Docker, Kubernetes, Ansible, Zabbix, Nginx — real produksiya mühitlərindəki praktiki təcrübə.',
   cta1:'Əlaqə saxla',cta2:'Təcrübəyə bax',
   about_label:'Haqqımda',about_title_a:'Professional',about_title_b:'Profil',
   about_sub:'Background, bacarıqlar və texniki fokus sahəsi',
-  about_text:'<p>IT mütəxəssisi olaraq Linux və DevOps sahələrində ixtisaslaşmışam. Linux sistemləri (RHEL, Ubuntu) üzərində proqram quraşdırması, repo idarəetməsi (APT, YUM/DNF), disk bölmələri, LVM, mounting, systemd servislərini idarə edirəm.</p><p>Grandmart MMC-də Junior DevOps Engineer kimi Azure serverləri sıfırdan qurmuş, GitLab CI/CD pipeline-larını yazıb idarə etmişəm. Docker konteynerləri, Nginx domenləri, SSL sertifikatları, firewall qaydaları — bunların hamısı real produksiya mühitlərindəki işimdir.</p><p>AzInTelecom-da Data Center texniki kimi server hardware-ı, kabel idarəetməsi, biometrik sistem deploymenti üzrə böyük layihələrdə iştirak etmişəm.</p>',
+  about_text:'<p>IT mütəxəssisi olaraq Linux və DevOps sahələrində ixtisaslaşmışam. Linux sistemləri (RHEL, Ubuntu) üzərində proqram quraşdırması, repo idarəetməsi (APT, YUM/DNF), disk bölmələri, LVM, mounting, systemd servislərini idarə edirəm.</p><p>Grandmart MMC-də DevOps Engineer kimi Azure serverləri sıfırdan qurmuş, GitLab CI/CD pipeline-larını yazıb idarə etmişəm. Docker konteynerləri, Nginx domenləri, SSL sertifikatları, firewall qaydaları — bunların hamısı real produksiya mühitlərindəki işimdir.</p><p>AzInTelecom-da Data Center texniki kimi server hardware-ı, kabel idarəetməsi, biometrik sistem deploymenti üzrə böyük layihələrdə iştirak etmişəm.</p>',
   about_quote:'💡 "Davamlı öyrənmə, real problemlər, etibarlı həllər — bu mənim DevOps fəlsəfəmdir."',
   stat1:'İl DevOps',stat2:'Sertifikat',stat3:'Şirkət',stat4:'GitHub Repo',
   summary:'🚀 Nəticəyönümlü IT mütəxəssisi — DevOps, sistem administrasiyası, Linux mühitləri, konteyner texnologiyaları, CI/CD prosesləri və infrastruktur idarəetməsində praktiki təcrübə. Miqyaslanabilən, təhlükəsiz sistemlər qurmağı, konfiqurasiya etməyi və idarə etməyi bilirəm.',
@@ -537,7 +524,7 @@ az:{
   sk1t:'LINUX SİSTEM ADMİNİSTRASİYASI',sk2t:'CI/CD & AVTOMATLAŞDIRMA',sk3t:'KONTEYNERİZASİYA',sk4t:'KUBERNETES',sk5t:'CLOUD & WEB',sk6t:'MONİTORİNQ',sk7t:'VERSİYA NƏZARƏTI',sk8t:'WINDOWS SERVER',sk9t:'ŞƏBƏKƏ',
   exp_label:'İş Təcrübəsi',exp_title_a:'Karyera',exp_title_b:'Yolu',
   exp_sub:'Real layihələr, real mühitlər',
-  j1_role:'Junior DevOps Engineer',j1_date:'Sentyabr 2025 — Hazırda',
+  j1_role:'DevOps Engineer',j1_date:'Sentyabr 2025 — Hazırda',
   j2_role:'Data Center IT Technician',j2_date:'Avqust 2024 — Sentyabr 2025',
   j3_role:'IT Technician — COP29 (Bakı Olimpiya Stadionu)',j3_date:'Sentyabr — Oktyabr 2024',
   j4_role:'Helpdesk Technician — COP29 (Bakı Olimpiya Stadionu)',j4_date:'Oktyabr — Noyabr 2024',
@@ -571,12 +558,12 @@ en:{
   nav_home:'Home',nav_about:'About',nav_skills:'Skills',nav_exp:'Experience',nav_proj:'Projects',nav_edu:'Education',nav_contact:'Contact',
   t_copy:'copy',t_next:'next',
   status:'Active • Open to work',location:'Baku, Azerbaijan',
-  hero_role:'Junior DevOps Engineer · Linux · CI/CD',
+  hero_role:'DevOps Engineer · Linux · CI/CD',
   hero_desc:'Linux-focused DevOps specialist. Azure, GitLab CI/CD, Docker, Kubernetes, Ansible, Zabbix, Nginx — hands-on experience in real production environments.',
   cta1:'Contact Me',cta2:'View Experience',
   about_label:'About Me',about_title_a:'Professional',about_title_b:'Profile',
   about_sub:'Background, skills and technical focus area',
-  about_text:'<p>I am an IT specialist focused on Linux and DevOps. I work with Linux systems (RHEL, Ubuntu) — software installation, repo management (APT, YUM/DNF), disk partitioning, LVM, mounting, and systemd service management.</p><p>As a Junior DevOps Engineer at Grandmart MMC, I provisioned Azure servers from scratch, wrote and managed GitLab CI/CD pipelines, configured Docker containers, Nginx domains, SSL certificates, and firewall rules — all in live production environments.</p><p>At AzInTelecom as a Data Center technician, I participated in large-scale projects covering server hardware, cable management, and biometric system deployment.</p>',
+  about_text:'<p>I am an IT specialist focused on Linux and DevOps. I work with Linux systems (RHEL, Ubuntu) — software installation, repo management (APT, YUM/DNF), disk partitioning, LVM, mounting, and systemd service management.</p><p>As a DevOps Engineer at Grandmart MMC, I provisioned Azure servers from scratch, wrote and managed GitLab CI/CD pipelines, configured Docker containers, Nginx domains, SSL certificates, and firewall rules — all in live production environments.</p><p>At AzInTelecom as a Data Center technician, I participated in large-scale projects covering server hardware, cable management, and biometric system deployment.</p>',
   about_quote:'💡 "Continuous learning, real problems, reliable solutions — that is my DevOps philosophy."',
   stat1:'Years DevOps',stat2:'Certifications',stat3:'Companies',stat4:'GitHub Repos',
   summary:'🚀 Results-driven IT professional with practical experience in DevOps, system administration, Linux environments, container technologies, CI/CD processes, and infrastructure management. Skilled in building, configuring, and managing scalable, secure, and highly available systems.',
@@ -585,7 +572,7 @@ en:{
   sk1t:'LINUX SYSTEM ADMINISTRATION',sk2t:'CI/CD & AUTOMATION',sk3t:'CONTAINERIZATION',sk4t:'KUBERNETES',sk5t:'CLOUD & WEB',sk6t:'MONITORING',sk7t:'VERSION CONTROL',sk8t:'WINDOWS SERVER',sk9t:'NETWORKING',
   exp_label:'Work Experience',exp_title_a:'Career',exp_title_b:'Path',
   exp_sub:'Real projects, real environments',
-  j1_role:'Junior DevOps Engineer',j1_date:'September 2025 — Present',
+  j1_role:'DevOps Engineer',j1_date:'September 2025 — Present',
   j2_role:'Data Center IT Technician',j2_date:'August 2024 — September 2025',
   j3_role:'IT Technician — COP29 (Baku Olympic Stadium)',j3_date:'September — October 2024',
   j4_role:'Helpdesk Technician — COP29 (Baku Olympic Stadium)',j4_date:'October — November 2024',
