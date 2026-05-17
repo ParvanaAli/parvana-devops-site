@@ -443,6 +443,27 @@ body.en li[data-az]{display:none !important;}
   .skills-block,.services-block{padding:20px;}
   .contact-grid{padding:24px 20px;}
 }
+
+/* ── RESPONSIVE SAFETY FIXES ── */
+html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
+.container { max-width: 1140px; width: min(1140px, calc(100% - 40px)); }
+.hero-grid, .edu-grid, .contact-grid { min-width: 0; }
+.hero-grid > *, .edu-grid > *, .contact-grid > *, .exp-item, .project-card, .skills-block, .services-block, .about-card { min-width: 0; }
+.exp-header, .service-row, .contact-item, .hero-roles, .skill-tags { min-width: 0; }
+.exp-title, .exp-company, .exp-meta, .project-card p, .edu-card p, .service-desc, .about-card p, .contact-item a { overflow-wrap: anywhere; word-break: normal; }
+.t-line { white-space: normal; word-break: break-word; }
+@media (min-width: 961px) {
+  .hero-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+}
+@media (max-width: 960px) {
+  .container { width: min(100% - 32px, 1140px); }
+}
+@media (max-width: 660px) {
+  .container { width: min(100% - 24px, 1140px); }
+  .exp-header { align-items: flex-start; }
+  .exp-meta { line-height: 1.5; }
+}
+
 </style>
 </head>
 <body>
@@ -635,7 +656,6 @@ body.en li[data-az]{display:none !important;}
         <div class="skill-tags">
           <span class="skill-tag">Redis (Basic)</span>
           <span class="skill-tag">Database Fundamentals (Basic)</span>
-          <span class="skill-tag">QNAP</span>
           <span class="skill-tag">3CX</span>
         </div>
       </div>
@@ -660,7 +680,7 @@ body.en li[data-az]{display:none !important;}
             <div class="exp-company">Grandmart Supermarket &middot; <span data-az>Tam zamanlı</span><span data-en>Full-time</span></div>
             <div class="exp-title">DevOps Engineer</div>
             <div class="exp-meta">
-              <span data-az>Sen 2025 – Present &middot; Bakı, Azərbaycan</span>
+              <span data-az>Sen 2025 – Hazırda &middot; Bakı, Azərbaycan</span>
               <span data-en>Sep 2025 – Present &middot; Baku, Azerbaijan</span>
             </div>
           </div>
@@ -713,8 +733,8 @@ body.en li[data-az]{display:none !important;}
             <div class="exp-company">AzInTelecom &middot; <span data-az>Tam zamanlı</span><span data-en>Full-time</span></div>
             <div class="exp-title">Data Center IT Technician</div>
             <div class="exp-meta">
-              <span data-az>Dek 2024 – Sen 2025 &middot; 10 ay</span>
-              <span data-en>Dec 2024 – Sep 2025 &middot; 10 mos</span>
+              <span data-az>Dek 2024 – Sen 2025 &middot; Bakı, Azərbaycan</span>
+              <span data-en>Dec 2024 – Sep 2025 &middot; Baku, Azerbaijan</span>
             </div>
           </div>
           <div class="exp-toggle">+</div>
