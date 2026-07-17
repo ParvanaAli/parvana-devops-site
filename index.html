@@ -223,22 +223,22 @@ section+section{border-top:1px solid var(--border);}
   font-family:'Open Sans', sans-serif;font-size:12px;font-weight:700;
   color:var(--blue2);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.06em;
 }
-.skill-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.skill-tags{display:flex;flex-wrap:wrap;gap:9px;}
 .skill-tag{
   font-family:'Open Sans', sans-serif;font-size:12px;
-  padding:6px 13px;border-radius:6px;
+  padding:6px 14px;border-radius:7px;
   background:var(--card2);border:1px solid var(--border2);color:var(--text);
-  transition:all .18s;
+  transition:all .22s ease;
 }
-.skill-tag:hover{border-color:var(--blue2);color:var(--blue2);}
+.skill-tag:hover{border-color:var(--blue2);color:var(--blue2);background:rgba(58,111,255,0.08);transform:translateY(-1px);}
 
 /* ── EXPERIENCE ── */
 .exp-list{display:grid;gap:3px;}
 .exp-item{
   background:var(--card);border:1px solid var(--border);
-  border-radius:var(--radius);overflow:hidden;transition:border-color .2s;
+  border-radius:var(--radius);overflow:hidden;transition:border-color .2s, box-shadow .2s;
 }
-.exp-item:hover{border-color:var(--border2);}
+.exp-item:hover{border-color:var(--border2);box-shadow:0 4px 18px rgba(0,0,0,0.18);}
 .exp-header{
   padding:22px 26px;cursor:pointer;display:flex;
   align-items:flex-start;justify-content:space-between;gap:14px;
@@ -621,6 +621,79 @@ html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
       </div>
 
       <div class="skill-category">
+        <div class="skill-cat-title">GitOps &amp; Kubernetes Add-ons</div>
+        <div class="skill-tags">
+          <span class="skill-tag">ArgoCD</span>
+          <span class="skill-tag">GitOps</span>
+          <span class="skill-tag">CertManager</span>
+          <span class="skill-tag">ExternalDNS</span>
+          <span class="skill-tag">Traefik</span>
+          <span class="skill-tag">MetalLB</span>
+          <span class="skill-tag">Nginx Ingress</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-cat-title">Security &amp; Identity</div>
+        <div class="skill-tags">
+          <span class="skill-tag">HashiCorp Vault</span>
+          <span class="skill-tag">Keycloak</span>
+          <span class="skill-tag">Secrets Management</span>
+          <span class="skill-tag">Access Control (RBAC)</span>
+          <span class="skill-tag">Nexus Registry</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-cat-title">Observability</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Prometheus</span>
+          <span class="skill-tag">Grafana</span>
+          <span class="skill-tag">Loki</span>
+          <span class="skill-tag">Tempo</span>
+          <span class="skill-tag">Mimir</span>
+          <span class="skill-tag">OpenTelemetry</span>
+          <span class="skill-tag">Alerting</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-cat-title">Data &amp; Streaming</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Apache Kafka</span>
+          <span class="skill-tag">Kafka Connect</span>
+          <span class="skill-tag">Airflow</span>
+          <span class="skill-tag">JupyterHub</span>
+          <span class="skill-tag">Spark Operator</span>
+          <span class="skill-tag">Lakekeeper</span>
+          <span class="skill-tag">Trino</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-cat-title">Databases &amp; Storage</div>
+        <div class="skill-tags">
+          <span class="skill-tag">PostgreSQL</span>
+          <span class="skill-tag">MongoDB</span>
+          <span class="skill-tag">ClickHouse</span>
+          <span class="skill-tag">RabbitMQ</span>
+          <span class="skill-tag">MinIO</span>
+          <span class="skill-tag">NFS</span>
+          <span class="skill-tag">Rook-Ceph</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-cat-title">Virtualization &amp; Provisioning</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Proxmox</span>
+          <span class="skill-tag">VM Provisioning</span>
+          <span class="skill-tag">LVM Resizing</span>
+          <span class="skill-tag">Infrastructure as Code</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
         <div class="skill-cat-title">Ansible</div>
         <div class="skill-tags">
           <span class="skill-tag">Ansible Automation</span>
@@ -653,10 +726,9 @@ html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
       </div>
 
       <div class="skill-category">
-        <div class="skill-cat-title">Database &amp; Other</div>
+        <div class="skill-cat-title">Other</div>
         <div class="skill-tags">
-          <span class="skill-tag">Redis (Basic)</span>
-          <span class="skill-tag">Database Fundamentals (Basic)</span>
+          <span class="skill-tag">Redis</span>
           <span class="skill-tag">3CX</span>
         </div>
       </div>
@@ -673,6 +745,67 @@ html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
       <h2 class="section-title"><span data-az>İş Təcrübəsi</span><span data-en>Work Experience</span></h2>
     </div>
     <div class="exp-list">
+
+      <!-- Prodata -->
+      <div class="exp-item" id="exp0" style="border-left:2px solid var(--blue2);">
+        <div class="exp-header" onclick="toggleExp('exp0')">
+          <div>
+            <div class="exp-company">PRODATA &middot; <span data-az>Tam zamanlı</span><span data-en>Full-time</span></div>
+            <div class="exp-title">Junior DevOps Engineer</div>
+            <div class="exp-meta">
+              <span data-az>İyun 2026 – Hazırda &middot; Bakı, Azərbaycan</span>
+              <span data-en>Jun 2026 – Present &middot; Baku, Azerbaijan</span>
+            </div>
+          </div>
+          <div class="exp-toggle">+</div>
+        </div>
+        <div class="exp-body" id="exp0-body">
+          <div class="exp-body-inner">
+            <ul class="exp-bullets">
+              <li data-az>Kubernetes klasterlərini qurmuşam, node-ları idarə etmişəm, klaster resurslarını konfiqurasiya etmişəm və mütəmadi texniki xidmət göstərmişəm</li>
+              <li data-en>Set up and maintained Kubernetes clusters, including node management, resource configuration, and routine cluster upkeep</li>
+              <li data-az>CI/CD pipeline-ları hazırlamışam, deployment proseslərini avtomatlaşdırmışam və paylaşılan pipeline şablonları yaratmışam</li>
+              <li data-en>Built CI/CD pipelines and automated deployment workflows, including reusable shared pipeline templates</li>
+              <li data-az>GitLab, Helm və manifest-əsaslı deployment proseslərini idarə etmişəm</li>
+              <li data-en>Managed GitLab, Helm charts, and manifest-based deployments across environments</li>
+              <li data-az>ArgoCD ilə GitOps yanaşmasını tətbiq edərək Kubernetes deployment-lərini avtomatlaşdırmışam</li>
+              <li data-en>Applied GitOps practices with ArgoCD to automate and streamline Kubernetes deployments</li>
+              <li data-az>CertManager, ExternalDNS, Traefik, MetalLB və Nginx kimi Kubernetes əlavələrini quraşdırmış və konfiqurasiya etmişəm</li>
+              <li data-en>Installed and configured core Kubernetes add-ons — CertManager, ExternalDNS, Traefik, MetalLB, and Nginx</li>
+              <li data-az>DNS serverlərini və DNS zonalarını idarə etmişəm, daxili və xarici servis marşrutlaşdırmasını təşkil etmişəm</li>
+              <li data-en>Administered DNS servers and zones, organizing both internal and external service routing</li>
+              <li data-az>Vault vasitəsilə secret-ləri, token-ləri, sertifikatları və giriş siyasətlərini təhlükəsiz şəkildə idarə etmişəm</li>
+              <li data-en>Managed secrets, tokens, certificates, and access policies securely through HashiCorp Vault</li>
+              <li data-az>Keycloak vasitəsilə istifadəçi autentifikasiyası, realm idarəetməsi və giriş nəzarəti üzərində işləmişəm</li>
+              <li data-en>Handled user authentication, realm configuration, and access control with Keycloak</li>
+              <li data-az>Nexus Registry qurmuşam, Docker image-larını saxlamış, köhnə image-ları təmizləmiş və custom image-ları idarə etmişəm</li>
+              <li data-en>Configured Nexus Registry for Docker image storage, cleanup of old images, and custom image management</li>
+              <li data-az>Prometheus, Grafana, Loki, Tempo, Mimir və OpenTelemetry ilə monitoring, logging və tracing sistemləri qurmuşam</li>
+              <li data-en>Built monitoring, logging, and tracing pipelines with Prometheus, Grafana, Loki, Tempo, Mimir, and OpenTelemetry</li>
+              <li data-az>Alert qaydaları yaratmışam və sistem sağlamlığını davamlı olaraq izləyirəm</li>
+              <li data-en>Defined alert rules and continuously monitor overall system health</li>
+              <li data-az>Kafka klasterlərini qurmuşam, Kafka istifadəçilərini idarə etmiş və Kafka Connect inteqrasiyalarını həyata keçirmişəm</li>
+              <li data-en>Set up Kafka clusters, managed Kafka users, and handled Kafka Connect integrations</li>
+              <li data-az>Kubernetes üzərində PostgreSQL, MongoDB, ClickHouse və Redis kimi servisləri quraşdırmış və konfiqurasiya etmişəm</li>
+              <li data-en>Deployed and configured stateful services on Kubernetes, including PostgreSQL, MongoDB, ClickHouse, and Redis</li>
+              <li data-az>RabbitMQ, MinIO, NFS və Rook-Ceph kimi mesaj broker və storage sistemlərini idarə etmişəm</li>
+              <li data-en>Operated message broker and storage systems such as RabbitMQ, MinIO, NFS, and Rook-Ceph</li>
+              <li data-az>Airflow, JupyterHub, Spark Operator, Lakekeeper və Trino kimi data platforma komponentlərini deploy etmişəm</li>
+              <li data-en>Rolled out data platform components including Airflow, JupyterHub, Spark Operator, Lakekeeper, and Trino</li>
+              <li data-az>VM provisioning ilə məşğul olmuşam, yeni serverlər hazırlamış, resursları artırmış və platformaya qoşmuşam</li>
+              <li data-en>Provisioned virtual machines, prepared new servers, scaled resources, and connected them to the platform</li>
+              <li data-az>Yeni servisləri platformaya onboard etmiş, onları monitoring, DNS, ingress və təhlükəsizlik standartlarına uyğunlaşdırmışam</li>
+              <li data-en>Onboarded new services onto the platform, aligning them with monitoring, DNS, ingress, and security standards</li>
+              <li data-az>Liveness və readiness probe-ları tətbiq edərək Kubernetes daxilində tətbiqlərin sağlamlığını təmin etmişəm</li>
+              <li data-en>Ensured application health inside Kubernetes through liveness and readiness probes</li>
+              <li data-az>Paylaşılan resurslar, ümumi şablonlar və avtomatlaşdırma job-ları hazırlamışam</li>
+              <li data-en>Prepared shared resources, reusable templates, and automation jobs for the team</li>
+              <li data-az>DevOps proseslərini sənədləşdirmiş, texniki bələdçilər hazırlamış və komanda daxili standartlar müəyyən etmişəm</li>
+              <li data-en>Documented DevOps processes and technical guides, helping establish internal team standards</li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
       <!-- Grandmart -->
       <div class="exp-item" id="exp1">
@@ -691,37 +824,37 @@ html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
           <div class="exp-body-inner">
             <ul class="exp-bullets">
               <li data-az>Azure serverlərini sıfırdan ehtiyata götürmüşəm, ilkin konfiqurasiyanı həyata keçirmişəm və hazırda davamlı əməliyyat nəzarətini təmin edirəm</li>
-              <li data-en>I have provisioned Azure servers from scratch, performed the initial configuration, and currently maintain continuous operational oversight</li>
+              <li data-en>Provisioned Azure servers from scratch, handled initial configuration, and now maintain continuous operational oversight</li>
               <li data-az>Azure serverlərində layihələr və verilənlər bazaları deploy etmişəm, stabilliyini, əlçatanlığını və gündəlik təhlükəsizliyini təmin edirəm</li>
-              <li data-en>I have deployed projects and databases on Azure servers, ensuring their stability, availability, and daily security maintenance</li>
+              <li data-en>Deployed projects and databases on Azure servers, ensuring stability, availability, and daily security maintenance</li>
               <li data-az>Lokal GitLab serverini qurmuşam, konfiqurasiya etmişəm və etibarlı gündəlik əməliyyatı təmin etmək üçün davamlı olaraq izləyirəm</li>
-              <li data-en>I have installed and configured a local GitLab server, and I continuously monitor it to ensure reliable day-to-day operation</li>
+              <li data-en>Installed and configured a local GitLab server, monitoring it continuously for reliable day-to-day operation</li>
               <li data-az>GitLab-da hər bir developer üçün fərdi istifadəçi hesabları yaratmışam və müvafiq giriş icazələri təyin etmişəm</li>
-              <li data-en>I have created individual user accounts for each developer in GitLab and assigned appropriate access permissions</li>
+              <li data-en>Created individual GitLab user accounts for each developer and assigned appropriate access permissions</li>
               <li data-az>Git branch strukturlarını idarə etmişəm; development, test və production mühitlərinin qurulmasını dəstəkləmişəm</li>
-              <li data-en>I have managed Git branch structures and workflows, and supported the setup and maintenance of development, test, and production environments</li>
+              <li data-en>Managed Git branch structures and workflows, supporting development, test, and production environment setup</li>
               <li data-az>Development və production mühitlərindəki deployment problemlərini vaxtında araşdırmışam və həll etmişəm</li>
-              <li data-en>I have investigated and resolved deployment-related issues in development and production environments in a timely manner</li>
+              <li data-en>Investigated and resolved deployment-related issues across development and production environments in a timely manner</li>
               <li data-az>Firewall qaydaları, port təhlükəsizliyi və sistem səviyyəsindəki qoruma tədbirləri ilə server təhlükəsizliyini təmin etmişəm və hazırda da təmin edirəm</li>
-              <li data-en>I have ensured server security by managing firewall rules, port security, and system-level protection measures, and I continue to maintain these controls</li>
+              <li data-en>Secured servers through firewall rule management, port security, and system-level protection measures, maintained on an ongoing basis</li>
               <li data-az>Həm şəxsi, həm də ictimai şəbəkə mühitlərini qurmuşam, idarə etmişəm və izləyirəm</li>
-              <li data-en>I have set up and managed both private and public network environments, and I currently monitor them</li>
+              <li data-en>Set up and managed private and public network environments, with continuous monitoring</li>
               <li data-az>Nginx ilə veb sayt və tətbiq mühitləri üçün domain və subdomain konfiqurasiyasını həyata keçirmişəm</li>
-              <li data-en>I have worked with Nginx to configure and integrate domains and subdomains for websites and application environments</li>
+              <li data-en>Configured domains and subdomains for websites and application environments using Nginx</li>
               <li data-az>HTTP/HTTPS konfiqurasiyaları, SSL sertifikatları, Certbot və wildcard sertifikatlarını idarə etmişəm və hazırda da idarə edirəm</li>
-              <li data-en>I have managed HTTP/HTTPS configurations, SSL certificates, Certbot, and wildcard certificates to ensure secure web services</li>
+              <li data-en>Managed HTTP/HTTPS configurations, SSL certificates, Certbot, and wildcard certificates to keep web services secure</li>
               <li data-az>Docker konteynerləri ilə işləmişəm və konteyner sağlamlığını, stabilliyini təmin etmək üçün gündəlik monitoring aparıram</li>
-              <li data-en>I have worked with Docker containers and currently perform daily monitoring to ensure container health, stability, and availability</li>
+              <li data-en>Worked with Docker containers, performing daily monitoring for container health, stability, and availability</li>
               <li data-az>Disk istifadəsi, CPU və RAM istehlakı daxil olmaqla server resurslarını davamlı olaraq izləyirəm</li>
-              <li data-en>I continuously monitor server resources, including disk usage, CPU, and RAM consumption</li>
+              <li data-en>Continuously monitor server resources, including disk usage, CPU, and RAM consumption</li>
               <li data-az>Fayl, qovluq, mount point və sistem xidmətlərini əhatə edən gündəlik inzibati tapşırıqları yerinə yetirirəm</li>
-              <li data-en>I handle daily administration tasks involving files, folders, mount points, and system services</li>
+              <li data-en>Handle daily administrative tasks involving files, folders, mount points, and system services</li>
               <li data-az>Serverə aid problemləri operativ aşkar etmişəm, araşdırmışam və həll etmişəm</li>
-              <li data-en>I have detected, investigated, and resolved server-related issues promptly to maintain uninterrupted operations</li>
+              <li data-en>Detected, investigated, and resolved server-related issues promptly to maintain uninterrupted operations</li>
               <li data-az>Həm backend, həm də frontend developerlərlə sıx əməkdaşlıq etmişəm və texniki problemlərin həllini dəstəkləmişəm</li>
-              <li data-en>I have collaborated closely with both backend and frontend developers and provided support in resolving technical issues</li>
+              <li data-en>Collaborated closely with backend and frontend developers, supporting resolution of technical issues</li>
               <li data-az>Yeni texnologiyaları öyrənmişəm və sistem sürətini, stabilliyini artırmaq üçün uyğun həllər tətbiq etmişəm</li>
-              <li data-en>I have continuously improved my technical skills, learned new technologies, and integrated suitable solutions to enhance speed, stability, and reliability</li>
+              <li data-en>Continuously expanded technical skills by learning new technologies and applying solutions to improve speed, stability, and reliability</li>
             </ul>
           </div>
         </div>
@@ -744,27 +877,27 @@ html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
           <div class="exp-body-inner">
             <ul class="exp-bullets">
               <li data-az>Kompüterə aid performans problemlərini araşdırmışam və həll etmişəm</li>
-              <li data-en>I investigated and resolved computer-related performance issues</li>
+              <li data-en>Investigated and resolved computer-related performance issues</li>
               <li data-az>Hardware diaqnostikası aparmışam və nasaz komponentləri əvəz etmişəm</li>
-              <li data-en>I ran hardware diagnostics and replaced failing components to minimize downtime</li>
+              <li data-en>Ran hardware diagnostics and replaced failing components to minimize downtime</li>
               <li data-az>Server, workstation və digər IT sistemlərinin profilaktik texniki xidmətini həyata keçirmişəm</li>
-              <li data-en>I conducted preventive maintenance on servers, workstations, and other IT systems</li>
+              <li data-en>Conducted preventive maintenance on servers, workstations, and other IT systems</li>
               <li data-az>Server, storage, switch, rack və digər avadanlıqların quraşdırılması və əvəzlənməsini aparmışam</li>
-              <li data-en>I performed installation and replacement of equipment including servers, storage, switches, and racks</li>
+              <li data-en>Installed and replaced equipment including servers, storage, switches, and racks</li>
               <li data-az>Fiber optik və mis kabellər daxil olmaqla müxtəlif növ kabellər quraşdırmışam</li>
-              <li data-en>I installed various types of cables, including fiber optic and copper cables</li>
+              <li data-en>Laid various types of cabling, including fiber optic and copper</li>
               <li data-az>Kabel növlərini, marşrutlarını və qoşulmaları sənədləşdirmişəm</li>
-              <li data-en>I documented the types of cables used, their routes, and connections</li>
+              <li data-en>Documented cable types, routing, and connections for reference</li>
               <li data-az>Data mərkəzinin köçürülməsində və modernləşdirilməsində iştirak etmişəm</li>
-              <li data-en>I participated in the relocation of equipment and modernization of the data center</li>
+              <li data-en>Took part in equipment relocation and modernization of the data center</li>
               <li data-az>Şəbəkə, server və sistemlər komandaları ilə sıx əməkdaşlıq etmişəm</li>
-              <li data-en>I worked closely with networking, server, and systems teams to ensure seamless integration</li>
+              <li data-en>Worked closely with networking, server, and systems teams to ensure seamless integration</li>
               <li data-az>Kabellərin bütövlüyünü yoxlamaq üçün test avadanlığından istifadə etmişəm</li>
-              <li data-en>I used testing equipment to verify the integrity and performance of installed cables</li>
+              <li data-en>Verified cable integrity and performance using dedicated testing equipment</li>
               <li data-az>TIA/EIA standartlarına uyğun olaraq sənaye standartlarına riayət etmişəm</li>
-              <li data-en>I adhered to industry standards and best practices for cable installation, including TIA/EIA standards</li>
+              <li data-en>Followed industry best practices and standards, including TIA/EIA, for cable installation</li>
               <li data-az>Bütün kabel quraşdırmaları və texniki xidmət fəaliyyəti üzrə ətraflı qeydlər aparmışam</li>
-              <li data-en>I kept detailed records of all cabling installations, modifications, and maintenance activities</li>
+              <li data-en>Maintained detailed records of all cabling installations, modifications, and maintenance activities</li>
             </ul>
           </div>
         </div>
@@ -787,19 +920,19 @@ html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
           <div class="exp-body-inner">
             <ul class="exp-bullets">
               <li data-az>Son istifadəçilərə birinci səviyyəli IT dəstəyi göstərmişəm, hardware və software problemlərini həll etmişəm</li>
-              <li data-en>I provided first-level IT support to end-users, troubleshooting hardware and software issues</li>
+              <li data-en>Provided first-level IT support to end-users, troubleshooting hardware and software issues</li>
               <li data-az>3CX telefon sistemi vasitəsilə səs kommunikasiyasını idarə etmişəm</li>
-              <li data-en>I handled and managed voice communications using the 3CX phone system</li>
+              <li data-en>Handled voice communications using the 3CX phone system</li>
               <li data-az>Mürəkkəb texniki problemləri müvafiq eskalyasiya komandasına yönləndirmişəm</li>
-              <li data-en>I escalated complex technical issues to the appropriate escalation team for resolution</li>
+              <li data-en>Escalated complex technical issues to the appropriate team for resolution</li>
               <li data-az>Daxili bilet sistemi vasitəsilə biletləri idarə etmişəm və vaxtında həll etmişəm</li>
-              <li data-en>I managed and resolved tickets using the internal ticketing system, ensuring timely updates</li>
+              <li data-en>Managed and resolved tickets via the internal ticketing system, ensuring timely updates</li>
               <li data-az>Yüksək keyfiyyətli dəstəyi saxlamaq üçün SLA-ya uyğun işləmişəm</li>
-              <li data-en>I worked according to Service Level Agreements (SLA) to maintain high-quality support</li>
+              <li data-en>Maintained high-quality support in line with Service Level Agreements (SLA)</li>
               <li data-az>IT sistemlərini izləmişəm və əməliyyat səmərəliliyinin saxlanmasına kömək etmişəm</li>
-              <li data-en>I monitored IT systems and assisted in maintaining operational efficiency</li>
+              <li data-en>Monitored IT systems and supported overall operational efficiency</li>
               <li data-az>Texniki problemləri, həlləri və prosesləri sənədləşdirmişəm</li>
-              <li data-en>I documented technical issues, solutions, and processes to improve the knowledge base</li>
+              <li data-en>Documented technical issues, solutions, and processes to strengthen the knowledge base</li>
             </ul>
           </div>
         </div>
